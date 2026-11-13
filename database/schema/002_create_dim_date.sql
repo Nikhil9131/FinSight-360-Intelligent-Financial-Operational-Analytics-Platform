@@ -63,3 +63,4 @@ SELECT
     TO_CHAR(d, 'YYYY') || '-Q' || EXTRACT(QUARTER FROM d)::INTEGER AS year_quarter
 FROM generate_series('2022-01-01'::DATE, '2027-12-31'::DATE, '1 day'::INTERVAL) AS d
 ON CONFLICT (date_key) DO NOTHING;
+

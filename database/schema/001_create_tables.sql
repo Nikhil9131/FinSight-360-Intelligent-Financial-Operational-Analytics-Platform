@@ -241,3 +241,4 @@ CREATE TABLE IF NOT EXISTS data_quality_results (
 );
 
 COMMENT ON TABLE data_quality_results IS 'Data quality check results from validation pipeline';
+

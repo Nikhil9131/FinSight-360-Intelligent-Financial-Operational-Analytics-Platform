@@ -145,3 +145,4 @@ def get_settings(env_file: str | None = None) -> Settings:
     settings.ensure_directories()
 
     return settings
+

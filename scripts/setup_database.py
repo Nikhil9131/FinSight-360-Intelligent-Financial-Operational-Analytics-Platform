@@ -159,3 +159,4 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     setup_database(reset=args.reset)
+

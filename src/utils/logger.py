@@ -80,3 +80,4 @@ def get_logger(module_name: str, log_level: str = "INFO"):
 
     # Return a logger bound to this module name
     return _loguru_logger.bind(module=module_name)
+

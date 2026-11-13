@@ -166,3 +166,4 @@ def test_connection() -> bool:
     except Exception as e:
         logger.error("Connection failed: {}", e)
         return False
+

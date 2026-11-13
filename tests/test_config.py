@@ -81,3 +81,4 @@ class TestLogger:
         """Logger should create a log file."""
         from src.utils.logger import LOG_DIR
         assert LOG_DIR.is_dir()
+

@@ -1,0 +1,10 @@
+table,rows,columns,missing_values,missing_pct,duplicate_rows
+departments,8,6,0,0.0,0
+employees,352,10,334,9.49,0
+customers,500,10,27,0.54,0
+products,22,8,0,0.0,0
+sales,50373,11,1971,0.36,0
+expenses,30051,13,33392,8.55,0
+budgets,4176,10,11904,28.51,0
+transactions,78263,8,0,0.0,0
+operational_performance,464,13,464,7.69,0

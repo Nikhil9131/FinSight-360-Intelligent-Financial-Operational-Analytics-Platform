@@ -240,3 +240,4 @@ LEFT JOIN expenses ex
 GROUP BY b.department_id, d.department_name, b.fiscal_year, b.fiscal_month,
          b.category, b.approved_amount
 ORDER BY b.fiscal_year, b.fiscal_month, d.department_name;
+
