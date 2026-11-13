@@ -1,0 +1,28 @@
+# FinSight 360 - PostgreSQL Database (Docker)
+# Usage: docker-compose up -d
+
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: finsight360_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: finsight360
+      POSTGRES_USER: finsight_user
+      POSTGRES_PASSWORD: finsight_secure_2024
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/schema:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U finsight_user -d finsight360"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+    driver: local
