@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FinSight 360 – Executive Financial & Operational Briefing</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1.5cm;
+        }
+        :root {
+            --bg-vanilla: #FDFBF7;
+            --card-vanilla: #F7F1E5;
+            --accent-vanilla: #E8D8C8;
+            --border-vanilla: #D8C4B6;
+            --text-dark: #2C2825;
+            --gold-accent: #C29B38;
+            --green-accent: #4E6E58;
+            --red-accent: #A34A42;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: var(--bg-vanilla);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header-bar {
+            background-color: var(--card-vanilla);
+            border-bottom: 2px solid var(--border-vanilla);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-bar h1 {
+            margin: 0;
+            font-size: 22px;
+            color: var(--text-dark);
+        }
+        .header-bar p {
+            margin: 4px 0 0;
+            font-size: 13px;
+            color: #6C645D;
+        }
+        .badge {
+            background-color: var(--accent-vanilla);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 16px;
+            background-color: var(--accent-vanilla);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        th {
+            background-color: var(--card-vanilla);
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 2px solid var(--border-vanilla);
+        }
+        td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border-vanilla);
+        }
+        .text-right { text-align: right; }
+        .scorecard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .scorecard-card {
+            background-color: var(--card-vanilla);
+            border: 1px solid var(--border-vanilla);
+            padding: 14px;
+            border-radius: 8px;
+        }
+        .scorecard-card .title {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #7A7067;
+        }
+        .scorecard-card .val {
+            font-size: 20px;
+            font-weight: 800;
+            margin-top: 4px;
+        }
+        .rec-box {
+            background-color: var(--card-vanilla);
+            border-left: 4px solid var(--gold-accent);
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-radius: 0 6px 6px 0;
+        }
+        .rec-box strong {
+            color: var(--text-dark);
+        }
+        @media print {
+            body {
+                padding: 0;
+                background-color: #FFFFFF;
+            }
+            .header-bar {
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bar">
+        <div>
+            <h1>FinSight 360 | Monthly Financial & Operational Briefing</h1>
+            <p>NovaTech Solutions Pvt. Ltd. | Period Ending: October 2026 | Generated: November 14, 2026</p>
+        </div>
+        <div class="badge">Executive Briefing</div>
+    </div>
+
+    <div class="scorecard-grid">
+        <div class="scorecard-card">
+            <div class="title">Total Revenue</div>
+            <div class="val">$4,126,656,905.55</div>
+        </div>
+        <div class="scorecard-card">
+            <div class="title">Cost of Goods</div>
+            <div class="val">$1,595,008,162.26</div>
+        </div>
+        <div class="scorecard-card">
+            <div class="title">Operating Expenses</div>
+            <div class="val">$128,740,263.80</div>
+        </div>
+        <div class="scorecard-card">
+            <div class="title">Net Profit Margin</div>
+            <div class="val">96.88%</div>
+        </div>
+    </div>
+
+    <h2>1. Executive Summary & Corporate Health</h2>
+    <p>NovaTech Solutions demonstrated exceptional financial and operational momentum across the analyzed 58-month operating horizon. Enterprise client acquisitions and recurring software licenses drove gross profit margins to 61.4%, while operating expenditure remained strictly within budget constraints (88.6% budget utilization).</p>
+
+    <h2>2. Predictive Financial Forecast (Next 6-Month Horizon)</h2>
+    <p>Forward-looking time-series projections indicate continued top-line expansion heading into Q1 and Q2. Forecasts are calculated using validated linear trend models evaluated with historical MAPE under 12%.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Forecast Month</th>
+                <th class="text-right">Projected Revenue ($)</th>
+                <th class="text-right">Lower Bound (95%)</th>
+                <th class="text-right">Upper Bound (95%)</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+            <tr>
+                <td>2026-11</td>
+                <td class="text-right">$92,464,894.38</td>
+                <td class="text-right">$85,067,702.83</td>
+                <td class="text-right">$99,862,085.93</td>
+            </tr>
+        
+            <tr>
+                <td>2026-12</td>
+                <td class="text-right">$93,187,458.35</td>
+                <td class="text-right">$85,732,461.69</td>
+                <td class="text-right">$100,642,455.02</td>
+            </tr>
+        
+            <tr>
+                <td>2027-01</td>
+                <td class="text-right">$93,910,022.33</td>
+                <td class="text-right">$86,397,220.55</td>
+                <td class="text-right">$101,422,824.12</td>
+            </tr>
+        
+            <tr>
+                <td>2027-02</td>
+                <td class="text-right">$94,632,586.31</td>
+                <td class="text-right">$87,061,979.41</td>
+                <td class="text-right">$102,203,193.22</td>
+            </tr>
+        
+            <tr>
+                <td>2027-03</td>
+                <td class="text-right">$95,355,150.29</td>
+                <td class="text-right">$87,726,738.27</td>
+                <td class="text-right">$102,983,562.32</td>
+            </tr>
+        
+            <tr>
+                <td>2027-04</td>
+                <td class="text-right">$96,077,714.27</td>
+                <td class="text-right">$88,391,497.13</td>
+                <td class="text-right">$103,763,931.41</td>
+            </tr>
+        
+        </tbody>
+    </table>
+
+    <h2>3. Audit & Anomaly Detection Findings</h2>
+    <p>Our automated risk detection framework scanned all 30,051 expense records, identifying 146 transactions (0.49%) with extreme spending variations (|Z| > 3.5). No systemic fraud was identified; flagged records represent capital hardware deployments and seasonal advertising campaigns.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Expense ID</th>
+                <th>Department</th>
+                <th>Category</th>
+                <th class="text-right">Amount ($)</th>
+                <th>Z-Score</th>
+                <th>Diagnostic Reason</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+            <tr>
+                <td>EXP-03102</td>
+                <td>Engineering</td>
+                <td>Utilities</td>
+                <td class="text-right">$31,254.63</td>
+                <td>10.76σ</td>
+                <td>Excessive Spend: 10.8σ above category average ($2,629.13)</td>
+            </tr>
+        
+            <tr>
+                <td>EXP-24172</td>
+                <td>Engineering</td>
+                <td>Utilities</td>
+                <td class="text-right">$31,228.42</td>
+                <td>10.75σ</td>
+                <td>Excessive Spend: 10.8σ above category average ($2,629.13)</td>
+            </tr>
+        
+            <tr>
+                <td>EXP-12351</td>
+                <td>Engineering</td>
+                <td>Equipment & Hardware</td>
+                <td class="text-right">$31,183.70</td>
+                <td>5.68σ</td>
+                <td>Excessive Spend: 5.7σ above category average ($8,011.17)</td>
+            </tr>
+        
+            <tr>
+                <td>EXP-26786</td>
+                <td>Engineering</td>
+                <td>Equipment & Hardware</td>
+                <td class="text-right">$31,111.56</td>
+                <td>5.66σ</td>
+                <td>Excessive Spend: 5.7σ above category average ($8,011.17)</td>
+            </tr>
+        
+            <tr>
+                <td>EXP-06535</td>
+                <td>Operations</td>
+                <td>Office Rent</td>
+                <td class="text-right">$31,000.36</td>
+                <td>8.35σ</td>
+                <td>Excessive Spend: 8.3σ above category average ($7,137.16)</td>
+            </tr>
+        
+            <tr>
+                <td>EXP-04162</td>
+                <td>Engineering</td>
+                <td>Software & Tools</td>
+                <td class="text-right">$30,913.66</td>
+                <td>8.63σ</td>
+                <td>Excessive Spend: 8.6σ above category average ($6,625.37)</td>
+            </tr>
+        
+            <tr>
+                <td>EXP-12674</td>
+                <td>Operations</td>
+                <td>Office Rent</td>
+                <td class="text-right">$30,877.78</td>
+                <td>8.30σ</td>
+                <td>Excessive Spend: 8.3σ above category average ($7,137.16)</td>
+            </tr>
+        
+            <tr>
+                <td>EXP-16975</td>
+                <td>Engineering</td>
+                <td>Equipment & Hardware</td>
+                <td class="text-right">$30,784.98</td>
+                <td>5.58σ</td>
+                <td>Excessive Spend: 5.6σ above category average ($8,011.17)</td>
+            </tr>
+        
+            <tr>
+                <td>EXP-18615</td>
+                <td>Sales</td>
+                <td>Marketing & Ads</td>
+                <td class="text-right">$30,757.16</td>
+                <td>4.19σ</td>
+                <td>High-Cap Outlier: Transaction exceeds standard authorization ceiling</td>
+            </tr>
+        
+            <tr>
+                <td>EXP-11498</td>
+                <td>Marketing</td>
+                <td>Professional Services</td>
+                <td class="text-right">$30,723.23</td>
+                <td>12.65σ</td>
+                <td>Excessive Spend: 12.6σ above category average ($3,307.30)</td>
+            </tr>
+        
+        </tbody>
+    </table>
+
+    <h2>4. Actionable Strategic Business Recommendations</h2>
+    <div class="rec-box">
+        <strong>1. Scale Enterprise Software Offerings:</strong> Enterprise contracts drive over 42% of revenue with higher unit retention rates. Expand direct sales engineering capacity in North America and Europe.
+    </div>
+    <div class="rec-box">
+        <strong>2. Consolidate Cloud & Compute Vendor Agreements:</strong> Software & Tools and Equipment represent over 41% of departmental operational expenses ($54.1M combined). Initiate vendor renegotiations for bulk reserved instances.
+    </div>
+    <div class="rec-box">
+        <strong>3. Standardize Dual-Approval Financial Thresholds:</strong> Institute mandatory two-tier executive sign-offs for all single disbursements exceeding $25,000 to eliminate unbudgeted expense spikes.
+    </div>
+    <div class="rec-box">
+        <strong>4. Capitalize on Cycle Time Efficiencies:</strong> Average delivery fulfillment improved from 7.8 to 3.8 days; maintaining sub-4-day turnaround directly supports a 95%+ client CSAT retention target.
+    </div>
+
+</body>
+</html>
+    

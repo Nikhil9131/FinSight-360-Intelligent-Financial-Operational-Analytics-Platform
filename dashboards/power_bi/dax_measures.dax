@@ -1,0 +1,184 @@
+// ==============================================================================
+// FinSight 360: Master DAX Measures Library for Power BI
+// Theme: Vanilla & Warm Charcoal (#FAEBD7 / #F3E5AB / #2C2C2C)
+// Scope: Financial, Operational, Departmental, and Risk Analytics
+// ==============================================================================
+
+// ─── 1. CORE REVENUE & SALES MEASURES ──────────────────────────────────────────
+
+Total Revenue = 
+SUM(fact_sales[revenue])
+
+Total Quantity Sold = 
+SUM(fact_sales[quantity])
+
+Total Transactions = 
+COUNTROWS(fact_sales)
+
+Average Order Value (AOV) = 
+DIVIDE([Total Revenue], [Total Transactions], 0)
+
+Average Discount Pct = 
+AVERAGE(fact_sales[discount_pct])
+
+Revenue Prior Month = 
+CALCULATE(
+    [Total Revenue],
+    DATEADD(dim_date[full_date], -1, MONTH)
+)
+
+Revenue MoM Growth ($) = 
+[Total Revenue] - [Revenue Prior Month]
+
+Revenue MoM Growth (%) = 
+DIVIDE([Revenue MoM Growth ($)], [Revenue Prior Month], 0)
+
+Revenue Prior Year = 
+CALCULATE(
+    [Total Revenue],
+    SAMEPERIODLASTYEAR(dim_date[full_date])
+)
+
+Revenue YoY Growth (%) = 
+DIVIDE([Total Revenue] - [Revenue Prior Year], [Revenue Prior Year], 0)
+
+Revenue YTD = 
+TOTALYTD([Total Revenue], dim_date[full_date])
+
+
+// ─── 2. PROFITABILITY & MARGIN MEASURES ────────────────────────────────────────
+
+Total Cost of Goods Sold (COGS) = 
+SUM(fact_sales[cost_of_goods])
+
+Gross Profit = 
+[Total Revenue] - [Total Cost of Goods Sold (COGS)]
+
+Gross Profit Margin (%) = 
+DIVIDE([Gross Profit], [Total Revenue], 0)
+
+Total Operating Expenses (OpEx) = 
+CALCULATE(
+    SUM(fact_expenses[amount]),
+    fact_expenses[approval_status] = "approved"
+)
+
+Net Profit = 
+[Total Revenue] - [Total Operating Expenses (OpEx)]
+
+Net Profit Margin (%) = 
+DIVIDE([Net Profit], [Total Revenue], 0)
+
+Net Profit MoM Growth (%) = 
+VAR PriorNet = CALCULATE([Net Profit], DATEADD(dim_date[full_date], -1, MONTH))
+RETURN DIVIDE([Net Profit] - PriorNet, PriorNet, 0)
+
+
+// ─── 3. BUDGET & SPEND VARIANCE MEASURES ────────────────────────────────────────
+
+Total Approved Budget = 
+SUM(fact_budget[approved_amount])
+
+Total Effective Budget = 
+SUM(fact_budget[effective_budget])
+
+Budget Variance ($) = 
+[Total Approved Budget] - [Total Operating Expenses (OpEx)]
+
+Budget Utilization (%) = 
+DIVIDE([Total Operating Expenses (OpEx)], [Total Approved Budget], 0)
+
+Budget Status = 
+SWITCH(
+    TRUE(),
+    [Budget Utilization (%)] > 1.10, "Severely Over Budget",
+    [Budget Utilization (%)] > 1.00, "Over Budget",
+    [Budget Utilization (%)] >= 0.85, "On Track",
+    "Under Utilized"
+)
+
+
+// ─── 4. DEPARTMENTAL & WORKFORCE MEASURES ───────────────────────────────────────
+
+Total Active Headcount = 
+CALCULATE(
+    COUNTROWS(dim_employee),
+    dim_employee[status] = "active"
+)
+
+Total Annualized Payroll = 
+CALCULATE(
+    SUM(dim_employee[salary]),
+    dim_employee[status] = "active"
+)
+
+Average Employee Salary = 
+DIVIDE([Total Annualized Payroll], [Total Active Headcount], 0)
+
+Revenue per Employee = 
+DIVIDE([Total Revenue], [Total Active Headcount], 0)
+
+Department Cost Efficiency = 
+DIVIDE([Total Revenue], [Total Operating Expenses (OpEx)], 0)
+
+Department Spend Rank = 
+RANKX(
+    ALL(dim_department[department_name]),
+    [Total Operating Expenses (OpEx)],
+    ,
+    DESC,
+    Dense
+)
+
+
+// ─── 5. OPERATIONAL EFFICIENCY MEASURES ─────────────────────────────────────────
+
+Total Orders Received = 
+SUM(fact_operations[orders_received])
+
+Total Orders Completed = 
+SUM(fact_operations[orders_completed])
+
+Total Orders Delayed = 
+SUM(fact_operations[orders_delayed])
+
+Order Completion Rate (%) = 
+DIVIDE([Total Orders Completed], [Total Orders Received], 0)
+
+Average Cycle Time (Days) = 
+AVERAGE(fact_operations[avg_processing_days])
+
+On-Time Delivery Rate (%) = 
+AVERAGE(fact_operations[on_time_delivery_pct])
+
+Average Customer Satisfaction (CSAT) = 
+AVERAGE(fact_operations[customer_satisfaction])
+
+Operational Cost per Order = 
+DIVIDE(
+    SUM(fact_operations[operational_cost]),
+    [Total Orders Completed],
+    0
+)
+
+
+// ─── 6. RISK, AUDIT & ANOMALY MEASURES ──────────────────────────────────────────
+
+High Value Expense Transactions = 
+CALCULATE(
+    COUNTROWS(fact_expenses),
+    fact_expenses[amount] > 25000
+)
+
+Pending Expense Approvals = 
+CALCULATE(
+    COUNTROWS(fact_expenses),
+    fact_expenses[approval_status] IN {"pending", "under_review"}
+)
+
+Pending Approval Exposure ($) = 
+CALCULATE(
+    SUM(fact_expenses[amount]),
+    fact_expenses[approval_status] IN {"pending", "under_review"}
+)
+

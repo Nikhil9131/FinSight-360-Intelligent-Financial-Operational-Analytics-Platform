@@ -1,0 +1,11 @@
+{
+  "run_id": "RUN-20261113234434-a21aa5",
+  "status": "success",
+  "start_time": "2026-11-13T23:44:34.837428",
+  "tables_processed": 9,
+  "records_loaded": 164209,
+  "dq_checks_count": 17,
+  "dq_passed_count": 17,
+  "end_time": "2026-11-13T23:44:35.837076",
+  "duration_seconds": 1.0
+}

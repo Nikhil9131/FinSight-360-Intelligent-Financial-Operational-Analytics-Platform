@@ -1,31 +1,16 @@
 """
-FinSight 360 - Database Connector
-====================================
-Provides reusable functions to connect to PostgreSQL using both:
-  - psycopg2  (for raw SQL execution, stored procedures)
-  - SQLAlchemy (for Pandas integration, ORM-style operations)
-
-Usage:
-    from src.utils.db_connector import get_engine, get_connection, execute_query
-
-    # Pandas integration
-    engine = get_engine()
-    df = pd.read_sql("SELECT * FROM sales", engine)
-
-    # Raw SQL
-    with get_connection() as conn:
-        with conn.cursor() as cur:
-            cur.execute("SELECT COUNT(*) FROM sales")
-            count = cur.fetchone()[0]
+FinSight 360 - Database Connector & Query Execution Engine
+===========================================================
+Provides unified connection interfaces for analytics:
+  - PostgreSQL (via psycopg2 / SQLAlchemy when available in production)
+  - SQLite (built-in standard library fallback for zero-dependency local environments)
 """
 
+import sqlite3
 from contextlib import contextmanager
+from pathlib import Path
 from typing import Any
-
-import psycopg2
-from psycopg2.extras import RealDictCursor
-from sqlalchemy import create_engine, text
-from sqlalchemy.engine import Engine
+import pandas as pd
 
 from config.settings import get_settings
 from src.utils.logger import get_logger
@@ -33,137 +18,80 @@ from src.utils.logger import get_logger
 logger = get_logger("db_connector")
 
 
-# ─── SQLAlchemy Engine (singleton) ────────────────────────────
+def get_sqlite_path() -> Path:
+    """Return path to local analytical database."""
+    settings = get_settings()
+    db_path = settings.DATA_PROCESSED_DIR / "finsight360.db"
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    return db_path
 
-_engine: Engine | None = None
-
-
-def get_engine(echo: bool = False) -> Engine:
-    """
-    Create or return a cached SQLAlchemy engine.
-
-    Args:
-        echo: If True, log all SQL statements (useful for debugging).
-
-    Returns:
-        SQLAlchemy Engine connected to the configured PostgreSQL database.
-    """
-    global _engine
-    if _engine is None:
-        settings = get_settings()
-        _engine = create_engine(
-            settings.DATABASE_URL,
-            echo=echo,
-            pool_size=5,
-            max_overflow=10,
-            pool_pre_ping=True,  # verify connections before use
-        )
-        logger.info("SQLAlchemy engine created for {}", settings.DB_NAME)
-    return _engine
-
-
-def dispose_engine() -> None:
-    """Close all pooled connections and reset the engine singleton."""
-    global _engine
-    if _engine is not None:
-        _engine.dispose()
-        _engine = None
-        logger.info("SQLAlchemy engine disposed")
-
-
-# ─── psycopg2 Connection ─────────────────────────────────────
 
 @contextmanager
 def get_connection(autocommit: bool = False):
     """
-    Context manager that yields a psycopg2 connection.
-    Automatically commits on success, rolls back on exception, and closes.
-
-    Args:
-        autocommit: Set True for DDL statements (CREATE TABLE, etc.)
-
-    Yields:
-        psycopg2 connection object.
-
-    Example:
-        with get_connection() as conn:
-            with conn.cursor() as cur:
-                cur.execute("INSERT INTO ...")
+    Yields an active database connection.
+    Attempts PostgreSQL if configured, otherwise falls back smoothly to SQLite.
     """
     settings = get_settings()
     conn = None
+    use_sqlite = True
+
     try:
+        import psycopg2
+        from psycopg2.extras import RealDictCursor
         conn = psycopg2.connect(**settings.DSN)
         conn.autocommit = autocommit
-        logger.debug("Database connection opened (autocommit={})", autocommit)
+        use_sqlite = False
+        logger.debug("Connected to PostgreSQL")
+    except Exception as e:
+        logger.debug("PostgreSQL not active ({}); falling back to local SQLite engine", e)
+        use_sqlite = True
+
+    if use_sqlite:
+        conn = sqlite3.connect(get_sqlite_path())
+        conn.row_factory = sqlite3.Row
+
+    try:
         yield conn
         if not autocommit:
             conn.commit()
-    except Exception as e:
+    except Exception as err:
         if conn and not autocommit:
             conn.rollback()
-        logger.error("Database error: {}", e)
+        logger.error("DB Transaction error: {}", err)
         raise
     finally:
         if conn:
             conn.close()
-            logger.debug("Database connection closed")
 
-
-# ─── Convenience Helpers ──────────────────────────────────────
 
 def execute_query(query: str, params: tuple | None = None, fetch: bool = True) -> list[dict[str, Any]]:
-    """
-    Execute a SQL query and optionally return results as a list of dicts.
-
-    Args:
-        query:  SQL query string (can use %s placeholders).
-        params: Tuple of parameters for parameterized queries.
-        fetch:  If True, return results. If False, return empty list (for INSERT/UPDATE).
-
-    Returns:
-        List of dictionaries (column_name → value) for SELECT queries,
-        or empty list for INSERT/UPDATE/DELETE.
-    """
+    """Execute SQL query and return results as list of dictionaries."""
     with get_connection() as conn:
-        with conn.cursor(cursor_factory=RealDictCursor) as cur:
+        cur = conn.cursor()
+        if params:
             cur.execute(query, params)
-            if fetch and cur.description:
-                results = [dict(row) for row in cur.fetchall()]
-                logger.debug("Query returned {} rows", len(results))
-                return results
-            return []
+        else:
+            cur.execute(query)
+
+        if fetch and cur.description:
+            cols = [col[0] for col in cur.description]
+            rows = cur.fetchall()
+            return [dict(zip(cols, row)) for row in rows]
+        return []
 
 
-def execute_script(filepath: str) -> None:
-    """
-    Execute an entire SQL script file against the database.
-
-    Args:
-        filepath: Path to the .sql file to execute.
-    """
-    with open(filepath, "r", encoding="utf-8") as f:
-        sql = f.read()
-
-    with get_connection(autocommit=True) as conn:
-        with conn.cursor() as cur:
-            cur.execute(sql)
-    logger.info("Executed SQL script: {}", filepath)
+def query_to_dataframe(query: str, params: tuple | None = None) -> pd.DataFrame:
+    """Execute query and return clean Pandas DataFrame."""
+    with get_connection() as conn:
+        return pd.read_sql_query(query, conn, params=params)
 
 
 def test_connection() -> bool:
-    """
-    Test if the database connection is working.
-
-    Returns:
-        True if connection succeeds, False otherwise.
-    """
+    """Validate database connectivity."""
     try:
-        result = execute_query("SELECT version();")
-        version = result[0]["version"] if result else "unknown"
-        logger.info("Connection successful — PostgreSQL {}", version)
-        return True
+        res = execute_query("SELECT 1 AS status")
+        return len(res) > 0 and res[0]["status"] == 1
     except Exception as e:
-        logger.error("Connection failed: {}", e)
+        logger.warning("Connection test failed: {}", e)
         return False
-

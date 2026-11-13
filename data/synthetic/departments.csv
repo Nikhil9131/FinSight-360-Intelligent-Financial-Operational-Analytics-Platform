@@ -1,0 +1,9 @@
+department_id,department_name,location,manager_id,created_date,is_active
+1,Engineering,Bangalore,60,2020-01-01,True
+2,Sales,New York,127,2020-01-01,True
+3,Marketing,New York,168,2020-01-01,True
+4,HR,London,187,2020-01-01,True
+5,Finance,London,196,2020-01-01,True
+6,Operations,Bangalore,228,2020-01-01,True
+7,R&D,Bangalore,281,2020-01-01,True
+8,Support,New York,342,2020-01-01,True

@@ -1,0 +1,501 @@
+customer_id,company_name,contact_name,email,phone,country,city,segment,registration_date,is_active
+1,Prime Partners,Robert Turner,contact@primepartners.com,+1-747-584-4600,United States,Chicago,Mid-Market,2023-01-03,False
+2,Nexus Logistics,Edward Pillai,contact@nexuslogistics.com,+1-687-258-9422,United States,Chicago,Startup,2026-07-29,True
+3,Nova Ventures,Susan Thomas,contact@novaventures.com,,India,Delhi,Startup,2022-03-29,True
+4,Element Partners,Lily Garcia,contact@elementpartners.com,+1-466-462-9213,United States,Austin,SMB,2025-07-21,True
+5,Atlantic Security,Sneha Anderson,contact@atlanticsecurity.com,+1-873-118-7704,India,Hyderabad,Startup,2022-02-27,True
+6,Nexus Systems,Grace Sharma,contact@nexussystems.com,+1-809-662-5107,Japan,Osaka,SMB,2021-08-04,True
+7,Aero Enterprises,Matthew Roberts,contact@aeroenterprises.com,+1-715-374-3320,India,Mumbai,Mid-Market,2024-02-21,True
+8,Vanguard Security,Christopher Thomas,contact@vanguardsecurity.com,+1-527-691-8343,India,Delhi,SMB,2022-06-23,True
+9,Omega Industries,Betty Lopez,contact@omegaindustries.com,+1-333-135-4024,India,Mumbai,Startup,2023-11-25,False
+10,Omega Robotics,Elizabeth Lopez,contact@omegarobotics.com,+1-870-729-7968,United States,Seattle,SMB,2020-12-01,True
+11,Crimson Robotics,Isla Gupta,contact@crimsonrobotics.com,+1-511-357-2733,United States,Austin,Enterprise,2020-10-14,True
+12,Matrix Dynamics,Karen Lewis,contact@matrixdynamics.com,+1-537-889-9395,Japan,Osaka,Mid-Market,2020-03-06,True
+13,Everest Global,Arun Iyer,contact@everestglobal.com,+1-255-629-8115,India,Mumbai,Startup,2024-04-27,True
+14,Element Solutions,Ananya Allen,contact@elementsolutions.com,+1-906-506-2006,India,Delhi,Mid-Market,2023-04-03,True
+15,Atlantic Global,Isla Williams,contact@atlanticglobal.com,+1-340-555-5969,Australia,Sydney,Startup,2023-12-07,True
+16,Meridian Labs,Elizabeth Kumar,contact@meridianlabs.com,+1-748-101-9927,India,Mumbai,SMB,2022-01-06,True
+17,Infiniti Logistics,Alexander Harris,contact@infinitilogistics.com,+1-612-714-7549,United States,New York,Startup,2020-03-20,True
+18,Element Holdings,Jennifer Lewis,contact@elementholdings.com,+1-454-259-4822,India,Hyderabad,Startup,2022-03-10,True
+19,Nordic Logistics,Arthur Allen,contact@nordiclogistics.com,+1-737-391-8086,Australia,Sydney,Enterprise,2022-07-08,True
+20,Summit Global,Susan Rao,contact@summitglobal.com,+1-856-454-3893,United States,San Francisco,Startup,2026-03-10,True
+21,Nova Enterprises,Daniel Williams,contact@novaenterprises.com,+1-840-299-9036,Singapore,Singapore,SMB,2024-11-17,True
+22,Cascade Global,Lily King,contact@cascadeglobal.com,+1-902-392-2381,United Kingdom,London,Enterprise,2023-11-22,True
+23,Nexus Networks,Pooja Carter,contact@nexusnetworks.com,+1-253-303-1004,Germany,Frankfurt,SMB,2021-12-01,True
+24,Catalyst Ventures,Sneha Gupta,contact@catalystventures.com,+1-818-403-6869,Australia,Melbourne,Mid-Market,2025-10-23,False
+25,Summit Software,Amit Jones,contact@summitsoftware.com,+1-334-158-8746,United States,Seattle,Startup,2022-05-03,True
+26,Stellar Holdings,Kavita Jackson,contact@stellarholdings.com,+1-630-139-1834,Japan,Osaka,Startup,2023-10-12,True
+27,Solaris Logistics,Karen Perez,contact@solarislogistics.com,+1-789-394-7770,United Kingdom,,Mid-Market,2023-09-23,True
+28,Element Services,Christopher Carter,contact@elementservices.com,+1-799-377-4310,United States,New York,SMB,2023-09-06,True
+29,Atlantic Software,Sanjay Rodriguez,contact@atlanticsoftware.com,+1-366-964-2070,United Kingdom,Manchester,Mid-Market,2024-04-09,True
+30,Nova Labs,Ella Harris,contact@novalabs.com,+1-340-139-8407,Canada,Montreal,Enterprise,2022-04-21,True
+31,Alpha Services,Lily Garcia,contact@alphaservices.com,+1-991-987-6881,India,Delhi,Mid-Market,2024-10-10,True
+32,Ironclad Networks,Robert White,contact@ironcladnetworks.com,+1-513-956-9779,India,Hyderabad,Mid-Market,2026-04-09,True
+33,Zenith Corp,Sneha Evans,contact@zenithcorp.com,+1-353-525-6904,United Kingdom,Manchester,Startup,2023-02-07,True
+34,Horizon Group,Sarah Martinez,contact@horizongroup.com,+1-787-770-5957,Singapore,Singapore,Mid-Market,2021-09-20,True
+35,Pacific Digital,Alexander Nair,contact@pacificdigital.com,+1-767-576-1445,United States,New York,Startup,2022-07-14,False
+36,Solaris Dynamics,Thomas Hill,contact@solarisdynamics.com,+1-588-359-4767,India,Mumbai,SMB,2022-07-17,True
+37,Omega Innovations,Nancy Pillai,contact@omegainnovations.com,+1-860-241-4467,United Kingdom,Manchester,SMB,2020-09-16,True
+38,Nexus Security,George Williams,contact@nexussecurity.com,+1-617-504-6076,United States,Seattle,Mid-Market,2020-11-26,True
+39,Meridian Services,Donald Parker,contact@meridianservices.com,+1-252-108-2910,Germany,Munich,SMB,2025-10-07,False
+40,Infiniti Labs,Isla Anderson,contact@infinitilabs.com,+1-716-855-9011,United States,Austin,Startup,2025-04-13,True
+41,Atlantic Consulting,Matthew White,contact@atlanticconsulting.com,+1-580-526-1535,Australia,Sydney,SMB,2025-09-01,True
+42,Crestview Global,Sophie Nair,contact@crestviewglobal.com,+1-668-370-7115,United Kingdom,Edinburgh,Mid-Market,2023-03-28,True
+43,Catalyst Enterprises,Lily Clark,contact@catalystenterprises.com,+1-279-194-4804,United States,Chicago,Mid-Market,2026-02-04,True
+44,Horizon Logistics,Sarah Campbell,contact@horizonlogistics.com,+1-307-262-3883,India,Bangalore,Mid-Market,2020-07-13,True
+45,Summit Software 2,Mia Campbell,contact@summitsoftware2.com,+1-244-407-3382,United States,Chicago,Mid-Market,2021-09-01,True
+46,Cobalt Digital,Ethan Bhat,contact@cobaltdigital.com,+1-364-129-9366,Australia,Melbourne,SMB,2022-11-10,True
+47,Pacific Systems,Charles Moore,contact@pacificsystems.com,+1-285-513-6575,Germany,Berlin,Enterprise,2025-02-22,True
+48,Ironclad Analytics,Amelia Garcia,contact@ironcladanalytics.com,+1-881-192-8377,Japan,Osaka,Enterprise,2021-05-11,True
+49,Cascade Networks,Patricia Clark,contact@cascadenetworks.com,+1-996-288-4610,India,,SMB,2020-12-23,False
+50,Synergy Enterprises,Pooja Thomas,contact@synergyenterprises.com,+1-957-923-8254,Canada,Toronto,Mid-Market,2023-03-14,True
+51,Nova Networks,Mark Johnson,contact@novanetworks.com,+1-981-577-5442,United States,Austin,Mid-Market,2025-06-22,True
+52,Stellar Cloud,Amit Iyer,contact@stellarcloud.com,+1-504-814-6262,Germany,Munich,Startup,2026-07-14,True
+53,Alpha Solutions,Joshua Carter,contact@alphasolutions.com,+1-456-982-1929,Singapore,Singapore,Enterprise,2024-06-21,True
+54,Alpha Robotics,Arthur Lewis,contact@alpharobotics.com,+1-670-699-4677,United States,Austin,Startup,2020-03-18,True
+55,Nova Technologies,Steven Wilson,contact@novatechnologies.com,+1-705-821-9394,India,Mumbai,Mid-Market,2025-06-20,True
+56,Cobalt Security,Lily Ramirez,contact@cobaltsecurity.com,+1-463-971-6110,United Kingdom,London,Mid-Market,2025-04-12,True
+57,Pacific Group,Arun Davis,contact@pacificgroup.com,+1-726-432-3886,United Kingdom,London,SMB,2021-12-27,True
+58,Phoenix Ventures,Edward Jones,contact@phoenixventures.com,+1-502-374-2494,United States,New York,Mid-Market,2020-06-24,True
+59,Harbor Logistics,Noah Johnson,contact@harborlogistics.com,+1-510-801-6063,United Kingdom,London,SMB,2026-08-13,True
+60,Ironclad Media,Donald Joshi,contact@ironcladmedia.com,+1-405-972-9346,Canada,Montreal,SMB,2023-08-21,True
+61,Pacific Ventures,James Patel,contact@pacificventures.com,+1-734-690-9508,Australia,Sydney,SMB,2020-09-17,True
+62,Phoenix Media,Charlotte Lopez,contact@phoenixmedia.com,+1-938-980-1041,Germany,Munich,Mid-Market,2020-09-16,True
+63,Aero Networks,David Turner,contact@aeronetworks.com,+1-743-174-1238,United States,New York,Enterprise,2026-05-23,True
+64,BlueWave Enterprises,Alexander Scott,contact@bluewaveenterprises.com,+1-880-282-5191,United States,Seattle,SMB,2021-01-11,True
+65,Catalyst Consulting,Jennifer Sharma,contact@catalystconsulting.com,+1-828-891-8907,United Kingdom,London,Enterprise,2023-11-17,True
+66,Meridian Industries,Robert Thompson,contact@meridianindustries.com,,United States,,Mid-Market,2025-10-23,True
+67,Vanguard Group,Susan Nair,contact@vanguardgroup.com,+1-596-316-9687,Japan,Tokyo,SMB,2021-01-08,True
+68,Alpha Solutions 2,Ananya Wright,contact@alphasolutions2.com,+1-883-937-6347,Singapore,Singapore,Startup,2025-05-29,True
+69,Omni Innovations,Sophie Parker,contact@omniinnovations.com,+1-499-450-8297,United States,Chicago,Startup,2023-12-17,True
+70,Matrix Innovations,Sarah Jones,contact@matrixinnovations.com,+1-650-755-6464,India,Hyderabad,SMB,2021-09-01,True
+71,Crimson Solutions,Emily Gonzalez,contact@crimsonsolutions.com,+1-495-215-2065,Canada,Montreal,Mid-Market,2026-05-21,True
+72,Horizon Solutions,Rajesh Phillips,contact@horizonsolutions.com,+1-869-734-3733,India,Mumbai,SMB,2021-07-05,True
+73,Ironclad Partners,Chloe Walker,contact@ironcladpartners.com,+1-219-555-5172,United Kingdom,Manchester,Startup,2020-06-13,True
+74,Pinnacle Robotics,Matthew Jackson,contact@pinnaclerobotics.com,+1-330-202-4390,United States,Chicago,SMB,2023-12-17,True
+75,Summit Software 3,Amit Moore,contact@summitsoftware3.com,+1-232-963-5699,United States,Chicago,SMB,2020-12-06,True
+76,Meridian Ventures,Meera Verma,contact@meridianventures.com,+1-311-542-4096,United States,New York,Mid-Market,2023-01-21,True
+77,Catalyst Dynamics,Nancy Young,contact@catalystdynamics.com,+1-956-301-8279,United Kingdom,Manchester,Enterprise,2023-07-01,True
+78,Meridian Enterprises,Andrew Rao,contact@meridianenterprises.com,+1-264-990-8841,United States,Austin,Startup,2021-09-03,True
+79,Aurora Systems,Amelia Hill,contact@aurorasystems.com,+1-542-427-1323,United Kingdom,London,SMB,2022-06-16,True
+80,BlueWave Labs,Deepa Miller,contact@bluewavelabs.com,+1-993-693-1363,United States,San Francisco,SMB,2022-07-10,True
+81,Nordic Services,Emily Martin,contact@nordicservices.com,+1-441-449-1405,United States,New York,SMB,2023-09-22,True
+82,Frontier Cloud,Harry Hernandez,contact@frontiercloud.com,+1-869-354-1538,United States,Austin,Startup,2025-03-15,True
+83,Vanguard Global,Jennifer Mehta,contact@vanguardglobal.com,+1-324-162-9240,Australia,Melbourne,Startup,2026-05-26,True
+84,Infiniti Ventures,Kimberly Sharma,contact@infinitiventures.com,+1-517-989-1567,United Kingdom,Manchester,SMB,2024-11-01,True
+85,Quantum Services,Meera White,contact@quantumservices.com,+1-448-561-3574,Canada,Toronto,Startup,2021-12-21,True
+86,Nexus Technologies,Christopher Bhat,contact@nexustechnologies.com,+1-275-214-7369,United States,Seattle,Startup,2021-05-13,True
+87,Cascade Solutions,Thomas Jones,contact@cascadesolutions.com,+1-979-425-9489,United Kingdom,Edinburgh,Startup,2020-11-12,True
+88,Omni Networks,Suresh Harris,contact@omninetworks.com,+1-835-448-5890,United States,San Francisco,Enterprise,2026-04-21,True
+89,Frontier Analytics,Isla Evans,contact@frontieranalytics.com,+1-976-787-5345,Singapore,Singapore,Startup,2021-06-21,True
+90,Meridian Global,Elizabeth Torres,contact@meridianglobal.com,+1-508-275-4523,Japan,Osaka,SMB,2025-11-22,True
+91,Aero Networks 2,Sanjay Lee,contact@aeronetworks2.com,+1-261-751-5014,Australia,Sydney,Enterprise,2024-12-11,True
+92,Phoenix Digital,Patricia Verma,contact@phoenixdigital.com,+1-689-383-2417,Australia,Melbourne,Startup,2025-09-14,False
+93,Harbor Enterprises,Kavita Carter,contact@harborenterprises.com,+1-979-444-5641,United States,San Francisco,Mid-Market,2021-12-06,True
+94,Prime Industries,Dorothy Joshi,contact@primeindustries.com,+1-980-606-1442,United States,Seattle,Startup,2025-12-13,True
+95,Atlas Logistics,Joshua Reddy,contact@atlaslogistics.com,+1-250-233-6116,United States,Austin,Mid-Market,2026-05-16,True
+96,Horizon Digital,Sarah Bhat,contact@horizondigital.com,+1-629-815-2816,United States,Austin,Startup,2021-10-12,True
+97,Cascade Innovations,George Garcia,contact@cascadeinnovations.com,+1-693-661-9538,Australia,Sydney,Startup,2025-11-23,True
+98,Solaris Networks,David Scott,contact@solarisnetworks.com,+1-272-466-4940,Australia,Melbourne,Mid-Market,2020-10-06,True
+99,Pacific Labs,Charles Joshi,contact@pacificlabs.com,+1-502-211-5863,Germany,Frankfurt,Startup,2025-10-20,True
+100,Meridian Enterprises 2,Mark Davis,contact@meridianenterprises2.com,+1-456-256-7055,Japan,Tokyo,Mid-Market,2024-03-18,True
+101,Alpha Group,Isabella Johnson,contact@alphagroup.com,+1-382-911-2519,Japan,Tokyo,Mid-Market,2025-07-08,True
+102,Cobalt Media,Pooja Robinson,contact@cobaltmedia.com,+1-350-629-5478,United States,Chicago,Startup,2025-03-18,True
+103,Alpha Logistics,Barbara Jones,contact@alphalogistics.com,+1-606-348-9952,United States,Seattle,SMB,2020-03-19,True
+104,Synergy Cloud,Mia King,contact@synergycloud.com,+1-581-974-1601,United States,Chicago,SMB,2023-07-02,True
+105,Prism Media,Elizabeth Rodriguez,contact@prismmedia.com,,Canada,Vancouver,SMB,2021-08-23,True
+106,Omni Systems,Isla Robinson,contact@omnisystems.com,+1-574-354-5279,United Kingdom,Manchester,Startup,2020-02-13,True
+107,Aero Networks 3,Thomas Mitchell,contact@aeronetworks3.com,+1-856-772-8035,United Kingdom,Edinburgh,Enterprise,2025-06-21,True
+108,Alpha Ventures,Alexander Carter,contact@alphaventures.com,+1-709-792-6678,Australia,Sydney,Mid-Market,2023-02-11,True
+109,Prime Enterprises,Karen Martin,contact@primeenterprises.com,+1-729-936-9644,Canada,Toronto,Mid-Market,2022-12-21,True
+110,Nexus Dynamics,Mark Thompson,contact@nexusdynamics.com,+1-539-432-5551,Japan,Tokyo,Mid-Market,2024-02-03,True
+111,Pacific Systems 2,Steven Gonzalez,contact@pacificsystems2.com,+1-567-637-7706,United States,Seattle,SMB,2023-05-07,True
+112,Cobalt Industries,Thomas Sharma,contact@cobaltindustries.com,+1-358-201-7724,United Kingdom,Edinburgh,Enterprise,2022-08-23,True
+113,Infiniti Holdings,Barbara Allen,contact@infinitiholdings.com,+1-417-189-9603,United States,Chicago,Startup,2025-01-01,True
+114,Element Media,Karen Hernandez,contact@elementmedia.com,+1-357-394-5763,United States,San Francisco,Mid-Market,2021-12-06,True
+115,Crestview Solutions,Patricia Garcia,contact@crestviewsolutions.com,+1-807-851-2576,India,Delhi,Startup,2024-12-20,True
+116,Omni Robotics,Dorothy Kumar,contact@omnirobotics.com,+1-582-449-3460,United Kingdom,London,Mid-Market,2025-05-19,True
+117,Crestview Ventures,Patricia Young,contact@crestviewventures.com,+1-301-845-7344,United Kingdom,London,Mid-Market,2022-08-12,True
+118,Pacific Software,Arun Walker,contact@pacificsoftware.com,+1-584-622-7731,United States,Seattle,Enterprise,2022-11-20,True
+119,Synergy Labs,Edward Jones,contact@synergylabs.com,+1-558-348-3166,Canada,Toronto,Startup,2021-05-29,True
+120,Nexus Global,Charlotte Walker,contact@nexusglobal.com,+1-340-408-4528,United States,New York,Mid-Market,2021-03-29,True
+121,Atlas Dynamics,Christopher Lee,contact@atlasdynamics.com,+1-800-265-3454,India,Hyderabad,Mid-Market,2026-03-20,True
+122,Nordic Security,Vikram Parker,contact@nordicsecurity.com,+1-550-873-4323,United Kingdom,Edinburgh,Enterprise,2020-02-06,True
+123,Alpha Robotics 2,Pooja Allen,contact@alpharobotics2.com,+1-809-428-5480,Singapore,Singapore,Mid-Market,2023-09-07,True
+124,Stellar Dynamics,Donald Robinson,contact@stellardynamics.com,+1-892-523-6521,United States,Seattle,SMB,2020-02-29,True
+125,Eagle Global,Ashley Martinez,contact@eagleglobal.com,+1-925-422-5147,Canada,Toronto,Startup,2025-09-07,True
+126,Summit Labs,Kavita Campbell,contact@summitlabs.com,+1-212-521-5448,Canada,Toronto,Enterprise,2024-11-07,True
+127,Phoenix Innovations,Deepa Phillips,contact@phoenixinnovations.com,+1-653-677-8528,India,Hyderabad,Mid-Market,2023-01-31,True
+128,Nordic Corp,Charles Young,contact@nordiccorp.com,+1-379-161-8629,United Kingdom,Edinburgh,Enterprise,2024-11-13,True
+129,Crimson Consulting,Priya Young,contact@crimsonconsulting.com,,United States,Seattle,Startup,2024-07-24,True
+130,Nova Partners,Alexander Robinson,contact@novapartners.com,+1-414-665-9448,Japan,Tokyo,Mid-Market,2025-02-11,True
+131,Atlas Media,Ananya Brown,contact@atlasmedia.com,+1-645-293-2528,United States,San Francisco,Mid-Market,2026-10-17,True
+132,Pacific Consulting,Arthur Jackson,contact@pacificconsulting.com,+1-246-788-4625,Singapore,Singapore,Mid-Market,2025-02-06,True
+133,Apex Digital,Amelia Rodriguez,contact@apexdigital.com,+1-744-765-2578,United Kingdom,Edinburgh,Startup,2020-01-08,True
+134,Meridian Robotics,Meera White,contact@meridianrobotics.com,+1-411-791-2260,United States,Chicago,Startup,2026-09-08,True
+135,Synergy Solutions,Ella Gonzalez,contact@synergysolutions.com,+1-850-963-3485,Japan,Tokyo,SMB,2026-10-29,True
+136,Cobalt Labs,Elizabeth Harris,contact@cobaltlabs.com,+1-411-986-4892,India,Delhi,Startup,2023-11-02,True
+137,Cobalt Industries 2,Jessica Rodriguez,contact@cobaltindustries2.com,+1-819-620-4404,Australia,Melbourne,Mid-Market,2025-04-19,True
+138,Synergy Networks,Sneha Scott,contact@synergynetworks.com,+1-370-614-6139,Australia,Sydney,Startup,2025-09-29,False
+139,Omega Corp,Grace Sanchez,contact@omegacorp.com,+1-230-906-5669,Germany,Munich,Startup,2026-01-11,True
+140,Pinnacle Solutions,John Rodriguez,contact@pinnaclesolutions.com,+1-271-404-7722,United States,Seattle,Startup,2025-03-30,True
+141,Everest Enterprises,Edward Martinez,contact@everestenterprises.com,+1-350-607-4690,United States,Chicago,Mid-Market,2021-08-13,True
+142,Nordic Logistics 2,Rajesh Hernandez,contact@nordiclogistics2.com,+1-888-763-7212,India,Bangalore,SMB,2025-01-22,True
+143,Infiniti Security,Arun Nguyen,contact@infinitisecurity.com,+1-529-318-9309,Australia,Melbourne,Startup,2021-02-15,True
+144,Ironclad Enterprises,Noah Young,contact@ironcladenterprises.com,+1-783-971-1879,United States,Chicago,Mid-Market,2026-10-13,True
+145,Everest Technologies,Pooja Perez,contact@everesttechnologies.com,+1-360-462-5173,India,Delhi,SMB,2020-11-22,True
+146,Prime Ventures,Priya Iyer,contact@primeventures.com,+1-836-584-8223,United Kingdom,Edinburgh,Mid-Market,2021-04-24,True
+147,Frontier Consulting,Dorothy Turner,contact@frontierconsulting.com,+1-419-347-2215,United States,New York,Mid-Market,2024-02-09,True
+148,Element Media 2,Sandra Mehta,contact@elementmedia2.com,+1-521-462-8619,Canada,Montreal,Startup,2023-07-04,True
+149,Element Consulting,Lisa King,contact@elementconsulting.com,+1-228-807-6752,Australia,Sydney,Mid-Market,2021-09-30,True
+150,Infiniti Robotics,Rahul Martinez,contact@infinitirobotics.com,+1-368-652-8658,Canada,Montreal,SMB,2021-02-05,True
+151,Pinnacle Media,Joseph Gonzalez,contact@pinnaclemedia.com,+1-381-871-8805,India,Bangalore,Startup,2020-06-29,True
+152,Cascade Dynamics,Charlotte Martinez,contact@cascadedynamics.com,+1-694-641-2154,Australia,Sydney,Mid-Market,2020-09-03,True
+153,Atlas Ventures,Alexander Nair,contact@atlasventures.com,+1-949-976-4970,United States,Austin,SMB,2021-01-31,True
+154,Summit Cloud,Sarah King,contact@summitcloud.com,+1-621-141-8383,India,Hyderabad,Startup,2021-04-12,True
+155,Cobalt Dynamics,Mia King,contact@cobaltdynamics.com,+1-429-987-3144,Germany,Berlin,SMB,2024-03-29,True
+156,Nordic Innovations,Edward Carter,contact@nordicinnovations.com,+1-603-871-4555,Germany,Munich,SMB,2024-08-04,True
+157,Sterling Holdings,Ananya Gupta,contact@sterlingholdings.com,+1-929-796-7627,United States,Seattle,SMB,2026-07-25,True
+158,Infiniti Consulting,Matthew Turner,contact@infiniticonsulting.com,+1-617-402-8156,United States,Chicago,SMB,2021-09-23,True
+159,Eagle Holdings,Arun Anderson,contact@eagleholdings.com,+1-776-240-9856,United States,San Francisco,Startup,2020-01-20,True
+160,Pacific Cloud,Anthony Reddy,contact@pacificcloud.com,+1-709-163-9878,United States,Chicago,Mid-Market,2022-06-06,True
+161,Nordic Consulting,Vikram Scott,contact@nordicconsulting.com,+1-529-187-3556,India,Hyderabad,Enterprise,2024-01-30,True
+162,Pacific Digital 2,Chloe Harris,contact@pacificdigital2.com,+1-505-531-8950,Australia,Melbourne,SMB,2024-02-07,True
+163,Vanguard Robotics,Christopher Jackson,contact@vanguardrobotics.com,+1-815-311-6456,United States,Austin,Mid-Market,2021-09-14,True
+164,Pacific Cloud 2,William Thompson,contact@pacificcloud2.com,+1-862-509-2981,India,Mumbai,SMB,2026-05-21,False
+165,Omni Industries,Mia Wilson,contact@omniindustries.com,+1-650-526-1496,United Kingdom,Manchester,SMB,2022-03-09,True
+166,BlueWave Industries,Ella Reddy,contact@bluewaveindustries.com,+1-891-856-4567,Canada,Toronto,Mid-Market,2025-08-03,False
+167,Alpha Digital,Donald Thomas,contact@alphadigital.com,+1-240-584-3318,United States,Chicago,Startup,2025-12-03,True
+168,Solaris Enterprises,Mark Sharma,contact@solarisenterprises.com,+1-796-367-2943,India,Mumbai,Startup,2021-07-11,True
+169,Summit Digital,Oliver Perez,contact@summitdigital.com,+1-822-815-3076,Germany,Berlin,SMB,2022-10-18,True
+170,Stellar Services,Sarah Smith,contact@stellarservices.com,+1-965-197-6719,Singapore,Singapore,Enterprise,2022-04-29,True
+171,Nexus Ventures,Arthur Walker,contact@nexusventures.com,+1-624-210-5045,United Kingdom,Edinburgh,SMB,2026-05-04,True
+172,Pacific Dynamics,Joshua Kumar,contact@pacificdynamics.com,+1-361-852-8304,Singapore,Singapore,SMB,2022-02-13,True
+173,Nova Software,Sandra Wright,contact@novasoftware.com,+1-662-336-9750,India,Mumbai,Mid-Market,2026-08-20,True
+174,Zenith Ventures,Daniel Phillips,contact@zenithventures.com,+1-936-844-2522,Singapore,Singapore,Startup,2024-08-18,True
+175,Synergy Consulting,Nancy Phillips,contact@synergyconsulting.com,+1-271-442-1641,India,Mumbai,Mid-Market,2020-11-28,True
+176,Pacific Solutions,Mary Martin,contact@pacificsolutions.com,+1-259-574-8444,United Kingdom,Edinburgh,Startup,2020-08-06,True
+177,Sterling Labs,Edward Kumar,contact@sterlinglabs.com,+1-818-467-8938,India,Mumbai,SMB,2020-07-31,True
+178,Alpha Enterprises,Sophie Moore,contact@alphaenterprises.com,+1-617-472-5026,India,,SMB,2023-01-02,True
+179,Prime Dynamics,Charles Mehta,contact@primedynamics.com,+1-573-478-8168,India,Bangalore,Mid-Market,2021-02-22,True
+180,Omni Industries 2,Nancy Smith,contact@omniindustries2.com,+1-322-818-8577,United States,Austin,Mid-Market,2022-11-18,True
+181,Pacific Media,Matthew Lopez,contact@pacificmedia.com,+1-748-892-1699,Japan,Osaka,Mid-Market,2026-07-05,True
+182,Aurora Enterprises,Deepa Garcia,contact@auroraenterprises.com,+1-445-506-7199,India,Hyderabad,SMB,2021-05-30,True
+183,Solaris Digital,Nancy Parker,contact@solarisdigital.com,+1-435-323-3608,Germany,Munich,Startup,2020-10-05,True
+184,Everest Dynamics,Ashley Smith,contact@everestdynamics.com,+1-696-239-6611,United States,San Francisco,SMB,2021-12-10,True
+185,Catalyst Group,Isla Shah,contact@catalystgroup.com,+1-754-603-7142,India,Delhi,Enterprise,2022-03-27,True
+186,Sterling Labs 2,Mary Taylor,contact@sterlinglabs2.com,+1-557-491-1780,United States,Chicago,Enterprise,2025-02-17,True
+187,Meridian Cloud,Donald Brown,contact@meridiancloud.com,+1-552-793-3133,Germany,Frankfurt,Mid-Market,2022-04-04,True
+188,Prime Global,Priya Hernandez,contact@primeglobal.com,+1-636-963-5252,Canada,Montreal,Startup,2023-03-03,True
+189,Ironclad Cloud,Priya Reddy,contact@ironcladcloud.com,+1-695-935-5425,United States,Austin,SMB,2020-07-25,True
+190,Matrix Labs,Pooja Patel,contact@matrixlabs.com,+1-680-207-1646,Japan,Tokyo,SMB,2024-05-20,True
+191,Titan Analytics,Mia Martinez,contact@titananalytics.com,+1-584-401-5441,United States,San Francisco,SMB,2024-07-26,True
+192,Frontier Networks,Charlotte Reddy,contact@frontiernetworks.com,+1-968-629-2627,Germany,Munich,SMB,2026-08-12,True
+193,Everest Robotics,Noah Rao,contact@everestrobotics.com,+1-276-680-4887,United Kingdom,Edinburgh,Mid-Market,2020-12-25,False
+194,Atlas Robotics,Ashley Gupta,contact@atlasrobotics.com,+1-786-293-6129,United Kingdom,,SMB,2023-09-06,False
+195,Aero Global,Lily Joshi,contact@aeroglobal.com,+1-951-461-6639,Australia,Sydney,Mid-Market,2020-09-20,True
+196,Quantum Media,Joseph Brown,contact@quantummedia.com,+1-712-360-7836,India,Delhi,Mid-Market,2022-09-13,True
+197,Ironclad Corp,Noah Martinez,contact@ironcladcorp.com,+1-923-240-7804,Germany,Frankfurt,Mid-Market,2021-09-15,True
+198,Nordic Enterprises,George Davis,contact@nordicenterprises.com,+1-998-752-3581,Germany,Berlin,Startup,2022-06-17,True
+199,Element Consulting 2,Barbara Roberts,contact@elementconsulting2.com,+1-410-774-9940,Japan,Tokyo,Mid-Market,2024-08-29,True
+200,Summit Global 2,Thomas Allen,contact@summitglobal2.com,+1-620-748-8738,Japan,Osaka,Startup,2020-09-29,True
+201,Crimson Media,Linda Scott,contact@crimsonmedia.com,+1-362-700-8494,United Kingdom,Manchester,Startup,2022-03-15,True
+202,Atlantic Security 2,Robert Sanchez,contact@atlanticsecurity2.com,+1-551-503-9864,Singapore,Singapore,Mid-Market,2026-05-31,True
+203,Apex Security,Margaret Nguyen,contact@apexsecurity.com,+1-837-133-3887,United Kingdom,Manchester,Startup,2023-12-22,True
+204,Pinnacle Ventures,Vikram Reddy,contact@pinnacleventures.com,+1-648-617-6729,United Kingdom,London,SMB,2020-07-20,True
+205,BlueWave Solutions,David Phillips,contact@bluewavesolutions.com,+1-798-481-3975,United States,,Mid-Market,2024-08-20,True
+206,Pinnacle Labs,Oliver Lopez,contact@pinnaclelabs.com,+1-350-985-5016,Germany,Munich,Enterprise,2022-12-09,True
+207,Omni Security,Charlotte White,contact@omnisecurity.com,+1-806-258-1190,United States,,Mid-Market,2020-09-18,True
+208,Cascade Partners,Rahul Garcia,contact@cascadepartners.com,+1-341-901-3475,United States,Austin,Mid-Market,2020-10-06,True
+209,Solaris Holdings,Sarah Kumar,contact@solarisholdings.com,+1-243-823-1195,Germany,Frankfurt,Enterprise,2020-01-26,True
+210,Prime Innovations,Noah Sanchez,contact@primeinnovations.com,+1-324-305-5001,United States,Chicago,Startup,2020-09-13,True
+211,Alpha Security,Mark Pillai,contact@alphasecurity.com,+1-257-663-9036,Canada,Montreal,Mid-Market,2022-08-12,True
+212,Vertex Labs,Sophie Gupta,contact@vertexlabs.com,+1-342-403-5944,United States,New York,Enterprise,2023-09-29,True
+213,Aurora Holdings,Rahul Menon,contact@auroraholdings.com,+1-362-226-7522,United States,Seattle,Mid-Market,2026-02-16,True
+214,Phoenix Global,Vikram Martinez,contact@phoenixglobal.com,+1-961-603-3702,India,Bangalore,SMB,2026-07-22,True
+215,Horizon Security,Joseph Williams,contact@horizonsecurity.com,+1-487-759-1413,United Kingdom,Manchester,SMB,2025-04-09,True
+216,Prism Logistics,Robert Thomas,contact@prismlogistics.com,+1-768-392-4952,Germany,Frankfurt,Mid-Market,2023-04-17,False
+217,Quantum Digital,John Lewis,contact@quantumdigital.com,+1-687-569-8293,Canada,Toronto,SMB,2021-09-09,True
+218,Summit Group,Jennifer Sanchez,contact@summitgroup.com,+1-282-658-6430,United States,Seattle,SMB,2020-04-24,True
+219,Titan Holdings,Margaret Shah,contact@titanholdings.com,+1-233-617-5093,United States,Austin,Mid-Market,2021-03-20,True
+220,Alpha Enterprises 2,Emily Anderson,contact@alphaenterprises2.com,+1-341-610-9330,Canada,Toronto,Mid-Market,2020-07-26,True
+221,Crestview Dynamics,Deepa Thomas,contact@crestviewdynamics.com,+1-942-372-9323,Germany,Frankfurt,Mid-Market,2024-02-27,False
+222,Omega Services,Ethan Anderson,contact@omegaservices.com,+1-209-743-9730,United States,Chicago,Startup,2023-06-24,True
+223,Atlantic Industries,Linda Scott,contact@atlanticindustries.com,+1-975-809-1703,Australia,Melbourne,Startup,2021-08-03,True
+224,Zenith Software,Harry Scott,contact@zenithsoftware.com,+1-690-532-4754,Germany,Frankfurt,Startup,2020-05-30,True
+225,Summit Networks,Rahul Iyer,contact@summitnetworks.com,+1-322-737-1675,Australia,Melbourne,SMB,2023-06-05,True
+226,Nordic Cloud,Charlotte Clark,contact@nordiccloud.com,+1-878-749-5587,United Kingdom,Edinburgh,SMB,2021-04-02,True
+227,Atlantic Partners,Nancy Shah,contact@atlanticpartners.com,+1-974-120-4320,United States,San Francisco,Mid-Market,2026-05-04,True
+228,Everest Group,Mark Martin,contact@everestgroup.com,+1-375-633-9482,Canada,Montreal,Mid-Market,2022-07-29,True
+229,Omega Global,Linda Scott,contact@omegaglobal.com,+1-371-690-4403,Canada,Montreal,SMB,2020-09-01,True
+230,Prism Holdings,Lily Rodriguez,contact@prismholdings.com,+1-393-529-9339,Japan,Osaka,Startup,2025-05-13,True
+231,Phoenix Industries,Anthony Perez,contact@phoenixindustries.com,+1-753-587-2355,United States,Austin,Mid-Market,2020-08-25,True
+232,Nova Global,Pooja Garcia,contact@novaglobal.com,+1-738-378-1641,Germany,Frankfurt,Enterprise,2024-07-31,True
+233,Horizon Solutions 2,Andrew Harris,contact@horizonsolutions2.com,+1-802-559-4015,United States,Seattle,SMB,2025-02-25,True
+234,Quantum Corp,Ella Wilson,contact@quantumcorp.com,+1-615-131-5017,India,Mumbai,Startup,2024-12-29,True
+235,Atlas Dynamics 2,Arun Turner,contact@atlasdynamics2.com,+1-719-417-8964,India,Hyderabad,Startup,2021-09-19,True
+236,Atlas Corp,Jessica Verma,,+1-313-268-7187,United States,New York,SMB,2021-12-06,True
+237,Phoenix Cloud,Anthony Sanchez,contact@phoenixcloud.com,+1-428-288-4969,Singapore,Singapore,Enterprise,2023-09-15,True
+238,Cobalt Dynamics 2,Joshua Harris,contact@cobaltdynamics2.com,+1-616-482-1288,India,Bangalore,Mid-Market,2023-09-13,True
+239,BlueWave Software,Ananya Martin,contact@bluewavesoftware.com,+1-498-782-1977,Canada,Vancouver,SMB,2022-02-02,True
+240,Meridian Enterprises 3,Isabella Robinson,contact@meridianenterprises3.com,,United States,Chicago,Enterprise,2023-02-02,True
+241,Everest Robotics 2,Rajesh Carter,contact@everestrobotics2.com,+1-501-284-6341,Singapore,Singapore,Startup,2020-01-15,True
+242,Meridian Dynamics,Oliver Williams,contact@meridiandynamics.com,+1-611-868-4791,United States,San Francisco,Enterprise,2024-04-26,True
+243,Titan Security,Christopher Johnson,contact@titansecurity.com,+1-825-391-1200,United Kingdom,Edinburgh,Enterprise,2020-08-30,True
+244,Cobalt Media 2,Charlotte Jackson,contact@cobaltmedia2.com,+1-810-791-8087,Germany,Munich,SMB,2021-09-08,True
+245,Horizon Dynamics,Sandra Harris,contact@horizondynamics.com,+1-942-762-1381,United States,San Francisco,SMB,2021-11-03,True
+246,Phoenix Consulting,Lucas Kumar,contact@phoenixconsulting.com,+1-637-813-4026,United States,Seattle,Mid-Market,2026-07-22,True
+247,Falcon Robotics,Henry Turner,contact@falconrobotics.com,+1-212-192-8583,United States,Chicago,Startup,2021-04-19,True
+248,Crimson Innovations,Ananya Hernandez,contact@crimsoninnovations.com,+1-583-361-5273,United States,Austin,Mid-Market,2020-01-08,True
+249,BlueWave Consulting,Nancy Carter,contact@bluewaveconsulting.com,+1-241-985-3392,United Kingdom,London,Enterprise,2021-06-01,True
+250,Omni Solutions,Lily Williams,contact@omnisolutions.com,+1-272-107-9370,United States,Seattle,SMB,2020-04-24,True
+251,Solaris Solutions,James Clark,contact@solarissolutions.com,+1-975-891-5540,Singapore,Singapore,SMB,2026-09-28,True
+252,Matrix Group,David Joshi,contact@matrixgroup.com,+1-558-471-8698,United States,San Francisco,Startup,2021-02-11,True
+253,Apex Corp,Alexander Robinson,contact@apexcorp.com,+1-624-303-2678,United Kingdom,London,Mid-Market,2022-04-01,True
+254,Summit Logistics,Mia Singh,contact@summitlogistics.com,+1-224-606-2801,India,Delhi,Mid-Market,2021-05-13,True
+255,Vertex Technologies,Noah Scott,contact@vertextechnologies.com,+1-344-435-3371,United States,Austin,SMB,2023-02-27,True
+256,Apex Technologies,Lily Mehta,contact@apextechnologies.com,+1-478-513-5198,United States,Austin,Mid-Market,2022-09-26,True
+257,BlueWave Labs 2,Robert Allen,contact@bluewavelabs2.com,+1-881-338-2924,Japan,Osaka,Mid-Market,2020-09-09,True
+258,Zenith Digital,Richard King,contact@zenithdigital.com,+1-473-607-5450,India,Hyderabad,Startup,2022-12-06,False
+259,Phoenix Corp,Lily Taylor,contact@phoenixcorp.com,,United States,San Francisco,Enterprise,2026-07-04,True
+260,Eagle Partners,William White,contact@eaglepartners.com,+1-948-235-7392,United States,Chicago,Startup,2026-03-11,True
+261,Crimson Media 2,Ashley Reddy,contact@crimsonmedia2.com,+1-993-573-2465,United States,Austin,SMB,2024-09-05,True
+262,Atlantic Services,William Kumar,contact@atlanticservices.com,+1-626-504-6517,Japan,Tokyo,SMB,2025-08-21,True
+263,Nova Partners 2,Rahul Harris,contact@novapartners2.com,+1-941-332-1356,United States,New York,Enterprise,2020-07-02,True
+264,Everest Solutions,Mary Reddy,contact@everestsolutions.com,+1-391-841-1295,United States,Seattle,Enterprise,2025-03-09,True
+265,Nova Consulting,Amelia Kumar,contact@novaconsulting.com,+1-354-475-4466,Japan,Tokyo,Mid-Market,2021-11-12,True
+266,Crestview Digital,Lily Carter,contact@crestviewdigital.com,+1-462-643-1226,United States,Chicago,Mid-Market,2022-05-02,True
+267,Titan Corp,Arthur Moore,contact@titancorp.com,+1-804-415-9355,United States,New York,Mid-Market,2021-12-28,True
+268,Quantum Services 2,Kimberly Roberts,contact@quantumservices2.com,+1-624-129-7964,United States,New York,SMB,2025-06-16,True
+269,Crestview Services,John Lopez,contact@crestviewservices.com,+1-874-252-4908,United States,Seattle,SMB,2025-01-03,True
+270,Vertex Corp,Christopher Shah,contact@vertexcorp.com,+1-844-161-9362,Canada,Vancouver,SMB,2024-11-17,True
+271,Quantum Labs,Charles Torres,contact@quantumlabs.com,+1-994-132-1839,United States,Austin,Enterprise,2026-05-02,True
+272,Crestview Partners,Chloe Perez,contact@crestviewpartners.com,+1-227-764-8192,United States,San Francisco,SMB,2020-11-28,True
+273,Alpha Cloud,William Allen,contact@alphacloud.com,+1-884-776-3483,Germany,Munich,SMB,2023-07-19,True
+274,Summit Digital 2,Amelia Anderson,contact@summitdigital2.com,+1-233-515-3386,Australia,Melbourne,Mid-Market,2025-10-26,True
+275,Sterling Logistics,Sanjay Parker,contact@sterlinglogistics.com,+1-539-266-3432,United States,New York,Mid-Market,2025-10-22,True
+276,Vertex Software,Andrew Iyer,contact@vertexsoftware.com,+1-540-765-5522,Canada,Vancouver,Startup,2026-04-06,True
+277,Harbor Group,Ananya Scott,contact@harborgroup.com,+1-405-144-2366,United States,Austin,Mid-Market,2023-03-12,True
+278,Aurora Innovations,Rahul Garcia,contact@aurorainnovations.com,+1-652-534-8414,Germany,Munich,Mid-Market,2024-02-26,True
+279,Pacific Group 2,Elizabeth Garcia,contact@pacificgroup2.com,+1-974-546-9707,United States,Seattle,Mid-Market,2024-07-28,True
+280,Omega Partners,Karen Verma,contact@omegapartners.com,+1-313-601-2529,Canada,Vancouver,Startup,2021-02-18,True
+281,Nordic Networks,Susan Garcia,contact@nordicnetworks.com,+1-666-249-9365,India,Hyderabad,Startup,2022-01-26,True
+282,Atlantic Global 2,Suresh Shah,contact@atlanticglobal2.com,,Germany,Berlin,Enterprise,2022-05-31,True
+283,Stellar Analytics,Barbara Lopez,contact@stellaranalytics.com,+1-851-557-5609,India,Delhi,SMB,2021-03-26,True
+284,Cascade Holdings,Ella Allen,contact@cascadeholdings.com,+1-729-459-9432,United Kingdom,Manchester,Mid-Market,2020-06-23,True
+285,Stellar Technologies,Barbara Thompson,contact@stellartechnologies.com,+1-348-208-6288,India,Hyderabad,Startup,2021-10-07,True
+286,Frontier Logistics,Deepa Campbell,contact@frontierlogistics.com,+1-553-740-1937,India,Mumbai,SMB,2023-05-10,True
+287,Apex Labs,Oliver Harris,contact@apexlabs.com,+1-563-331-5340,Singapore,Singapore,Startup,2025-03-21,True
+288,Cobalt Group,Ethan Hernandez,contact@cobaltgroup.com,+1-270-625-9365,United States,New York,Startup,2026-04-16,True
+289,Nexus Analytics,Andrew Martin,contact@nexusanalytics.com,+1-451-713-5071,Australia,Melbourne,Startup,2022-05-09,True
+290,Harbor Analytics,David Hernandez,contact@harboranalytics.com,+1-351-872-3279,United States,Chicago,Mid-Market,2022-02-06,True
+291,Eagle Ventures,Arun Walker,contact@eagleventures.com,+1-253-204-6882,United States,Austin,SMB,2024-03-07,False
+292,Meridian Industries 2,Ashley Mehta,contact@meridianindustries2.com,+1-723-818-9547,United Kingdom,London,Mid-Market,2024-01-08,True
+293,Frontier Logistics 2,Betty Robinson,contact@frontierlogistics2.com,+1-900-864-3881,India,Hyderabad,SMB,2022-09-30,True
+294,Alpha Labs,James Evans,contact@alphalabs.com,+1-629-851-1545,Singapore,Singapore,Mid-Market,2025-12-09,True
+295,Sterling Logistics 2,Rahul Rao,contact@sterlinglogistics2.com,+1-403-269-2772,Canada,Vancouver,Mid-Market,2023-09-17,True
+296,Cascade Dynamics 2,Amelia Menon,contact@cascadedynamics2.com,+1-700-319-4108,United States,Chicago,Mid-Market,2022-02-05,True
+297,Frontier Analytics 2,Arun Lee,contact@frontieranalytics2.com,+1-816-360-6287,United Kingdom,Edinburgh,SMB,2026-10-24,True
+298,Horizon Consulting,Rajesh Lopez,contact@horizonconsulting.com,+1-617-919-8142,Germany,Frankfurt,Startup,2022-01-16,True
+299,Nordic Labs,Henry Turner,contact@nordiclabs.com,+1-542-584-9879,United Kingdom,Manchester,Enterprise,2024-11-08,True
+300,Phoenix Dynamics,Rahul Moore,contact@phoenixdynamics.com,+1-274-127-2138,Canada,Montreal,SMB,2020-02-17,True
+301,Meridian Digital,Betty Nguyen,contact@meridiandigital.com,+1-605-849-8823,United Kingdom,Manchester,SMB,2020-03-15,True
+302,Zenith Services,Lucas Johnson,contact@zenithservices.com,+1-689-631-8581,United States,Seattle,SMB,2026-04-30,True
+303,Atlas Global,Emily Pillai,contact@atlasglobal.com,+1-229-737-2946,India,Hyderabad,Startup,2020-04-21,True
+304,Prism Services,Isabella Rodriguez,contact@prismservices.com,+1-718-118-2692,Japan,Tokyo,Startup,2025-02-15,True
+305,Atlantic Group,Steven Singh,contact@atlanticgroup.com,+1-762-721-1842,Germany,Frankfurt,Mid-Market,2024-10-23,True
+306,Aurora Partners,Elizabeth Lewis,contact@aurorapartners.com,+1-810-347-3630,India,Bangalore,Startup,2024-11-09,True
+307,Element Partners 2,Noah Allen,contact@elementpartners2.com,+1-765-292-3768,India,Hyderabad,Startup,2021-02-15,True
+308,BlueWave Solutions 2,Suresh Reddy,contact@bluewavesolutions2.com,+1-231-654-1388,United States,Austin,Mid-Market,2024-09-27,True
+309,Frontier Software,William Miller,contact@frontiersoftware.com,+1-782-381-7807,United States,Seattle,Enterprise,2026-07-12,True
+310,Solaris Services,Ananya Hernandez,contact@solarisservices.com,+1-588-183-3921,Singapore,Singapore,SMB,2021-08-22,True
+311,Pinnacle Media 2,Meera Turner,contact@pinnaclemedia2.com,+1-544-669-9082,United States,Seattle,SMB,2023-10-29,True
+312,Aurora Digital,Mary Miller,contact@auroradigital.com,+1-262-102-2626,United States,Chicago,Startup,2025-08-24,True
+313,Titan Enterprises,Ethan Scott,contact@titanenterprises.com,+1-429-190-7875,United Kingdom,Manchester,Mid-Market,2021-01-03,True
+314,Cascade Networks 2,Sanjay Robinson,contact@cascadenetworks2.com,+1-934-956-1602,Australia,Sydney,SMB,2024-03-15,False
+315,Element Cloud,Alexander Martinez,contact@elementcloud.com,+1-264-457-9873,United Kingdom,Edinburgh,Mid-Market,2025-02-03,True
+316,Vertex Consulting,Susan Jackson,contact@vertexconsulting.com,+1-358-478-5481,United States,Chicago,Mid-Market,2020-11-01,True
+317,Nova Digital,Christopher Thompson,contact@novadigital.com,+1-501-376-2247,United States,Austin,SMB,2021-01-22,True
+318,Sterling Global,Anthony King,contact@sterlingglobal.com,,Australia,Melbourne,Mid-Market,2020-08-27,True
+319,Vanguard Consulting,Richard Lewis,contact@vanguardconsulting.com,+1-255-727-1622,Germany,Munich,SMB,2024-06-18,True
+320,Nordic Systems,Arun Williams,contact@nordicsystems.com,+1-430-101-1597,India,Hyderabad,SMB,2026-06-24,True
+321,Prime Technologies,Sneha Kumar,contact@primetechnologies.com,+1-867-370-1213,Canada,Montreal,Startup,2024-10-31,True
+322,Nexus Security 2,Ashley King,contact@nexussecurity2.com,+1-882-522-5933,United States,New York,Enterprise,2023-09-19,True
+323,Cobalt Innovations,Amit Scott,contact@cobaltinnovations.com,+1-835-125-5505,United Kingdom,,Mid-Market,2021-12-12,True
+324,Crimson Group,Meera Sharma,,+1-319-949-1465,United States,Austin,Startup,2022-09-27,True
+325,Zenith Software 2,Amelia Sanchez,contact@zenithsoftware2.com,+1-908-925-7166,United States,San Francisco,SMB,2020-09-02,True
+326,Infiniti Corp,Isla Nguyen,contact@infiniticorp.com,+1-534-414-5692,United Kingdom,London,Mid-Market,2025-08-26,True
+327,Catalyst Technologies,Margaret Wilson,contact@catalysttechnologies.com,+1-461-788-3257,Australia,Melbourne,SMB,2022-12-03,True
+328,Quantum Media 2,Susan Rao,contact@quantummedia2.com,+1-319-290-6418,India,Delhi,Mid-Market,2020-04-11,True
+329,Zenith Networks,Deepa Gonzalez,contact@zenithnetworks.com,+1-754-187-3137,United States,Seattle,Enterprise,2023-02-01,True
+330,Prime Industries 2,Henry King,contact@primeindustries2.com,+1-206-365-7859,United Kingdom,Manchester,Mid-Market,2023-11-24,False
+331,Nordic Logistics 3,Kavita Patel,contact@nordiclogistics3.com,+1-235-195-1646,United Kingdom,Edinburgh,Startup,2021-11-03,True
+332,Element Digital,Vikram Thompson,contact@elementdigital.com,+1-804-604-1098,United States,Austin,SMB,2022-05-06,True
+333,Infiniti Innovations,Arun Carter,contact@infinitiinnovations.com,+1-992-456-2705,India,Hyderabad,SMB,2021-05-06,True
+334,Element Systems,Sarah Lee,contact@elementsystems.com,+1-643-299-8129,United States,Seattle,Enterprise,2022-09-02,True
+335,Phoenix Labs,Joseph Lopez,contact@phoenixlabs.com,+1-913-282-3225,United States,New York,SMB,2023-03-13,True
+336,Omega Enterprises,Kavita Clark,contact@omegaenterprises.com,+1-437-580-9386,Canada,Vancouver,SMB,2025-02-04,True
+337,Alpha Media,Kavita Ramirez,contact@alphamedia.com,+1-978-277-5836,Germany,Frankfurt,SMB,2026-03-17,True
+338,Harbor Software,Noah Reddy,contact@harborsoftware.com,+1-285-978-5748,Canada,Toronto,SMB,2022-05-19,True
+339,Cobalt Innovations 2,Henry Jackson,contact@cobaltinnovations2.com,+1-944-188-2781,India,Bangalore,Enterprise,2025-10-23,True
+340,Zenith Dynamics,Isla Patel,contact@zenithdynamics.com,+1-277-934-7530,United Kingdom,London,SMB,2025-09-21,True
+341,Vanguard Technologies,Henry Rodriguez,contact@vanguardtechnologies.com,+1-752-335-7815,United States,New York,Enterprise,2020-05-18,True
+342,Catalyst Holdings,Alexander Kumar,contact@catalystholdings.com,+1-773-521-3901,United States,San Francisco,Startup,2026-02-03,True
+343,Prism Services 2,Henry Clark,contact@prismservices2.com,+1-964-271-6978,United States,Austin,SMB,2021-04-20,True
+344,Cascade Consulting,Lisa Garcia,contact@cascadeconsulting.com,+1-804-548-2443,United Kingdom,Edinburgh,Mid-Market,2024-08-02,True
+345,Vertex Robotics,Mark Jackson,contact@vertexrobotics.com,+1-631-853-6143,United States,Seattle,Mid-Market,2024-09-20,True
+346,Eagle Group,Noah Jackson,contact@eaglegroup.com,+1-523-780-6266,United States,New York,Enterprise,2023-04-17,True
+347,Crimson Media 3,Isabella Scott,contact@crimsonmedia3.com,+1-775-356-8111,Japan,Tokyo,SMB,2024-03-30,True
+348,Prime Media,Joseph Moore,contact@primemedia.com,+1-629-799-1910,United Kingdom,Edinburgh,SMB,2026-06-20,True
+349,Meridian Holdings,Jennifer Shah,contact@meridianholdings.com,+1-621-598-7110,United States,Seattle,Mid-Market,2025-10-07,True
+350,BlueWave Corp,Harry Miller,contact@bluewavecorp.com,+1-673-113-7605,United States,Austin,Enterprise,2022-09-21,True
+351,Atlantic Solutions,Isla Taylor,contact@atlanticsolutions.com,+1-674-366-4046,United States,San Francisco,Startup,2022-08-06,True
+352,Nova Global 2,Jessica Nair,contact@novaglobal2.com,+1-890-432-5677,India,Delhi,Mid-Market,2025-09-20,True
+353,Atlas Security,Vikram Campbell,contact@atlassecurity.com,+1-240-437-2737,Singapore,Singapore,Mid-Market,2022-04-04,True
+354,Infiniti Software,Harry Hernandez,contact@infinitisoftware.com,+1-954-986-3113,United Kingdom,Edinburgh,Mid-Market,2026-04-11,True
+355,Atlas Corp 2,Linda Torres,contact@atlascorp2.com,+1-470-869-4449,India,Bangalore,Enterprise,2021-07-17,True
+356,BlueWave Industries 2,Noah Hernandez,contact@bluewaveindustries2.com,+1-841-930-6477,Germany,Munich,SMB,2025-06-22,True
+357,Pacific Labs 2,Andrew Evans,contact@pacificlabs2.com,+1-521-968-9308,United States,Chicago,Startup,2021-04-11,True
+358,Alpha Robotics 3,Oliver Carter,contact@alpharobotics3.com,+1-617-677-2905,Australia,Sydney,Startup,2024-06-06,True
+359,Eagle Software,Thomas Reddy,contact@eaglesoftware.com,+1-598-663-7146,United Kingdom,London,Startup,2024-08-19,False
+360,Phoenix Analytics,Deepa Pillai,contact@phoenixanalytics.com,+1-862-859-1479,United States,San Francisco,Startup,2023-05-25,True
+361,Synergy Consulting 2,Christopher Torres,contact@synergyconsulting2.com,+1-948-801-6780,Canada,Toronto,Startup,2024-07-02,True
+362,Matrix Ventures,Rahul Lewis,contact@matrixventures.com,+1-535-328-1870,Japan,Osaka,SMB,2024-08-30,True
+363,Matrix Robotics,Barbara Sanchez,contact@matrixrobotics.com,+1-868-118-3040,United States,New York,Mid-Market,2022-03-02,True
+364,Eagle Cloud,Pooja Robinson,contact@eaglecloud.com,+1-371-458-6069,United Kingdom,Edinburgh,SMB,2026-10-18,True
+365,Nordic Media,James Campbell,contact@nordicmedia.com,+1-700-490-2358,India,Hyderabad,Mid-Market,2025-04-08,True
+366,Crimson Software,Ananya Bhat,contact@crimsonsoftware.com,+1-921-329-6680,United States,New York,Startup,2020-05-03,True
+367,BlueWave Partners,Margaret Turner,contact@bluewavepartners.com,+1-710-573-1148,United Kingdom,London,SMB,2024-03-18,True
+368,Atlas Consulting,Andrew Lee,contact@atlasconsulting.com,+1-667-228-4395,United States,Austin,Startup,2026-03-18,True
+369,Sterling Holdings 2,Thomas Torres,contact@sterlingholdings2.com,+1-607-100-4932,United States,Chicago,Enterprise,2025-07-06,True
+370,Sterling Services,Michael Williams,contact@sterlingservices.com,+1-399-897-4377,Germany,Munich,Mid-Market,2025-09-02,True
+371,Matrix Global,Robert Davis,contact@matrixglobal.com,+1-338-943-3645,Germany,Berlin,Startup,2023-01-13,True
+372,Cascade Global 2,James Turner,contact@cascadeglobal2.com,+1-598-781-9549,United States,San Francisco,SMB,2021-08-27,True
+373,Horizon Cloud,Thomas Mitchell,contact@horizoncloud.com,+1-753-314-3361,India,,Mid-Market,2023-10-01,False
+374,Nexus Industries,Barbara Kumar,contact@nexusindustries.com,+1-224-653-7104,United States,Chicago,SMB,2025-12-17,True
+375,Falcon Systems,Pooja Singh,contact@falconsystems.com,+1-612-390-4564,Germany,Munich,SMB,2021-09-11,True
+376,Nexus Solutions,Sanjay Sharma,contact@nexussolutions.com,+1-279-172-9959,Canada,Montreal,Enterprise,2024-12-16,True
+377,Titan Ventures,Barbara Joshi,contact@titanventures.com,+1-645-527-8440,Germany,Munich,Enterprise,2024-07-01,True
+378,Apex Corp 2,Mia Jones,contact@apexcorp2.com,+1-695-820-8729,Germany,Berlin,SMB,2021-01-30,True
+379,Element Group,Ethan Gupta,contact@elementgroup.com,+1-940-358-8524,Canada,Toronto,Enterprise,2020-12-10,False
+380,Apex Technologies 2,Sneha Menon,contact@apextechnologies2.com,+1-355-641-5006,Australia,Melbourne,Enterprise,2024-12-06,False
+381,Aurora Cloud,Thomas Walker,contact@auroracloud.com,+1-332-178-4620,United States,New York,Mid-Market,2021-05-25,True
+382,Titan Partners,Barbara Mehta,contact@titanpartners.com,+1-913-875-2119,Germany,Berlin,SMB,2024-05-08,True
+383,Stellar Dynamics 2,Pooja Mitchell,contact@stellardynamics2.com,+1-929-432-4661,United States,New York,Mid-Market,2025-01-02,True
+384,Alpha Partners,Sarah Kumar,contact@alphapartners.com,+1-959-852-7005,United Kingdom,Manchester,Startup,2023-11-19,True
+385,Quantum Enterprises,Mary Patel,contact@quantumenterprises.com,+1-802-191-2297,Singapore,,SMB,2024-10-26,False
+386,Cascade Networks 3,Margaret Sharma,contact@cascadenetworks3.com,+1-385-146-4160,United States,San Francisco,SMB,2025-06-28,True
+387,Prism Logistics 2,George Campbell,contact@prismlogistics2.com,+1-854-380-7955,United States,San Francisco,Startup,2026-04-17,True
+388,Nova Digital 2,Sarah Shah,contact@novadigital2.com,+1-594-438-8747,Australia,Sydney,Mid-Market,2020-12-03,True
+389,Element Security,Kavita Thompson,contact@elementsecurity.com,+1-920-917-9635,Canada,Toronto,Startup,2026-03-30,True
+390,Nordic Analytics,Ashley Moore,contact@nordicanalytics.com,+1-944-234-4802,India,Hyderabad,Mid-Market,2023-12-28,True
+391,Phoenix Holdings,Joshua Nair,,+1-473-701-3171,United States,New York,SMB,2022-05-11,True
+392,Vertex Services,Arun Wilson,contact@vertexservices.com,+1-596-588-6670,Canada,Montreal,Enterprise,2024-01-08,True
+393,Frontier Enterprises,Matthew Verma,contact@frontierenterprises.com,+1-542-653-2883,Germany,Frankfurt,SMB,2021-04-06,True
+394,Pacific Software 2,Michael Iyer,contact@pacificsoftware2.com,+1-358-842-7839,Singapore,Singapore,Startup,2022-07-31,True
+395,Harbor Partners,Joseph Thomas,contact@harborpartners.com,+1-889-844-8933,Australia,Sydney,SMB,2021-12-16,True
+396,Matrix Logistics,Elizabeth King,contact@matrixlogistics.com,+1-838-252-8616,United States,Austin,SMB,2026-04-20,True
+397,Meridian Dynamics 2,Thomas Harris,contact@meridiandynamics2.com,+1-535-453-7700,United Kingdom,London,Startup,2021-03-18,True
+398,Prism Networks,Chloe Gupta,contact@prismnetworks.com,+1-940-467-6088,Germany,Frankfurt,SMB,2026-03-23,True
+399,Everest Robotics 3,Elizabeth Johnson,contact@everestrobotics3.com,+1-380-719-4568,United States,San Francisco,Enterprise,2025-03-17,True
+400,Quantum Technologies,Dorothy Wilson,contact@quantumtechnologies.com,+1-396-606-8251,Canada,Montreal,Mid-Market,2023-11-11,True
+401,Summit Partners,Alexander Jackson,contact@summitpartners.com,+1-256-450-5204,Germany,Berlin,Startup,2024-02-24,True
+402,Prism Ventures,Meera Garcia,contact@prismventures.com,+1-557-547-5246,United States,Seattle,SMB,2023-11-15,True
+403,Eagle Systems,Priya Garcia,contact@eaglesystems.com,+1-600-804-8359,India,Bangalore,SMB,2021-07-19,True
+404,Omega Holdings,Deepa Sanchez,contact@omegaholdings.com,+1-472-623-8682,Singapore,Singapore,SMB,2020-06-13,True
+405,Atlantic Cloud,Amelia Mehta,contact@atlanticcloud.com,+1-665-804-7651,India,Mumbai,Mid-Market,2020-08-03,True
+406,Summit Group 2,Barbara Phillips,contact@summitgroup2.com,+1-736-536-5599,Australia,Sydney,Mid-Market,2025-01-26,True
+407,Prime Global 2,Linda Martin,contact@primeglobal2.com,+1-504-311-9881,United States,Austin,Startup,2022-08-27,True
+408,Prime Technologies 2,Sarah Reddy,contact@primetechnologies2.com,+1-332-588-1289,United States,,Startup,2021-03-22,True
+409,Nexus Consulting,Vikram King,contact@nexusconsulting.com,+1-895-705-5794,United Kingdom,London,Mid-Market,2026-05-24,True
+410,Falcon Innovations,Pooja Rodriguez,contact@falconinnovations.com,+1-849-119-5215,United Kingdom,Edinburgh,Mid-Market,2024-12-27,True
+411,Prime Robotics,Patricia Perez,contact@primerobotics.com,+1-383-602-6784,United States,Chicago,Startup,2022-02-15,True
+412,Eagle Enterprises,David Taylor,contact@eagleenterprises.com,+1-397-843-2255,United States,Austin,Startup,2020-07-02,True
+413,Crestview Software,Elizabeth Young,contact@crestviewsoftware.com,+1-380-572-9916,United Kingdom,Edinburgh,Startup,2026-07-26,True
+414,Ironclad Networks 2,Linda Young,contact@ironcladnetworks2.com,+1-644-929-8266,United States,Austin,Enterprise,2022-11-20,True
+415,Nexus Networks 2,Charles Taylor,contact@nexusnetworks2.com,+1-527-328-7666,Germany,Frankfurt,Mid-Market,2024-07-23,True
+416,Crestview Services 2,Joseph Anderson,contact@crestviewservices2.com,+1-309-565-9035,United Kingdom,London,SMB,2022-02-07,True
+417,Ironclad Technologies,Jennifer Bhat,contact@ironcladtechnologies.com,+1-438-130-4006,Germany,Frankfurt,Enterprise,2024-10-31,True
+418,Phoenix Solutions,Arthur White,contact@phoenixsolutions.com,+1-567-151-5766,Singapore,Singapore,Mid-Market,2024-01-20,True
+419,Omega Innovations 2,John Scott,contact@omegainnovations2.com,+1-659-371-8598,India,Hyderabad,SMB,2020-08-20,True
+420,Omni Ventures,Mark Lee,contact@omniventures.com,+1-811-525-8044,United Kingdom,Edinburgh,Mid-Market,2021-06-15,True
+421,Prism Security,Rajesh Moore,contact@prismsecurity.com,+1-349-990-1296,United Kingdom,London,Mid-Market,2025-04-16,True
+422,Crestview Networks,Jessica Allen,contact@crestviewnetworks.com,+1-778-197-1726,United States,New York,Mid-Market,2020-03-28,True
+423,Zenith Group,Ethan Parker,contact@zenithgroup.com,+1-837-557-7285,United States,New York,Startup,2022-10-09,True
+424,Synergy Systems,Sophie Campbell,contact@synergysystems.com,+1-619-775-9271,India,Mumbai,SMB,2023-11-15,True
+425,Atlantic Dynamics,Barbara Scott,contact@atlanticdynamics.com,+1-452-631-9502,Germany,Munich,Enterprise,2024-01-05,True
+426,Apex Networks,Betty Jackson,contact@apexnetworks.com,+1-739-833-9918,Japan,Osaka,Mid-Market,2020-08-09,True
+427,Atlantic Security 3,Ashley Robinson,contact@atlanticsecurity3.com,+1-838-238-1439,United Kingdom,Edinburgh,Mid-Market,2022-01-17,True
+428,Element Consulting 3,Betty Mehta,contact@elementconsulting3.com,+1-483-598-5625,Canada,Vancouver,SMB,2024-02-11,True
+429,Phoenix Analytics 2,James Phillips,contact@phoenixanalytics2.com,+1-308-807-1929,United States,Seattle,Mid-Market,2023-08-09,True
+430,Vertex Group,Chloe Thompson,,+1-480-784-7226,Germany,Munich,SMB,2021-07-04,True
+431,Sterling Technologies,Rahul Bhat,contact@sterlingtechnologies.com,+1-630-508-4468,Australia,Sydney,SMB,2024-11-15,True
+432,Atlantic Digital,Anthony King,contact@atlanticdigital.com,+1-260-301-9895,United Kingdom,Edinburgh,Startup,2024-11-05,True
+433,Prism Consulting,Linda Parker,contact@prismconsulting.com,+1-663-864-4179,United States,San Francisco,Startup,2020-07-22,True
+434,Eagle Systems 2,Jennifer Carter,contact@eaglesystems2.com,+1-815-108-5431,Germany,Berlin,SMB,2025-02-22,True
+435,Aero Ventures,Pooja Robinson,contact@aeroventures.com,+1-676-349-3202,United Kingdom,London,Enterprise,2023-01-30,True
+436,Element Digital 2,Alexander Rodriguez,contact@elementdigital2.com,,United States,New York,Mid-Market,2023-11-26,True
+437,Quantum Media 3,Linda Ramirez,contact@quantummedia3.com,+1-897-476-1359,United States,Austin,Enterprise,2021-05-16,True
+438,Phoenix Labs 2,Dorothy Bhat,contact@phoenixlabs2.com,+1-646-789-6369,India,Bangalore,Enterprise,2023-04-03,True
+439,Synergy Cloud 2,Deepa Lee,contact@synergycloud2.com,,India,Delhi,Mid-Market,2020-09-27,True
+440,Eagle Group 2,Elizabeth Evans,contact@eaglegroup2.com,+1-963-935-7650,United States,Austin,Enterprise,2025-12-31,True
+441,Alpha Robotics 4,Susan Martinez,contact@alpharobotics4.com,+1-375-569-7626,Australia,Sydney,SMB,2021-09-03,True
+442,Nexus Global 2,Sophie Lee,contact@nexusglobal2.com,+1-560-281-8436,India,Mumbai,Mid-Market,2025-11-16,True
+443,Prime Holdings,Ananya Turner,contact@primeholdings.com,+1-713-544-3433,United Kingdom,Manchester,SMB,2022-05-31,True
+444,Cascade Labs,Sophie Taylor,contact@cascadelabs.com,+1-236-442-4896,India,Bangalore,Mid-Market,2024-03-05,True
+445,Nova Innovations,Arun Menon,contact@novainnovations.com,+1-396-433-6289,United States,New York,Mid-Market,2025-03-07,True
+446,Pinnacle Corp,Deepa Martinez,contact@pinnaclecorp.com,+1-251-746-4387,United States,Seattle,Mid-Market,2024-01-05,True
+447,Phoenix Networks,Sanjay Allen,contact@phoenixnetworks.com,+1-544-470-3887,United States,New York,Mid-Market,2021-11-22,True
+448,Atlantic Industries 2,Daniel Johnson,contact@atlanticindustries2.com,+1-950-960-4884,United States,New York,SMB,2021-11-13,True
+449,Cascade Holdings 2,Lucas Thomas,contact@cascadeholdings2.com,+1-565-714-5727,Canada,Vancouver,SMB,2020-01-17,True
+450,Crimson Digital,Sarah Davis,contact@crimsondigital.com,+1-283-850-2114,Germany,Berlin,Mid-Market,2023-07-30,True
+451,Summit Robotics,Mark Rodriguez,contact@summitrobotics.com,+1-644-301-1325,India,Mumbai,Mid-Market,2024-06-13,True
+452,Synergy Networks 2,William Nguyen,contact@synergynetworks2.com,+1-565-489-3245,United Kingdom,London,SMB,2026-01-30,False
+453,Quantum Technologies 2,David Gonzalez,contact@quantumtechnologies2.com,+1-373-229-4611,India,Delhi,Enterprise,2026-01-06,True
+454,Alpha Systems,Amit Davis,contact@alphasystems.com,+1-200-275-1842,United States,Austin,SMB,2023-09-01,True
+455,Crimson Solutions 2,Lisa Phillips,contact@crimsonsolutions2.com,+1-462-397-2996,United States,New York,SMB,2022-02-09,True
+456,Aurora Security,Sanjay Young,contact@aurorasecurity.com,+1-952-735-2141,United Kingdom,Edinburgh,Enterprise,2023-05-13,True
+457,Catalyst Services,Harry Lopez,contact@catalystservices.com,+1-984-680-6491,United Kingdom,London,Enterprise,2026-01-13,True
+458,Atlas Innovations,Kimberly Moore,contact@atlasinnovations.com,+1-270-462-2835,United Kingdom,Manchester,Startup,2025-01-03,True
+459,Omega Solutions,Ashley Kumar,contact@omegasolutions.com,+1-535-493-9380,United States,Austin,SMB,2023-11-04,True
+460,Harbor Ventures,Lucas Walker,contact@harborventures.com,+1-996-699-6838,United States,Chicago,Enterprise,2022-12-02,True
+461,Nova Industries,Kavita Rodriguez,contact@novaindustries.com,+1-246-453-6109,Canada,Toronto,Startup,2024-01-19,True
+462,Horizon Software,Lily Thomas,contact@horizonsoftware.com,+1-319-237-7060,United States,Austin,SMB,2025-12-16,True
+463,Vertex Partners,Ananya Walker,contact@vertexpartners.com,+1-323-329-8688,United States,Seattle,SMB,2022-04-03,True
+464,Harbor Networks,Alexander Lee,contact@harbornetworks.com,+1-766-598-1067,United States,Seattle,Enterprise,2021-11-24,True
+465,Eagle Innovations,Patricia Lee,contact@eagleinnovations.com,+1-738-252-6307,Singapore,Singapore,Mid-Market,2020-10-28,True
+466,Titan Technologies,Kimberly Brown,contact@titantechnologies.com,+1-669-407-7274,United States,Seattle,SMB,2022-10-24,True
+467,Aero Networks 4,Sandra Parker,contact@aeronetworks4.com,+1-365-745-8936,Germany,Munich,SMB,2023-12-11,True
+468,Stellar Group,Donald Moore,contact@stellargroup.com,+1-576-739-1772,United States,San Francisco,SMB,2025-05-17,True
+469,Summit Robotics 2,Mark Torres,contact@summitrobotics2.com,+1-208-849-3002,United Kingdom,Edinburgh,Mid-Market,2024-06-26,True
+470,Vanguard Innovations,Daniel Thomas,contact@vanguardinnovations.com,+1-334-769-4764,United States,Austin,Startup,2026-10-06,True
+471,Vanguard Media,Patricia Joshi,contact@vanguardmedia.com,+1-837-683-8876,Japan,Osaka,Mid-Market,2023-09-05,True
+472,Vanguard Media 2,Christopher Torres,contact@vanguardmedia2.com,+1-820-521-9219,Germany,Frankfurt,Mid-Market,2020-08-21,True
+473,Harbor Holdings,Priya Lopez,contact@harborholdings.com,+1-468-571-1106,India,Bangalore,SMB,2021-05-05,True
+474,Pinnacle Systems,Linda Anderson,contact@pinnaclesystems.com,+1-930-689-9727,Canada,Vancouver,Mid-Market,2024-08-26,True
+475,Titan Technologies 2,Lily Walker,contact@titantechnologies2.com,+1-673-933-5885,United States,Seattle,Enterprise,2025-01-28,True
+476,Sterling Logistics 3,Betty Rao,contact@sterlinglogistics3.com,+1-426-992-2649,United Kingdom,London,Mid-Market,2025-09-21,True
+477,Sterling Cloud,Daniel Carter,contact@sterlingcloud.com,+1-719-334-9374,United States,San Francisco,SMB,2021-05-13,True
+478,Summit Technologies,Christopher Nguyen,contact@summittechnologies.com,+1-854-711-7389,Canada,Vancouver,SMB,2022-09-26,True
+479,Prime Enterprises 2,Suresh Turner,contact@primeenterprises2.com,+1-899-845-3503,United States,San Francisco,SMB,2024-03-06,True
+480,Meridian Cloud 2,Sanjay Nguyen,contact@meridiancloud2.com,+1-684-770-3171,United States,New York,Enterprise,2024-11-26,True
+481,Sterling Labs 3,Deepa Rodriguez,contact@sterlinglabs3.com,+1-638-285-6493,Singapore,Singapore,Enterprise,2026-07-31,True
+482,Aurora Software,Henry Kumar,contact@aurorasoftware.com,+1-856-921-5940,Germany,Berlin,SMB,2026-05-04,True
+483,Zenith Cloud,Ella Reddy,contact@zenithcloud.com,+1-577-219-2890,India,Delhi,SMB,2020-05-04,True
+484,Vanguard Group 2,Daniel Harris,contact@vanguardgroup2.com,+1-278-675-6346,United States,Seattle,Startup,2025-02-21,True
+485,Pacific Analytics,Daniel Mehta,contact@pacificanalytics.com,+1-795-456-7968,United States,Chicago,Mid-Market,2021-12-01,True
+486,Crestview Partners 2,John Lopez,contact@crestviewpartners2.com,+1-288-781-7756,India,Mumbai,SMB,2023-08-25,True
+487,Nordic Logistics 4,Mark Sharma,contact@nordiclogistics4.com,+1-910-503-7283,United States,Seattle,Mid-Market,2022-03-03,True
+488,Harbor Analytics 2,Amit Verma,contact@harboranalytics2.com,+1-766-323-1823,India,Mumbai,Mid-Market,2025-12-26,True
+489,Phoenix Networks 2,Rajesh Hernandez,contact@phoenixnetworks2.com,+1-387-415-7680,Australia,Sydney,Mid-Market,2022-12-23,True
+490,Nova Cloud,Amit Lewis,contact@novacloud.com,+1-656-473-2271,United Kingdom,Edinburgh,SMB,2020-10-08,True
+491,Falcon Corp,Ashley Reddy,contact@falconcorp.com,+1-886-675-4401,Canada,,Mid-Market,2025-10-21,True
+492,Vanguard Industries,Susan Mehta,contact@vanguardindustries.com,+1-251-444-3070,Singapore,Singapore,SMB,2022-08-01,True
+493,Summit Partners 2,George Mehta,contact@summitpartners2.com,+1-764-919-1044,Germany,Berlin,Startup,2020-11-17,True
+494,Nexus Ventures 2,Isabella Mitchell,contact@nexusventures2.com,+1-707-312-9317,India,Hyderabad,Mid-Market,2023-12-10,True
+495,Vanguard Holdings,Rahul Miller,contact@vanguardholdings.com,+1-557-289-9777,United States,Austin,SMB,2023-01-15,True
+496,Crestview Software 2,Mark Hernandez,contact@crestviewsoftware2.com,+1-713-809-3237,Japan,Osaka,SMB,2022-02-23,True
+497,Quantum Solutions,Emily Johnson,contact@quantumsolutions.com,+1-277-122-8044,United Kingdom,Manchester,Startup,2023-05-02,True
+498,Falcon Digital,Elizabeth Perez,contact@falcondigital.com,+1-595-277-2364,India,Delhi,SMB,2025-11-28,True
+499,Catalyst Innovations,Elizabeth Scott,,+1-415-821-4976,Australia,Sydney,Mid-Market,2023-06-12,True
+500,Sterling Logistics 4,Mia Joshi,contact@sterlinglogistics4.com,+1-905-163-5013,Germany,Berlin,Mid-Market,2021-02-14,True
