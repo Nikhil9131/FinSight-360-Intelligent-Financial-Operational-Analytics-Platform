@@ -32,7 +32,7 @@
             color: var(--vanilla-dark);
             font-family: var(--font-stack);
             line-height: 1.4;
-            padding: 20px;
+            padding: 18px 24px;
         }
 
         header {
@@ -41,36 +41,95 @@
             align-items: center;
             border-bottom: 2px solid var(--vanilla-border);
             padding-bottom: 12px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .header-title h1 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--vanilla-dark);
         }
 
         .header-title p {
-            font-size: 13px;
+            font-size: 12px;
             color: #6C645D;
+        }
+
+        /* Interactive Filter Slicer Bar */
+        .filter-bar {
+            background-color: var(--vanilla-card);
+            border: 1px solid var(--vanilla-border);
+            border-radius: 8px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .filter-group label {
+            color: #5A524C;
+        }
+
+        .filter-select {
+            background-color: #FFFFFF;
+            border: 1px solid var(--vanilla-border);
+            border-radius: 5px;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-family: var(--font-stack);
+            color: var(--vanilla-dark);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .filter-select:focus {
+            border-color: var(--vanilla-primary);
+        }
+
+        .btn-reset {
+            background-color: var(--vanilla-accent);
+            border: 1px solid var(--vanilla-border);
+            border-radius: 5px;
+            padding: 4px 12px;
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-left: auto;
+            color: var(--vanilla-dark);
+            transition: all 0.2s;
+        }
+
+        .btn-reset:hover {
+            background-color: var(--vanilla-primary);
+            color: #FFFFFF;
         }
 
         /* Navigation Tabs */
         .nav-tabs {
             display: flex;
             gap: 8px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
         }
 
         .tab-btn {
             background-color: var(--vanilla-card);
             border: 1px solid var(--vanilla-border);
-            padding: 8px 16px;
+            padding: 8px 15px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--vanilla-dark);
             transition: all 0.2s ease;
         }
@@ -88,17 +147,22 @@
         /* KPI Cards Grid */
         .kpi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 12px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .kpi-card {
             background-color: var(--vanilla-card);
             border: 1px solid var(--vanilla-border);
             border-radius: 8px;
-            padding: 14px 16px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+            padding: 12px 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            transition: transform 0.15s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
         }
 
         .kpi-title {
@@ -107,7 +171,7 @@
             font-weight: 700;
             color: #7A7067;
             letter-spacing: 0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .kpi-value {
@@ -139,8 +203,8 @@
         .charts-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-            gap: 16px;
-            margin-bottom: 18px;
+            gap: 14px;
+            margin-bottom: 16px;
         }
 
         .chart-box {
@@ -148,18 +212,30 @@
             border: 1px solid var(--vanilla-border);
             border-radius: 8px;
             padding: 14px 16px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
             display: flex;
             flex-direction: column;
         }
 
-        .chart-box h3 {
-            font-size: 13.5px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--vanilla-dark);
+        .chart-box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid var(--vanilla-accent);
             padding-bottom: 6px;
+            margin-bottom: 10px;
+        }
+
+        .chart-box h3 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--vanilla-dark);
+        }
+
+        .chart-hint {
+            font-size: 10.5px;
+            color: #7A7067;
+            font-style: italic;
         }
 
         /* Fixed compact canvas wrapper to prevent huge graphs */
@@ -169,20 +245,43 @@
             width: 100%;
         }
 
-        /* Data Tables */
+        /* Interactive Data Tables & Search Tools */
+        .table-tools {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            background-color: #FFFFFF;
+            border: 1px solid var(--vanilla-border);
+            border-radius: 5px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-family: var(--font-stack);
+            width: 260px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--vanilla-primary);
+        }
+
         .table-container {
             background-color: var(--vanilla-card);
             border: 1px solid var(--vanilla-border);
             border-radius: 8px;
             padding: 14px;
             overflow-x: auto;
-            margin-top: 14px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12.5px;
+            font-size: 12px;
         }
 
         th {
@@ -192,10 +291,16 @@
             font-weight: 700;
             color: var(--vanilla-dark);
             border-bottom: 2px solid var(--vanilla-border);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        th:hover {
+            background-color: #dfcebd;
         }
 
         td {
-            padding: 8px 10px;
+            padding: 7px 10px;
             border-bottom: 1px solid var(--vanilla-border);
         }
 
@@ -203,16 +308,69 @@
             background-color: rgba(255, 255, 255, 0.4);
         }
 
+        tr:hover td {
+            background-color: rgba(232, 216, 200, 0.4);
+        }
+
         .status-pill {
             padding: 2px 7px;
             border-radius: 10px;
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 700;
+            display: inline-block;
         }
 
         .status-ontrack { background-color: #E2ECE5; color: var(--vanilla-green); }
         .status-over { background-color: #F8E5E5; color: var(--vanilla-red); }
         .status-warning { background-color: #FCF4DD; color: var(--vanilla-gold); }
+
+        /* Drill-Down Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 40, 37, 0.4);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-card {
+            background-color: var(--vanilla-bg);
+            border: 1px solid var(--vanilla-border);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .modal-card h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--vanilla-dark);
+        }
+
+        .modal-card p {
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .modal-close-btn {
+            background-color: var(--vanilla-primary);
+            color: #FFFFFF;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            margin-top: 12px;
+            float: right;
+        }
     </style>
 </head>
 <body>
@@ -224,13 +382,53 @@
         </div>
     </header>
 
+    <!-- Global Interactive Slicer Bar -->
+    <div class="filter-bar">
+        <div class="filter-group">
+            <label for="slicerYear">Fiscal Year:</label>
+            <select id="slicerYear" class="filter-select" onchange="applyGlobalFilters()">
+                <option value="all">All Years (2022–2026)</option>
+                <option value="2026" selected>2026 (YTD)</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="slicerDept">Department:</label>
+            <select id="slicerDept" class="filter-select" onchange="applyGlobalFilters()">
+                <option value="all" selected>All Departments (8)</option>
+                <option value="Engineering">Engineering</option>
+                <option value="R&D">R&D</option>
+                <option value="Sales">Sales</option>
+                <option value="Operations">Operations</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Support">Support</option>
+                <option value="Finance">Finance</option>
+                <option value="HR">HR</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="slicerRegion">Region:</label>
+            <select id="slicerRegion" class="filter-select" onchange="applyGlobalFilters()">
+                <option value="all" selected>All Geo-Zones</option>
+                <option value="North America">North America</option>
+                <option value="Europe">Europe</option>
+                <option value="Asia Pacific">Asia Pacific</option>
+                <option value="Middle East">Middle East</option>
+            </select>
+        </div>
+        <button class="btn-reset" onclick="resetFilters()">↺ Reset Filters</button>
+    </div>
+
     <!-- Navigation Tabs -->
     <div class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('tab1')">1. Executive Overview</button>
-        <button class="tab-btn" onclick="switchTab('tab2')">2. Financial Performance</button>
-        <button class="tab-btn" onclick="switchTab('tab3')">3. Department Performance</button>
-        <button class="tab-btn" onclick="switchTab('tab4')">4. Operational Analytics</button>
-        <button class="tab-btn" onclick="switchTab('tab5')">5. Risk & Anomaly Monitoring</button>
+        <button class="tab-btn active" onclick="switchTab('tab1', this)">1. Executive Overview</button>
+        <button class="tab-btn" onclick="switchTab('tab2', this)">2. Financial Performance</button>
+        <button class="tab-btn" onclick="switchTab('tab3', this)">3. Department Performance</button>
+        <button class="tab-btn" onclick="switchTab('tab4', this)">4. Operational Analytics</button>
+        <button class="tab-btn" onclick="switchTab('tab5', this)">5. Risk & Anomaly Monitoring</button>
     </div>
 
     <!-- ──────────────── DASHBOARD 1: EXECUTIVE OVERVIEW ──────────────── -->
@@ -238,35 +436,41 @@
         <div class="kpi-grid">
             <div class="kpi-card">
                 <div class="kpi-title">Gross Revenue</div>
-                <div class="kpi-value">$4.13B</div>
-                <div class="kpi-badge badge-positive">▲ +12.4% YoY Growth</div>
+                <div class="kpi-value" id="kpiRevenue">$4.13B</div>
+                <div class="kpi-badge badge-positive" id="kpiRevenueMoM">▲ +12.4% YoY Trajectory</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-title">Operating Expenses (OpEx)</div>
-                <div class="kpi-value">$128.7M</div>
-                <div class="kpi-badge badge-positive">▼ -2.1% under ceiling</div>
+                <div class="kpi-value" id="kpiOpex">$128.7M</div>
+                <div class="kpi-badge badge-positive" id="kpiOpexBadge">▼ -2.1% under ceiling</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-title">Gross Profit</div>
-                <div class="kpi-value">$2.53B</div>
-                <div class="kpi-badge badge-positive">Gross Margin: 61.4%</div>
+                <div class="kpi-value" id="kpiGrossProfit">$2.53B</div>
+                <div class="kpi-badge badge-positive" id="kpiGrossMargin">Gross Margin: 61.4%</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-title">Net Operating Profit</div>
-                <div class="kpi-value">$3.99B</div>
-                <div class="kpi-badge badge-positive">Net Margin: 96.9%</div>
+                <div class="kpi-value" id="kpiNetProfit">$3.99B</div>
+                <div class="kpi-badge badge-positive" id="kpiNetMargin">Net Margin: 96.9%</div>
             </div>
         </div>
 
         <div class="charts-row">
             <div class="chart-box">
-                <h3>Monthly Revenue & Profitability Trajectory (2025–2026)</h3>
+                <div class="chart-box-header">
+                    <h3>Monthly Revenue & Profitability Trajectory</h3>
+                    <span class="chart-hint">Click point to drill-down</span>
+                </div>
                 <div class="chart-canvas-container">
                     <canvas id="execTrendChart"></canvas>
                 </div>
             </div>
             <div class="chart-box">
-                <h3>Revenue Distribution by Regional Geo-Zones</h3>
+                <div class="chart-box-header">
+                    <h3>Revenue Distribution by Regional Geo-Zones</h3>
+                    <span class="chart-hint">Click slice to filter</span>
+                </div>
                 <div class="chart-canvas-container">
                     <canvas id="execRegionChart"></canvas>
                 </div>
@@ -279,35 +483,41 @@
         <div class="kpi-grid">
             <div class="kpi-card">
                 <div class="kpi-title">Total Allocated Budget</div>
-                <div class="kpi-value">$145.2M</div>
+                <div class="kpi-value" id="kpiBudget">$145.2M</div>
                 <div class="kpi-badge">Full Horizon Cap</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-title">Actual Expenditures</div>
-                <div class="kpi-value">$128.7M</div>
-                <div class="kpi-badge badge-positive">88.6% Total Utilization</div>
+                <div class="kpi-value" id="kpiActualSpend">$128.7M</div>
+                <div class="kpi-badge badge-positive" id="kpiUtilization">88.6% Total Utilization</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-title">Net Budget Variance</div>
-                <div class="kpi-value">+$16.5M</div>
+                <div class="kpi-value" id="kpiVariance">+$16.5M</div>
                 <div class="kpi-badge badge-positive">Favorable Variance</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-title">Cost of Goods Sold (COGS)</div>
-                <div class="kpi-value">$1.59B</div>
-                <div class="kpi-badge badge-positive">38.6% of Gross Rev</div>
+                <div class="kpi-value" id="kpiCogs">$1.59B</div>
+                <div class="kpi-badge badge-positive">38.6% of Top-Line Rev</div>
             </div>
         </div>
 
         <div class="charts-row">
             <div class="chart-box">
-                <h3>Monthly Budget vs Actual Spend Variance</h3>
+                <div class="chart-box-header">
+                    <h3>Departmental Budget vs Actual Spend Variance</h3>
+                    <span class="chart-hint">Interactive Comparison</span>
+                </div>
                 <div class="chart-canvas-container">
                     <canvas id="finBudgetChart"></canvas>
                 </div>
             </div>
             <div class="chart-box">
-                <h3>Major Expenditure Cost Centers</h3>
+                <div class="chart-box-header">
+                    <h3>Major Expenditure Cost Centers</h3>
+                    <span class="chart-hint">Interactive Breakdown</span>
+                </div>
                 <div class="chart-canvas-container">
                     <canvas id="finExpenseCatChart"></canvas>
                 </div>
@@ -331,10 +541,10 @@
             <div class="kpi-card">
                 <div class="kpi-title">Revenue per Employee</div>
                 <div class="kpi-value">$11.7M</div>
-                <div class="kpi-badge badge-positive">High Productivity</div>
+                <div class="kpi-badge badge-positive">Top Productivity Decile</div>
             </div>
             <div class="kpi-card">
-                <div class="kpi-title">Primary Cost Hub</div>
+                <div class="kpi-title">Primary Cost Center</div>
                 <div class="kpi-value">Engineering</div>
                 <div class="kpi-badge">$27.2M Software & Tools</div>
             </div>
@@ -342,13 +552,19 @@
 
         <div class="charts-row">
             <div class="chart-box">
-                <h3>Departmental Spending vs Approved Budget ($M)</h3>
+                <div class="chart-box-header">
+                    <h3>Operational Spend Ranking ($M)</h3>
+                    <span class="chart-hint">Click bar to view department</span>
+                </div>
                 <div class="chart-canvas-container">
                     <canvas id="deptSpendChart"></canvas>
                 </div>
             </div>
             <div class="chart-box">
-                <h3>Headcount Allocation Across Corporate Units</h3>
+                <div class="chart-box-header">
+                    <h3>Headcount Allocation Across Corporate Units</h3>
+                    <span class="chart-hint">Workforce Proportion</span>
+                </div>
                 <div class="chart-canvas-container">
                     <canvas id="deptHeadcountChart"></canvas>
                 </div>
@@ -377,19 +593,25 @@
             <div class="kpi-card">
                 <div class="kpi-title">Avg CSAT Rating</div>
                 <div class="kpi-value">4.3 / 5.0</div>
-                <div class="kpi-badge badge-positive">Client Satisfaction</div>
+                <div class="kpi-badge badge-positive">High Satisfaction</div>
             </div>
         </div>
 
         <div class="charts-row">
             <div class="chart-box">
-                <h3>Operational Order Fulfillment & Delays Trend</h3>
+                <div class="chart-box-header">
+                    <h3>Operational Fulfillment & Delivery Trend</h3>
+                    <span class="chart-hint">5-Year Progression</span>
+                </div>
                 <div class="chart-canvas-container">
                     <canvas id="opsFulfillmentChart"></canvas>
                 </div>
             </div>
             <div class="chart-box">
-                <h3>Average Order Cycle Time (Days)</h3>
+                <div class="chart-box-header">
+                    <h3>Average Processing Cycle Time (Days)</h3>
+                    <span class="chart-hint">Turnaround Acceleration</span>
+                </div>
                 <div class="chart-canvas-container">
                     <canvas id="opsCycleChart"></canvas>
                 </div>
@@ -402,8 +624,8 @@
         <div class="kpi-grid">
             <div class="kpi-card">
                 <div class="kpi-title">Flagged Expense Anomalies</div>
-                <div class="kpi-value">138 Records</div>
-                <div class="kpi-badge badge-negative">|Z| > 4.0 Standard Deviations</div>
+                <div class="kpi-value" id="kpiAnomalyCount">146 Records</div>
+                <div class="kpi-badge badge-negative">|Z| > 3.5 Standard Deviations</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-title">Duplicate Claims Intercepted</div>
@@ -412,82 +634,136 @@
             </div>
             <div class="kpi-card">
                 <div class="kpi-title">Audit Flag Rate</div>
-                <div class="kpi-value">0.46%</div>
+                <div class="kpi-value">0.49%</div>
                 <div class="kpi-badge badge-positive">Within Standard 1% Tolerance</div>
             </div>
             <div class="kpi-card">
-                <div class="kpi-title">Pipeline Health Status</div>
+                <div class="kpi-title">Data Pipeline Health</div>
                 <div class="kpi-value">100% Passed</div>
                 <div class="kpi-badge badge-positive">17/17 Quality Rules Validated</div>
             </div>
         </div>
 
         <div class="table-container">
-            <h3 style="margin-bottom: 10px; font-size: 14px;">Recent Risk & Outlier Watchlist (Top Flagged Items)</h3>
-            <table>
+            <div class="table-tools">
+                <input type="text" id="anomalySearchInput" class="search-input" placeholder="🔍 Search by Department, Category or ID..." onkeyup="filterAnomalyTable()">
+                <div style="display:flex; gap: 8px;">
+                    <select id="statusFilter" class="filter-select" onchange="filterAnomalyTable()">
+                        <option value="all">All Audit Statuses</option>
+                        <option value="Under Audit">Under Audit</option>
+                        <option value="Approved Exception">Approved Exception</option>
+                        <option value="Verified Normal">Verified Normal</option>
+                    </select>
+                    <button class="btn-reset" onclick="exportTableToCSV()">📥 Export Filtered CSV</button>
+                </div>
+            </div>
+
+            <table id="anomalyTable">
                 <thead>
                     <tr>
-                        <th>Transaction ID</th>
-                        <th>Department</th>
-                        <th>Category</th>
-                        <th>Amount ($)</th>
-                        <th>Expected Range</th>
-                        <th>Anomaly Score</th>
-                        <th>Status</th>
+                        <th onclick="sortTable(0)">Transaction ID ⇅</th>
+                        <th onclick="sortTable(1)">Department ⇅</th>
+                        <th onclick="sortTable(2)">Category ⇅</th>
+                        <th onclick="sortTable(3)">Vendor ⇅</th>
+                        <th onclick="sortTable(4)">Amount ($) ⇅</th>
+                        <th onclick="sortTable(5)">Z-Score ⇅</th>
+                        <th>Diagnostic Reason</th>
+                        <th>Audit Status</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>EXP-029411</td>
-                        <td>Marketing</td>
-                        <td>Marketing & Ads</td>
-                        <td>$31,254.63</td>
-                        <td>$5,000 – $14,000</td>
-                        <td>5.82σ</td>
-                        <td><span class="status-pill status-over">Under Audit</span></td>
-                    </tr>
-                    <tr>
-                        <td>EXP-018239</td>
-                        <td>Engineering</td>
-                        <td>Equipment & Hardware</td>
-                        <td>$28,940.10</td>
-                        <td>$2,000 – $12,000</td>
-                        <td>5.14σ</td>
-                        <td><span class="status-pill status-over">Under Audit</span></td>
-                    </tr>
-                    <tr>
-                        <td>EXP-004812</td>
-                        <td>R&D</td>
-                        <td>Software & Tools</td>
-                        <td>$27,650.00</td>
-                        <td>$3,000 – $15,000</td>
-                        <td>4.88σ</td>
-                        <td><span class="status-pill status-warning">Approved Exception</span></td>
-                    </tr>
-                    <tr>
-                        <td>EXP-011204</td>
-                        <td>Sales</td>
-                        <td>Travel & Transport</td>
-                        <td>$18,420.50</td>
-                        <td>$2,000 – $7,500</td>
-                        <td>4.25σ</td>
-                        <td><span class="status-pill status-ontrack">Verified Normal</span></td>
-                    </tr>
+                <tbody id="anomalyTableBody">
+                    <!-- Populated dynamically by JavaScript -->
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Chart Configuration Script -->
+    <!-- Interactive Drill-Down Modal -->
+    <div class="modal-overlay" id="drillModal" onclick="closeModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <h4 id="modalTitle">Drill-Down Analysis</h4>
+            <p id="modalDetail1"></p>
+            <p id="modalDetail2"></p>
+            <p id="modalDetail3"></p>
+            <button class="modal-close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Master Interactive Analytics Script -->
     <script>
-        function switchTab(tabId) {
+        // ─── 1. TAB SWITCHING ─────────────────────────────────────────
+        function switchTab(tabId, btn) {
             document.querySelectorAll('.dashboard-view').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
+            btn.classList.add('active');
         }
 
-        // Vanilla Theme Chart Colors
+        // ─── 2. ANOMALY AUDIT DATASET ─────────────────────────────────
+        const anomalyData = [
+            { id: "EXP-029411", dept: "Marketing", cat: "Marketing & Ads", vendor: "Google Ads", amt: 31254.63, z: 5.82, reason: "Excessive Spend: 5.8σ above category average ($8,141.37)", status: "Under Audit", pill: "status-over" },
+            { id: "EXP-018239", dept: "Engineering", cat: "Equipment & Hardware", vendor: "Dell Technologies", amt: 28940.10, z: 5.14, reason: "High-Cap Outlier: Exceeds standard authorization ceiling", status: "Under Audit", pill: "status-over" },
+            { id: "EXP-004812", dept: "R&D", cat: "Software & Tools", vendor: "Amazon Web Services", amt: 27650.00, z: 4.88, reason: "High compute instance burst during model training", status: "Approved Exception", pill: "status-warning" },
+            { id: "EXP-011204", dept: "Sales", cat: "Travel & Transport", vendor: "United Airlines", amt: 18420.50, z: 4.25, reason: "Multi-executive international client summit flights", status: "Verified Normal", pill: "status-ontrack" },
+            { id: "EXP-022981", dept: "Operations", cat: "Equipment & Hardware", vendor: "Lenovo", amt: 22100.00, z: 3.94, reason: "Bulk replacement of warehouse terminal hardware", status: "Under Audit", pill: "status-over" },
+            { id: "EXP-015830", dept: "Finance", cat: "Professional Services", vendor: "PwC Consulting", amt: 24500.00, z: 4.12, reason: "Annual compliance audit and statutory filing fee", status: "Approved Exception", pill: "status-warning" },
+            { id: "EXP-008472", dept: "Engineering", cat: "Software & Tools", vendor: "Microsoft Azure", amt: 26180.40, z: 4.62, reason: "Database cluster scaling for Q4 client workload", status: "Verified Normal", pill: "status-ontrack" },
+            { id: "EXP-019340", dept: "Support", cat: "Training & Development", vendor: "Coursera Business", amt: 14200.00, z: 3.86, reason: "Enterprise annual support certification renewal", status: "Approved Exception", pill: "status-warning" }
+        ];
+
+        function renderAnomalyTable(items) {
+            const tbody = document.getElementById("anomalyTableBody");
+            tbody.innerHTML = "";
+            items.forEach(item => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td><strong>${item.id}</strong></td>
+                    <td>${item.dept}</td>
+                    <td>${item.cat}</td>
+                    <td>${item.vendor}</td>
+                    <td>$${item.amt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td>${item.z.toFixed(2)}σ</td>
+                    <td>${item.reason}</td>
+                    <td><span class="status-pill ${item.pill}">${item.status}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            document.getElementById("kpiAnomalyCount").innerText = `${items.length} Records`;
+        }
+
+        function filterAnomalyTable() {
+            const query = document.getElementById("anomalySearchInput").value.toLowerCase();
+            const statusVal = document.getElementById("statusFilter").value;
+            const deptFilter = document.getElementById("slicerDept").value;
+
+            const filtered = anomalyData.filter(item => {
+                const matchesQuery = item.id.toLowerCase().includes(query) ||
+                                     item.dept.toLowerCase().includes(query) ||
+                                     item.cat.toLowerCase().includes(query) ||
+                                     item.vendor.toLowerCase().includes(query);
+                const matchesStatus = statusVal === "all" || item.status === statusVal;
+                const matchesDept = deptFilter === "all" || item.dept === deptFilter;
+                return matchesQuery && matchesStatus && matchesDept;
+            });
+            renderAnomalyTable(filtered);
+        }
+
+        // Export table to CSV
+        function exportTableToCSV() {
+            let csv = "Transaction ID,Department,Category,Vendor,Amount,Z-Score,Reason,Status\n";
+            const rows = document.querySelectorAll("#anomalyTable tbody tr");
+            rows.forEach(r => {
+                const cols = Array.from(r.querySelectorAll("td")).map(c => `"${c.innerText.replace(/"/g, '""')}"`);
+                csv += cols.join(",") + "\n";
+            });
+            const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = `FinSight360_Risk_Audit_${new Date().toISOString().slice(0,10)}.csv`;
+            link.click();
+        }
+
+        // ─── 3. CHART CONFIGURATION & DYNAMIC SLICING ─────────────────
         const vanillaGold = '#C29B38';
         const vanillaDark = '#2C2825';
         const vanillaGreen = '#4E6E58';
@@ -495,143 +771,214 @@
         const vanillaBlue = '#4B6584';
         const vanillaAccent = '#E8D8C8';
 
-        const defaultChartOptions = {
+        const chartOptions = {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
                 legend: {
                     position: 'bottom',
-                    labels: {
-                        boxWidth: 12,
-                        padding: 10,
-                        font: { size: 11 }
-                    }
+                    labels: { boxWidth: 11, padding: 8, font: { size: 10.5 } }
                 }
             }
         };
 
-        // 1. Executive Trend Chart
-        new Chart(document.getElementById('execTrendChart'), {
-            type: 'line',
-            data: {
-                labels: ['May 26', 'Jun 26', 'Jul 26', 'Aug 26', 'Sep 26', 'Oct 26'],
-                datasets: [
-                    {
-                        label: 'Gross Revenue ($M)',
-                        data: [79.4, 80.4, 86.2, 84.6, 90.8, 119.4],
-                        borderColor: vanillaGold,
-                        backgroundColor: 'rgba(194, 155, 56, 0.1)',
-                        fill: true,
-                        tension: 0.3
-                    },
-                    {
-                        label: 'Operating Profit ($M)',
-                        data: [77.2, 78.3, 84.0, 82.4, 88.5, 117.3],
-                        borderColor: vanillaGreen,
-                        tension: 0.3
+        let charts = {};
+
+        function initCharts() {
+            // 1. Executive Trend
+            charts.execTrend = new Chart(document.getElementById('execTrendChart'), {
+                type: 'line',
+                data: {
+                    labels: ['May 26', 'Jun 26', 'Jul 26', 'Aug 26', 'Sep 26', 'Oct 26'],
+                    datasets: [
+                        { label: 'Gross Revenue ($M)', data: [79.4, 80.4, 86.2, 84.6, 90.8, 119.4], borderColor: vanillaGold, backgroundColor: 'rgba(194,155,56,0.1)', fill: true, tension: 0.3 },
+                        { label: 'Operating Profit ($M)', data: [77.2, 78.3, 84.0, 82.4, 88.5, 117.3], borderColor: vanillaGreen, tension: 0.3 }
+                    ]
+                },
+                options: {
+                    ...chartOptions,
+                    onClick: (e, elements) => {
+                        if (elements.length > 0) {
+                            const idx = elements[0].index;
+                            const month = charts.execTrend.data.labels[idx];
+                            const rev = charts.execTrend.data.datasets[0].data[idx];
+                            const profit = charts.execTrend.data.datasets[1].data[idx];
+                            openModal(`Monthly Drill-Down: ${month}`, `Gross Revenue: $${rev}M`, `Operating Profit: $${profit}M`, `Operating Margin: ${((profit/rev)*100).toFixed(1)}%`);
+                        }
                     }
-                ]
-            },
-            options: defaultChartOptions
-        });
+                }
+            });
 
-        // 2. Executive Region Chart
-        new Chart(document.getElementById('execRegionChart'), {
-            type: 'doughnut',
-            data: {
-                labels: ['North America', 'Europe', 'Asia Pacific', 'Middle East'],
-                datasets: [{
-                    data: [42, 28, 22, 8],
-                    backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, vanillaAccent]
-                }]
-            },
-            options: defaultChartOptions
-        });
+            // 2. Executive Region
+            charts.execRegion = new Chart(document.getElementById('execRegionChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['North America', 'Europe', 'Asia Pacific', 'Middle East'],
+                    datasets: [{ data: [42, 28, 22, 8], backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, vanillaAccent] }]
+                },
+                options: {
+                    ...chartOptions,
+                    onClick: (e, elements) => {
+                        if (elements.length > 0) {
+                            const region = charts.execRegion.data.labels[elements[0].index];
+                            document.getElementById("slicerRegion").value = region;
+                            applyGlobalFilters();
+                        }
+                    }
+                }
+            });
 
-        // 3. Financial Budget Chart
-        new Chart(document.getElementById('finBudgetChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Engineering', 'Sales', 'Marketing', 'R&D', 'Operations', 'Finance', 'Support', 'HR'],
-                datasets: [
-                    { label: 'Budget ($M)', data: [31.5, 24.0, 18.2, 22.1, 16.5, 12.0, 11.2, 9.7], backgroundColor: vanillaAccent },
-                    { label: 'Actual Spend ($M)', data: [27.2, 21.8, 16.5, 19.8, 14.2, 10.5, 10.1, 8.6], backgroundColor: vanillaGold }
-                ]
-            },
-            options: defaultChartOptions
-        });
+            // 3. Financial Budget
+            charts.finBudget = new Chart(document.getElementById('finBudgetChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Engineering', 'Sales', 'Marketing', 'R&D', 'Operations', 'Finance', 'Support', 'HR'],
+                    datasets: [
+                        { label: 'Budget ($M)', data: [31.5, 24.0, 18.2, 22.1, 16.5, 12.0, 11.2, 9.7], backgroundColor: vanillaAccent },
+                        { label: 'Actual Spend ($M)', data: [27.2, 21.8, 16.5, 19.8, 14.2, 10.5, 10.1, 8.6], backgroundColor: vanillaGold }
+                    ]
+                },
+                options: chartOptions
+            });
 
-        // 4. Financial Expense Breakdown
-        new Chart(document.getElementById('finExpenseCatChart'), {
-            type: 'pie',
-            data: {
-                labels: ['Software & Tools', 'Equipment', 'Office Rent', 'Prof. Services', 'Marketing', 'Travel'],
-                datasets: [{
-                    data: [27.2, 26.9, 25.8, 16.3, 13.8, 13.4],
-                    backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, '#A89F91', '#C5B49E', '#E8D8C8']
-                }]
-            },
-            options: defaultChartOptions
-        });
+            // 4. Financial Expense Breakdown
+            charts.finExpense = new Chart(document.getElementById('finExpenseCatChart'), {
+                type: 'pie',
+                data: {
+                    labels: ['Software & Tools', 'Equipment', 'Office Rent', 'Prof. Services', 'Marketing', 'Travel'],
+                    datasets: [{ data: [27.2, 26.9, 25.8, 16.3, 13.8, 13.4], backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, '#A89F91', '#C5B49E', '#E8D8C8'] }]
+                },
+                options: chartOptions
+            });
 
-        // 5. Dept Spend Chart
-        new Chart(document.getElementById('deptSpendChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Engineering', 'R&D', 'Sales', 'Operations', 'Marketing', 'Support', 'Finance', 'HR'],
-                datasets: [{
-                    label: 'Actual Operational Spend ($M)',
-                    data: [27.2, 19.8, 21.8, 14.2, 16.5, 10.1, 10.5, 8.6],
-                    backgroundColor: vanillaGold
-                }]
-            },
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } }
+            // 5. Dept Spend
+            charts.deptSpend = new Chart(document.getElementById('deptSpendChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Engineering', 'R&D', 'Sales', 'Operations', 'Marketing', 'Support', 'Finance', 'HR'],
+                    datasets: [{ label: 'Operational Spend ($M)', data: [27.2, 19.8, 21.8, 14.2, 16.5, 10.1, 10.5, 8.6], backgroundColor: vanillaGold }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    onClick: (e, elements) => {
+                        if (elements.length > 0) {
+                            const dept = charts.deptSpend.data.labels[elements[0].index];
+                            document.getElementById("slicerDept").value = dept;
+                            applyGlobalFilters();
+                        }
+                    }
+                }
+            });
+
+            // 6. Dept Headcount
+            charts.deptHeadcount = new Chart(document.getElementById('deptHeadcountChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Engineering', 'R&D', 'Sales', 'Operations', 'Marketing', 'Support', 'Finance', 'HR'],
+                    datasets: [{ data: [85, 55, 55, 50, 35, 30, 22, 20], backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, '#8B7355', '#C5B49E', '#A89F91', '#D8C4B6', '#E8D8C8'] }]
+                },
+                options: chartOptions
+            });
+
+            // 7. Operations Fulfillment
+            charts.opsFulfillment = new Chart(document.getElementById('opsFulfillmentChart'), {
+                type: 'line',
+                data: {
+                    labels: ['2022', '2023', '2024', '2025', '2026'],
+                    datasets: [
+                        { label: 'On-Time Delivery %', data: [76.5, 81.2, 84.8, 87.0, 91.4], borderColor: vanillaGreen, tension: 0.2 },
+                        { label: 'Completion Rate %', data: [78.2, 83.0, 86.5, 89.1, 92.8], borderColor: vanillaGold, tension: 0.2 }
+                    ]
+                },
+                options: chartOptions
+            });
+
+            // 8. Cycle Time Chart
+            charts.opsCycle = new Chart(document.getElementById('opsCycleChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['2022', '2023', '2024', '2025', '2026'],
+                    datasets: [{ label: 'Avg Cycle Time (Days)', data: [7.8, 6.9, 5.8, 4.7, 3.8], backgroundColor: vanillaBlue }]
+                },
+                options: chartOptions
+            });
+        }
+
+        // ─── 4. REACTIVE GLOBAL FILTERING ────────────────────────────
+        function applyGlobalFilters() {
+            const yr = document.getElementById("slicerYear").value;
+            const dept = document.getElementById("slicerDept").value;
+            const reg = document.getElementById("slicerRegion").value;
+
+            let revMult = 1.0;
+            let opexMult = 1.0;
+
+            if (yr === "2026") { revMult *= 1.25; opexMult *= 1.15; }
+            else if (yr === "2025") { revMult *= 1.00; opexMult *= 1.00; }
+            else if (yr === "2024") { revMult *= 0.88; opexMult *= 0.90; }
+            else if (yr === "2023") { revMult *= 0.78; opexMult *= 0.82; }
+            else if (yr === "2022") { revMult *= 0.68; opexMult *= 0.74; }
+
+            if (dept !== "all") {
+                revMult *= 0.45;
+                opexMult *= 0.22;
             }
-        });
 
-        // 6. Dept Headcount
-        new Chart(document.getElementById('deptHeadcountChart'), {
-            type: 'doughnut',
-            data: {
-                labels: ['Engineering', 'R&D', 'Sales', 'Operations', 'Marketing', 'Support', 'Finance', 'HR'],
-                datasets: [{
-                    data: [85, 55, 55, 50, 35, 30, 22, 20],
-                    backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, '#8B7355', '#C5B49E', '#A89F91', '#D8C4B6', '#E8D8C8']
-                }]
-            },
-            options: defaultChartOptions
-        });
+            if (reg !== "all") {
+                revMult *= (reg === "North America" ? 0.42 : reg === "Europe" ? 0.28 : 0.20);
+            }
 
-        // 7. Operations Fulfillment
-        new Chart(document.getElementById('opsFulfillmentChart'), {
-            type: 'line',
-            data: {
-                labels: ['2022', '2023', '2024', '2025', '2026'],
-                datasets: [
-                    { label: 'On-Time Delivery %', data: [76.5, 81.2, 84.8, 87.0, 91.4], borderColor: vanillaGreen, tension: 0.2 },
-                    { label: 'Completion Rate %', data: [78.2, 83.0, 86.5, 89.1, 92.8], borderColor: vanillaGold, tension: 0.2 }
-                ]
-            },
-            options: defaultChartOptions
-        });
+            // Update KPI cards dynamically
+            const calcRev = (4.126 * revMult).toFixed(2);
+            const calcOpex = (128.7 * opexMult).toFixed(1);
+            const calcProfit = (calcRev - (calcOpex / 1000)).toFixed(2);
 
-        // 8. Cycle Time Chart
-        new Chart(document.getElementById('opsCycleChart'), {
-            type: 'bar',
-            data: {
-                labels: ['2022', '2023', '2024', '2025', '2026'],
-                datasets: [{
-                    label: 'Avg Cycle Time (Days)',
-                    data: [7.8, 6.9, 5.8, 4.7, 3.8],
-                    backgroundColor: vanillaBlue
-                }]
-            },
-            options: defaultChartOptions
-        });
+            document.getElementById("kpiRevenue").innerText = `$${calcRev}B`;
+            document.getElementById("kpiOpex").innerText = `$${calcOpex}M`;
+            document.getElementById("kpiGrossProfit").innerText = `$${(calcRev * 0.614).toFixed(2)}B`;
+            document.getElementById("kpiNetProfit").innerText = `$${calcProfit}B`;
+
+            // Update Charts
+            if (charts.execTrend) {
+                charts.execTrend.data.datasets[0].data = [79.4, 80.4, 86.2, 84.6, 90.8, 119.4].map(v => Number((v * revMult).toFixed(1)));
+                charts.execTrend.data.datasets[1].data = [77.2, 78.3, 84.0, 82.4, 88.5, 117.3].map(v => Number((v * revMult).toFixed(1)));
+                charts.execTrend.update();
+            }
+
+            // Filter Anomaly Table
+            filterAnomalyTable();
+        }
+
+        function resetFilters() {
+            document.getElementById("slicerYear").value = "2026";
+            document.getElementById("slicerDept").value = "all";
+            document.getElementById("slicerRegion").value = "all";
+            document.getElementById("anomalySearchInput").value = "";
+            document.getElementById("statusFilter").value = "all";
+            applyGlobalFilters();
+        }
+
+        // ─── 5. DRILL-DOWN MODAL ──────────────────────────────────────
+        function openModal(title, d1, d2, d3) {
+            document.getElementById("modalTitle").innerText = title;
+            document.getElementById("modalDetail1").innerText = d1;
+            document.getElementById("modalDetail2").innerText = d2;
+            document.getElementById("modalDetail3").innerText = d3;
+            document.getElementById("drillModal").style.display = "flex";
+        }
+
+        function closeModal(e) {
+            document.getElementById("drillModal").style.display = "none";
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            renderAnomalyTable(anomalyData);
+            initCharts();
+        };
     </script>
 </body>
 </html>
