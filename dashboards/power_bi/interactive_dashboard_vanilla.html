@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinSight 360 – Multi-User Analytics & Planning Console</title>
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js Offline Local Bundle with CDN Fallback -->
+    <script src="chart.min.js"></script>
+    <script>
+        if (typeof Chart === 'undefined') {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>');
+        }
+    </script>
     <style>
         :root {
             --vanilla-bg: #FDFBF7;
@@ -843,7 +848,7 @@
                 <p><strong>Projected Net Profit:</strong> <span id="simResultProfit" style="color:var(--vanilla-green); font-weight:700;">$4.49B</span></p>
             </div>
             <div class="modal-buttons">
-                <button type="button" class="btn-action primary" onclick="closeModal('simulationModal')">Apply Simulation</button>
+                <button type="button" class="btn-action primary" onclick="applySimulationToDashboard()">Apply Simulation to Dashboard</button>
             </div>
         </div>
     </div>
@@ -855,36 +860,52 @@
     <script>
         // ─── 1. MULTI-USER ACCESS & ROLE SWITCHING (RBAC) ─────────────
         const userProfiles = {
-            cfo: { name: "Sarah Jenkins", role: "CFO / Executive", avatar: "👤", dept: "all", permissions: "Full Access" },
-            dept_head: { name: "Rajesh Kumar", role: "Engineering Lead", avatar: "💻", dept: "Engineering", permissions: "Dept Scoped" },
-            auditor: { name: "Arthur Vance", role: "Internal Auditor", avatar: "🛡️", dept: "all", permissions: "Audit & Risk" },
-            ops_mgr: { name: "Deepa Menon", role: "Operations Manager", avatar: "⚙️", dept: "Operations", permissions: "Fulfillment SLA" },
-            analyst: { name: "Emily Watson", role: "BI Analyst", avatar: "📊", dept: "all", permissions: "Read / Model" }
+            cfo: { name: "Sarah Jenkins", role: "CFO / Executive", avatar: "👤", dept: "all", permissions: "Full Enterprise Access", targetTab: "tab1" },
+            dept_head: { name: "Rajesh Kumar", role: "Engineering Lead", avatar: "💻", dept: "Engineering", permissions: "Department Scoped", targetTab: "tab3" },
+            auditor: { name: "Arthur Vance", role: "Internal Compliance Auditor", avatar: "🛡️", dept: "all", permissions: "Audit & Risk Authority", targetTab: "tab5" },
+            ops_mgr: { name: "Deepa Menon", role: "Operations Manager", avatar: "⚙️", dept: "Operations", permissions: "Fulfillment SLA", targetTab: "tab4" },
+            analyst: { name: "Emily Watson", role: "BI Analyst", avatar: "📊", dept: "all", permissions: "Modeling & Slicing", targetTab: "tab2" }
         };
 
         function switchUserRole() {
             const roleKey = document.getElementById("userRoleSelect").value;
             const user = userProfiles[roleKey];
+            if (!user) return;
             document.getElementById("userName").innerText = user.name;
             document.getElementById("userRoleTag").innerText = user.role;
             document.getElementById("userAvatar").innerText = user.avatar;
 
-            // Role-based scoping: if department lead, automatically scope department slicer!
-            if (user.dept !== "all") {
-                document.getElementById("slicerDept").value = user.dept;
-            } else {
-                document.getElementById("slicerDept").value = "all";
-            }
+            // Scope department slicer
+            document.getElementById("slicerDept").value = user.dept;
             applyGlobalFilters();
-            showToast(`Switched user profile to: ${user.name} (${user.role})`);
+
+            // Auto-navigate to the most relevant view for this persona
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabMap = { tab1: 0, tab2: 1, tab3: 2, tab4: 3, tab5: 4 };
+            const tabIdx = tabMap[user.targetTab] ?? 0;
+            switchTab(user.targetTab, tabButtons[tabIdx]);
+
+            showToast(`Role active: ${user.name} (${user.role}) - Scoped: ${user.dept === 'all' ? 'All Divisions' : user.dept}`);
         }
 
-        // ─── 2. TAB SWITCHING ─────────────────────────────────────────
+        // ─── 2. TAB SWITCHING WITH AUTO CHART RESIZING ────────────────
         function switchTab(tabId, btn) {
             document.querySelectorAll('.dashboard-view').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            btn.classList.add('active');
+            const targetEl = document.getElementById(tabId);
+            if (targetEl) targetEl.classList.add('active');
+            if (btn) btn.classList.add('active');
+
+            // Trigger chart resize/update for all charts in the tab so canvases render cleanly
+            setTimeout(() => {
+                Object.values(charts).forEach(c => {
+                    try {
+                        if (c && typeof c.resize === 'function') c.resize();
+                    } catch(err) {
+                        console.error('Error resizing chart:', err);
+                    }
+                });
+            }, 60);
         }
 
         // ─── 3. ANOMALY AUDIT DATASET & USER AUDITOR ACTIONS ──────────
@@ -901,16 +922,17 @@
 
         function renderAnomalyTable(items) {
             const tbody = document.getElementById("anomalyTableBody");
+            if (!tbody) return;
             tbody.innerHTML = "";
-            items.forEach((item, index) => {
+            items.forEach((item) => {
                 const tr = document.createElement("tr");
                 tr.innerHTML = `
                     <td><strong>${item.id}</strong></td>
                     <td>${item.dept}</td>
                     <td>${item.cat}</td>
                     <td>${item.vendor}</td>
-                    <td>$${item.amt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                    <td>${item.z.toFixed(2)}σ</td>
+                    <td>$${Number(item.amt).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td>${Number(item.z).toFixed(2)}σ</td>
                     <td>${item.reason}</td>
                     <td><span class="status-pill ${item.pill}">${item.status}</span></td>
                     <td>
@@ -920,26 +942,32 @@
                 `;
                 tbody.appendChild(tr);
             });
-            document.getElementById("kpiAnomalyCount").innerText = `${items.length} Records`;
+            const countEl = document.getElementById("kpiAnomalyCount");
+            if (countEl) countEl.innerText = `${items.length} Records`;
         }
 
         function updateAuditStatus(id, newStatus) {
             const item = anomalyData.find(x => x.id === id);
             if (item) {
                 item.status = newStatus;
-                item.pill = newStatus === 'Verified Normal' ? 'status-ontrack' : 'status-warning';
+                item.pill = newStatus === 'Verified Normal' ? 'status-ontrack' : (newStatus === 'Approved Exception' ? 'status-warning' : 'status-over');
                 filterAnomalyTable();
-                showToast(`Updated ${id} status to: ${newStatus}`);
+                showToast(`Audited ${id}: Marked as "${newStatus}"`);
             }
         }
 
         function filterAnomalyTable() {
-            const query = document.getElementById("anomalySearchInput").value.toLowerCase();
-            const statusVal = document.getElementById("statusFilter").value;
-            const deptFilter = document.getElementById("slicerDept").value;
+            const searchEl = document.getElementById("anomalySearchInput");
+            const statusEl = document.getElementById("statusFilter");
+            const deptEl = document.getElementById("slicerDept");
+
+            const query = searchEl ? searchEl.value.toLowerCase().trim() : "";
+            const statusVal = statusEl ? statusEl.value : "all";
+            const deptFilter = deptEl ? deptEl.value : "all";
 
             const filtered = anomalyData.filter(item => {
-                const matchesQuery = item.id.toLowerCase().includes(query) ||
+                const matchesQuery = !query || 
+                                     item.id.toLowerCase().includes(query) ||
                                      item.dept.toLowerCase().includes(query) ||
                                      item.cat.toLowerCase().includes(query) ||
                                      item.vendor.toLowerCase().includes(query);
@@ -962,7 +990,7 @@
             link.href = URL.createObjectURL(blob);
             link.download = `FinSight360_Risk_Audit_${new Date().toISOString().slice(0,10)}.csv`;
             link.click();
-            showToast("Exported filtered audit records to CSV");
+            showToast("Exported filtered audit records to CSV successfully!");
         }
 
         // ─── 4. USER INPUT: SUBMIT EXPENSE CLAIM ───────────────────────
@@ -974,11 +1002,17 @@
             e.preventDefault();
             const dept = document.getElementById("expDept").value;
             const cat = document.getElementById("expCat").value;
-            const vendor = document.getElementById("expVendor").value;
+            const vendor = document.getElementById("expVendor").value.trim();
             const amt = parseFloat(document.getElementById("expAmount").value);
 
+            if (!vendor || isNaN(amt) || amt <= 0) {
+                alert("Please enter a valid vendor name and amount.");
+                return;
+            }
+
             const newId = `EXP-0${Math.floor(30000 + Math.random() * 9000)}`;
-            const zScore = (amt > 20000) ? Number((4.0 + (amt - 20000) / 5000).toFixed(2)) : 1.25;
+            const zScore = (amt > 20000) ? Number((4.0 + (amt - 20000) / 4500).toFixed(2)) : 1.25;
+            const formattedAmt = amt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
             const newRecord = {
                 id: newId,
@@ -987,16 +1021,25 @@
                 vendor: vendor,
                 amt: amt,
                 z: zScore,
-                reason: zScore > 3.5 ? `Live Flag: User submitted amount ($${amt:,.2f}) exceeds authorization ceiling` : "Normal departmental operational expense",
+                reason: zScore > 3.5 ? `Live Flag: User submitted amount ($${formattedAmt}) exceeds authorization ceiling` : "Normal departmental operational expense",
                 status: zScore > 3.5 ? "Under Audit" : "Approved Exception",
                 pill: zScore > 3.5 ? "status-over" : "status-warning"
             };
 
-            // Prepend new expense
+            // Prepend new expense so it appears right at the top
             anomalyData.unshift(newRecord);
             filterAnomalyTable();
             closeModal('expenseModal');
-            showToast(`Expense ${newId} ($${amt.toLocaleString()}) submitted by ${document.getElementById("userName").innerText}!`);
+
+            // Switch to Risk & Anomaly tab so user sees their new submission immediately
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            switchTab('tab5', tabButtons[4]);
+
+            // Clear form inputs
+            document.getElementById("expVendor").value = "";
+            document.getElementById("expAmount").value = "";
+
+            showToast(`✓ New Claim ${newId} ($${formattedAmt}) recorded! Navigated to Risk Monitoring.`);
         }
 
         // ─── 5. USER INPUT: WHAT-IF SIMULATION ────────────────────────
@@ -1024,15 +1067,46 @@
             document.getElementById("simResultProfit").innerText = `$${simProfit.toFixed(2)}B`;
         }
 
+        function applySimulationToDashboard() {
+            const revGrowth = parseFloat(document.getElementById("simRevInput").value);
+            const budgetAdj = parseFloat(document.getElementById("simBudgetInput").value);
+
+            const baseRev = 4.126;
+            const baseOpex = 128.7;
+
+            const simRev = (baseRev * (1 + revGrowth / 100.0)).toFixed(2);
+            const simOpex = (baseOpex * (1 + budgetAdj / 100.0)).toFixed(1);
+            const simGross = (simRev * 0.614).toFixed(2);
+            const simNet = (simRev - (simOpex / 1000.0)).toFixed(2);
+
+            document.getElementById("kpiRevenue").innerText = `$${simRev}B`;
+            document.getElementById("kpiOpex").innerText = `$${simOpex}M`;
+            document.getElementById("kpiGrossProfit").innerText = `$${simGross}B`;
+            document.getElementById("kpiNetProfit").innerText = `$${simNet}B`;
+
+            // Update badge indicator
+            document.getElementById("kpiRevenueMoM").innerText = `⚡ Simulated: ${revGrowth >= 0 ? '+' : ''}${revGrowth}% Rev Growth`;
+            document.getElementById("kpiOpexBadge").innerText = `⚡ Budget Adj: ${budgetAdj >= 0 ? '+' : ''}${budgetAdj}%`;
+
+            closeModal('simulationModal');
+            showToast(`Simulation Applied! Rev: $${simRev}B | OpEx: $${simOpex}M`);
+
+            // Switch to Executive Overview to see simulated results
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            switchTab('tab1', tabButtons[0]);
+        }
+
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = "none";
         }
 
         function showToast(msg) {
             const t = document.getElementById("toastMessage");
+            if (!t) return;
             t.innerText = msg;
             t.style.display = "block";
-            setTimeout(() => { t.style.display = "none"; }, 3500);
+            clearTimeout(window._toastTimer);
+            window._toastTimer = setTimeout(() => { t.style.display = "none"; }, 4000);
         }
 
         // ─── 6. CHARTS & DYNAMIC SLICING ──────────────────────────────
@@ -1055,94 +1129,104 @@
         let charts = {};
 
         function initCharts() {
-            charts.execTrend = new Chart(document.getElementById('execTrendChart'), {
-                type: 'line',
-                data: {
-                    labels: ['May 26', 'Jun 26', 'Jul 26', 'Aug 26', 'Sep 26', 'Oct 26'],
-                    datasets: [
-                        { label: 'Gross Revenue ($M)', data: [79.4, 80.4, 86.2, 84.6, 90.8, 119.4], borderColor: vanillaGold, backgroundColor: 'rgba(194,155,56,0.1)', fill: true, tension: 0.3 },
-                        { label: 'Operating Profit ($M)', data: [77.2, 78.3, 84.0, 82.4, 88.5, 117.3], borderColor: vanillaGreen, tension: 0.3 }
-                    ]
-                },
-                options: chartOptions
-            });
+            if (typeof Chart === 'undefined') {
+                console.warn('Chart.js not loaded. Interactive UI controls remain active.');
+                return;
+            }
 
-            charts.execRegion = new Chart(document.getElementById('execRegionChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['North America', 'Europe', 'Asia Pacific', 'Middle East'],
-                    datasets: [{ data: [42, 28, 22, 8], backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, vanillaAccent] }]
-                },
-                options: chartOptions
-            });
+            try {
+                charts.execTrend = new Chart(document.getElementById('execTrendChart'), {
+                    type: 'line',
+                    data: {
+                        labels: ['May 26', 'Jun 26', 'Jul 26', 'Aug 26', 'Sep 26', 'Oct 26'],
+                        datasets: [
+                            { label: 'Gross Revenue ($M)', data: [79.4, 80.4, 86.2, 84.6, 90.8, 119.4], borderColor: vanillaGold, backgroundColor: 'rgba(194,155,56,0.1)', fill: true, tension: 0.3 },
+                            { label: 'Operating Profit ($M)', data: [77.2, 78.3, 84.0, 82.4, 88.5, 117.3], borderColor: vanillaGreen, tension: 0.3 }
+                        ]
+                    },
+                    options: chartOptions
+                });
 
-            charts.finBudget = new Chart(document.getElementById('finBudgetChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['Engineering', 'Sales', 'Marketing', 'R&D', 'Operations', 'Finance', 'Support', 'HR'],
-                    datasets: [
-                        { label: 'Budget ($M)', data: [31.5, 24.0, 18.2, 22.1, 16.5, 12.0, 11.2, 9.7], backgroundColor: vanillaAccent },
-                        { label: 'Actual Spend ($M)', data: [27.2, 21.8, 16.5, 19.8, 14.2, 10.5, 10.1, 8.6], backgroundColor: vanillaGold }
-                    ]
-                },
-                options: chartOptions
-            });
+                charts.execRegion = new Chart(document.getElementById('execRegionChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['North America', 'Europe', 'Asia Pacific', 'Middle East'],
+                        datasets: [{ data: [42, 28, 22, 8], backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, vanillaAccent] }]
+                    },
+                    options: chartOptions
+                });
 
-            charts.finExpense = new Chart(document.getElementById('finExpenseCatChart'), {
-                type: 'pie',
-                data: {
-                    labels: ['Software & Tools', 'Equipment', 'Office Rent', 'Prof. Services', 'Marketing', 'Travel'],
-                    datasets: [{ data: [27.2, 26.9, 25.8, 16.3, 13.8, 13.4], backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, '#A89F91', '#C5B49E', '#E8D8C8'] }]
-                },
-                options: chartOptions
-            });
+                charts.finBudget = new Chart(document.getElementById('finBudgetChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Engineering', 'Sales', 'Marketing', 'R&D', 'Operations', 'Finance', 'Support', 'HR'],
+                        datasets: [
+                            { label: 'Budget ($M)', data: [31.5, 24.0, 18.2, 22.1, 16.5, 12.0, 11.2, 9.7], backgroundColor: vanillaAccent },
+                            { label: 'Actual Spend ($M)', data: [27.2, 21.8, 16.5, 19.8, 14.2, 10.5, 10.1, 8.6], backgroundColor: vanillaGold }
+                        ]
+                    },
+                    options: chartOptions
+                });
 
-            charts.deptSpend = new Chart(document.getElementById('deptSpendChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['Engineering', 'R&D', 'Sales', 'Operations', 'Marketing', 'Support', 'Finance', 'HR'],
-                    datasets: [{ label: 'Operational Spend ($M)', data: [27.2, 19.8, 21.8, 14.2, 16.5, 10.1, 10.5, 8.6], backgroundColor: vanillaGold }]
-                },
-                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
-            });
+                charts.finExpense = new Chart(document.getElementById('finExpenseCatChart'), {
+                    type: 'pie',
+                    data: {
+                        labels: ['Software & Tools', 'Equipment', 'Office Rent', 'Prof. Services', 'Marketing', 'Travel'],
+                        datasets: [{ data: [27.2, 26.9, 25.8, 16.3, 13.8, 13.4], backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, '#A89F91', '#C5B49E', '#E8D8C8'] }]
+                    },
+                    options: chartOptions
+                });
 
-            charts.deptHeadcount = new Chart(document.getElementById('deptHeadcountChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Engineering', 'R&D', 'Sales', 'Operations', 'Marketing', 'Support', 'Finance', 'HR'],
-                    datasets: [{ data: [85, 55, 55, 50, 35, 30, 22, 20], backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, '#8B7355', '#C5B49E', '#A89F91', '#D8C4B6', '#E8D8C8'] }]
-                },
-                options: chartOptions
-            });
+                charts.deptSpend = new Chart(document.getElementById('deptSpendChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Engineering', 'R&D', 'Sales', 'Operations', 'Marketing', 'Support', 'Finance', 'HR'],
+                        datasets: [{ label: 'Operational Spend ($M)', data: [27.2, 19.8, 21.8, 14.2, 16.5, 10.1, 10.5, 8.6], backgroundColor: vanillaGold }]
+                    },
+                    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+                });
 
-            charts.opsFulfillment = new Chart(document.getElementById('opsFulfillmentChart'), {
-                type: 'line',
-                data: {
-                    labels: ['2022', '2023', '2024', '2025', '2026'],
-                    datasets: [
-                        { label: 'On-Time Delivery %', data: [76.5, 81.2, 84.8, 87.0, 91.4], borderColor: vanillaGreen, tension: 0.2 },
-                        { label: 'Completion Rate %', data: [78.2, 83.0, 86.5, 89.1, 92.8], borderColor: vanillaGold, tension: 0.2 }
-                    ]
-                },
-                options: chartOptions
-            });
+                charts.deptHeadcount = new Chart(document.getElementById('deptHeadcountChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Engineering', 'R&D', 'Sales', 'Operations', 'Marketing', 'Support', 'Finance', 'HR'],
+                        datasets: [{ data: [85, 55, 55, 50, 35, 30, 22, 20], backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, '#8B7355', '#C5B49E', '#A89F91', '#D8C4B6', '#E8D8C8'] }]
+                    },
+                    options: chartOptions
+                });
 
-            charts.opsCycle = new Chart(document.getElementById('opsCycleChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['2022', '2023', '2024', '2025', '2026'],
-                    datasets: [{ label: 'Avg Cycle Time (Days)', data: [7.8, 6.9, 5.8, 4.7, 3.8], backgroundColor: vanillaBlue }]
-                },
-                options: chartOptions
-            });
+                charts.opsFulfillment = new Chart(document.getElementById('opsFulfillmentChart'), {
+                    type: 'line',
+                    data: {
+                        labels: ['2022', '2023', '2024', '2025', '2026'],
+                        datasets: [
+                            { label: 'On-Time Delivery %', data: [76.5, 81.2, 84.8, 87.0, 91.4], borderColor: vanillaGreen, tension: 0.2 },
+                            { label: 'Completion Rate %', data: [78.2, 83.0, 86.5, 89.1, 92.8], borderColor: vanillaGold, tension: 0.2 }
+                        ]
+                    },
+                    options: chartOptions
+                });
+
+                charts.opsCycle = new Chart(document.getElementById('opsCycleChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['2022', '2023', '2024', '2025', '2026'],
+                        datasets: [{ label: 'Avg Cycle Time (Days)', data: [7.8, 6.9, 5.8, 4.7, 3.8], backgroundColor: vanillaBlue }]
+                    },
+                    options: chartOptions
+                });
+            } catch(e) {
+                console.error("Chart init error:", e);
+            }
         }
 
+        // ─── 7. GLOBAL CONTROL BAR FILTERS & RESET ────────────────────
         function applyGlobalFilters() {
             const yr = document.getElementById("slicerYear").value;
             const dept = document.getElementById("slicerDept").value;
 
-            let mult = (yr === "2026" ? 1.25 : yr === "2025" ? 1.0 : yr === "2024" ? 0.88 : 0.75);
-            if (dept !== "all") mult *= 0.45;
+            let mult = (yr === "2026" ? 1.0 : yr === "2025" ? 0.89 : yr === "2024" ? 0.78 : yr === "2023" ? 0.69 : yr === "2022" ? 0.61 : 1.0);
+            if (dept !== "all") mult *= 0.38;
 
             const calcRev = (4.126 * mult).toFixed(2);
             const calcOpex = (128.7 * mult).toFixed(1);
@@ -1152,22 +1236,51 @@
             document.getElementById("kpiGrossProfit").innerText = `$${(calcRev * 0.614).toFixed(2)}B`;
             document.getElementById("kpiNetProfit").innerText = `$${(calcRev - (calcOpex/1000)).toFixed(2)}B`;
 
+            // Reset badges if not in simulation mode
+            document.getElementById("kpiRevenueMoM").innerText = yr === "2026" ? "▲ +12.4% YoY Growth" : `Filtered Horizon (${yr})`;
+            document.getElementById("kpiOpexBadge").innerText = dept === "all" ? "▼ -2.1% under ceiling" : `Scoped: ${dept}`;
+
+            // Update Financial tab KPIs
+            const budgetEl = document.getElementById("kpiBudget");
+            const spendEl = document.getElementById("kpiActualSpend");
+            const varEl = document.getElementById("kpiVariance");
+            if (budgetEl) budgetEl.innerText = `$${(145.2 * mult).toFixed(1)}M`;
+            if (spendEl) spendEl.innerText = `$${calcOpex}M`;
+            if (varEl) varEl.innerText = `+$${((145.2 - 128.7) * mult).toFixed(1)}M`;
+
+            // Dynamically update charts data
+            if (charts.execTrend) {
+                charts.execTrend.data.datasets[0].data = [79.4, 80.4, 86.2, 84.6, 90.8, 119.4].map(v => Number((v * mult).toFixed(1)));
+                charts.execTrend.data.datasets[1].data = [77.2, 78.3, 84.0, 82.4, 88.5, 117.3].map(v => Number((v * mult).toFixed(1)));
+                charts.execTrend.update();
+            }
+
             filterAnomalyTable();
         }
 
         function resetFilters() {
             document.getElementById("slicerYear").value = "2026";
             document.getElementById("slicerDept").value = "all";
-            document.getElementById("anomalySearchInput").value = "";
-            document.getElementById("statusFilter").value = "all";
+            document.getElementById("userRoleSelect").value = "cfo";
+            const user = userProfiles.cfo;
+            document.getElementById("userName").innerText = user.name;
+            document.getElementById("userRoleTag").innerText = user.role;
+            document.getElementById("userAvatar").innerText = user.avatar;
+
+            const searchInput = document.getElementById("anomalySearchInput");
+            if (searchInput) searchInput.value = "";
+            const statusFilter = document.getElementById("statusFilter");
+            if (statusFilter) statusFilter.value = "all";
+
             applyGlobalFilters();
-            showToast("Reset all slicers and filters");
+            showToast("Reset all slicers, filters & simulations to baseline defaults");
         }
 
-        window.onload = function() {
+        // Initialize upon page load
+        window.addEventListener('DOMContentLoaded', () => {
             renderAnomalyTable(anomalyData);
             initCharts();
-        };
+        });
     </script>
 </body>
 </html>
