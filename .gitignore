@@ -28,6 +28,7 @@ desktop.ini
 
 # Logs
 logs/*.log
+logs/*.json
 *.log
 
 # Data (keep structure, ignore large files)
