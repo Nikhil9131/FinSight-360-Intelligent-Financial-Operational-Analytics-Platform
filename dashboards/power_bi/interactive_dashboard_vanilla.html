@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinSight 360 – Executive Analytics Platform</title>
+    <title>FinSight 360 – Multi-User Analytics & Planning Console</title>
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -32,16 +32,19 @@
             color: var(--vanilla-dark);
             font-family: var(--font-stack);
             line-height: 1.4;
-            padding: 18px 24px;
+            padding: 16px 22px;
         }
 
+        /* Header with Multi-User Profile Bar */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid var(--vanilla-border);
             padding-bottom: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .header-title h1 {
@@ -55,16 +58,57 @@
             color: #6C645D;
         }
 
-        /* Interactive Filter Slicer Bar */
-        .filter-bar {
+        /* Multi-User RBAC Selector */
+        .user-auth-panel {
             background-color: var(--vanilla-card);
             border: 1px solid var(--vanilla-border);
             border-radius: 8px;
-            padding: 10px 16px;
+            padding: 6px 12px;
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
+            gap: 10px;
+        }
+
+        .user-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .role-tag {
+            background-color: var(--vanilla-primary);
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .user-select {
+            background-color: #FFFFFF;
+            border: 1px solid var(--vanilla-border);
+            border-radius: 5px;
+            padding: 4px 8px;
+            font-size: 11.5px;
+            font-family: var(--font-stack);
+            color: var(--vanilla-dark);
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Top Action Bar: User Input Buttons & Slicers */
+        .top-control-bar {
+            background-color: var(--vanilla-card);
+            border: 1px solid var(--vanilla-border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
             flex-wrap: wrap;
         }
 
@@ -92,44 +136,52 @@
             outline: none;
         }
 
-        .filter-select:focus {
-            border-color: var(--vanilla-primary);
-        }
-
-        .btn-reset {
+        .btn-action {
             background-color: var(--vanilla-accent);
             border: 1px solid var(--vanilla-border);
-            border-radius: 5px;
-            padding: 4px 12px;
-            font-size: 11.5px;
+            border-radius: 6px;
+            padding: 5px 12px;
+            font-size: 12px;
             font-weight: 700;
             cursor: pointer;
-            margin-left: auto;
             color: var(--vanilla-dark);
+            display: flex;
+            align-items: center;
+            gap: 5px;
             transition: all 0.2s;
         }
 
-        .btn-reset:hover {
+        .btn-action:hover {
             background-color: var(--vanilla-primary);
             color: #FFFFFF;
+        }
+
+        .btn-action.primary {
+            background-color: var(--vanilla-primary);
+            color: #FFFFFF;
+            border-color: var(--vanilla-primary);
+        }
+
+        .btn-action.primary:hover {
+            background-color: #725D43;
         }
 
         /* Navigation Tabs */
         .nav-tabs {
             display: flex;
             gap: 8px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             flex-wrap: wrap;
         }
 
         .tab-btn {
             background-color: var(--vanilla-card);
             border: 1px solid var(--vanilla-border);
-            padding: 8px 15px;
+            padding: 7px 14px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 12.5px;
+            font-size: 12px;
             color: var(--vanilla-dark);
             transition: all 0.2s ease;
         }
@@ -147,16 +199,16 @@
         /* KPI Cards Grid */
         .kpi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .kpi-card {
             background-color: var(--vanilla-card);
             border: 1px solid var(--vanilla-border);
             border-radius: 8px;
-            padding: 12px 16px;
+            padding: 12px 14px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
             transition: transform 0.15s ease;
         }
@@ -166,7 +218,7 @@
         }
 
         .kpi-title {
-            font-size: 11px;
+            font-size: 10.5px;
             text-transform: uppercase;
             font-weight: 700;
             color: #7A7067;
@@ -175,7 +227,7 @@
         }
 
         .kpi-value {
-            font-size: 22px;
+            font-size: 21px;
             font-weight: 800;
             color: var(--vanilla-dark);
             margin-bottom: 2px;
@@ -199,19 +251,19 @@
             display: block;
         }
 
-        /* Controlled, Compact Charts Row */
+        /* Compact Charts Grid */
         .charts-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 14px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .chart-box {
             background-color: var(--vanilla-card);
             border: 1px solid var(--vanilla-border);
             border-radius: 8px;
-            padding: 14px 16px;
+            padding: 12px 14px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
             display: flex;
             flex-direction: column;
@@ -222,8 +274,8 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--vanilla-accent);
-            padding-bottom: 6px;
-            margin-bottom: 10px;
+            padding-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .chart-box h3 {
@@ -233,25 +285,24 @@
         }
 
         .chart-hint {
-            font-size: 10.5px;
+            font-size: 10px;
             color: #7A7067;
             font-style: italic;
         }
 
-        /* Fixed compact canvas wrapper to prevent huge graphs */
         .chart-canvas-container {
             position: relative;
             height: 220px;
             width: 100%;
         }
 
-        /* Interactive Data Tables & Search Tools */
+        /* Interactive Tables & Tools */
         .table-tools {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
@@ -259,22 +310,18 @@
             background-color: #FFFFFF;
             border: 1px solid var(--vanilla-border);
             border-radius: 5px;
-            padding: 6px 12px;
+            padding: 5px 10px;
             font-size: 12px;
             font-family: var(--font-stack);
-            width: 260px;
+            width: 250px;
             outline: none;
-        }
-
-        .search-input:focus {
-            border-color: var(--vanilla-primary);
         }
 
         .table-container {
             background-color: var(--vanilla-card);
             border: 1px solid var(--vanilla-border);
             border-radius: 8px;
-            padding: 14px;
+            padding: 12px;
             overflow-x: auto;
         }
 
@@ -287,29 +334,19 @@
         th {
             background-color: var(--vanilla-accent);
             text-align: left;
-            padding: 8px 10px;
+            padding: 7px 9px;
             font-weight: 700;
             color: var(--vanilla-dark);
             border-bottom: 2px solid var(--vanilla-border);
-            cursor: pointer;
-            user-select: none;
-        }
-
-        th:hover {
-            background-color: #dfcebd;
         }
 
         td {
-            padding: 7px 10px;
+            padding: 7px 9px;
             border-bottom: 1px solid var(--vanilla-border);
         }
 
         tr:nth-child(even) td {
             background-color: rgba(255, 255, 255, 0.4);
-        }
-
-        tr:hover td {
-            background-color: rgba(232, 216, 200, 0.4);
         }
 
         .status-pill {
@@ -324,7 +361,23 @@
         .status-over { background-color: #F8E5E5; color: var(--vanilla-red); }
         .status-warning { background-color: #FCF4DD; color: var(--vanilla-gold); }
 
-        /* Drill-Down Modal */
+        .btn-table-action {
+            background-color: #FFFFFF;
+            border: 1px solid var(--vanilla-border);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 10.5px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--vanilla-dark);
+            margin-right: 4px;
+        }
+
+        .btn-table-action:hover {
+            background-color: var(--vanilla-accent);
+        }
+
+        /* Interactive User Input Modal */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -332,7 +385,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(44, 40, 37, 0.4);
+            background: rgba(44, 40, 37, 0.45);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -342,34 +395,75 @@
             background-color: var(--vanilla-bg);
             border: 1px solid var(--vanilla-border);
             border-radius: 10px;
-            padding: 20px;
-            max-width: 500px;
+            padding: 20px 24px;
+            max-width: 520px;
             width: 90%;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
-        .modal-card h4 {
+        .modal-card h3 {
             font-size: 16px;
-            margin-bottom: 10px;
             color: var(--vanilla-dark);
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--vanilla-accent);
+            padding-bottom: 6px;
         }
 
-        .modal-card p {
-            font-size: 13px;
-            margin-bottom: 6px;
+        .form-row {
+            margin-bottom: 12px;
         }
 
-        .modal-close-btn {
-            background-color: var(--vanilla-primary);
-            color: #FFFFFF;
-            border: none;
-            padding: 6px 14px;
+        .form-row label {
+            display: block;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #5A524C;
+            margin-bottom: 4px;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            background-color: #FFFFFF;
+            border: 1px solid var(--vanilla-border);
             border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
+            padding: 6px 10px;
             font-size: 12px;
-            margin-top: 12px;
-            float: right;
+            font-family: var(--font-stack);
+            color: var(--vanilla-dark);
+            outline: none;
+        }
+
+        .form-input:focus, .form-select:focus {
+            border-color: var(--vanilla-primary);
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--vanilla-dark);
+            color: #FFFFFF;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: none;
+            z-index: 2000;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -378,17 +472,36 @@
     <header>
         <div class="header-title">
             <h1>FinSight 360 – Executive Analytics Platform</h1>
-            <p>NovaTech Solutions Pvt. Ltd. | Fiscal Reporting & Intelligent Decision Support</p>
+            <p>NovaTech Solutions Pvt. Ltd. | Fiscal Reporting & Decision Intelligence</p>
+        </div>
+
+        <!-- Multi-User RBAC Access Switcher -->
+        <div class="user-auth-panel">
+            <div class="user-badge">
+                <span id="userAvatar">👤</span>
+                <span id="userName">Sarah Jenkins</span>
+                <span class="role-tag" id="userRoleTag">CFO / Executive</span>
+            </div>
+            <select id="userRoleSelect" class="user-select" onchange="switchUserRole()">
+                <option value="cfo" selected>Switch Role: CFO / Executive</option>
+                <option value="dept_head">Switch Role: Engineering Dept Head</option>
+                <option value="auditor">Switch Role: Internal Compliance Auditor</option>
+                <option value="ops_mgr">Switch Role: Operations Manager</option>
+                <option value="analyst">Switch Role: Data Engineer / BI Analyst</option>
+            </select>
         </div>
     </header>
 
-    <!-- Global Interactive Slicer Bar -->
-    <div class="filter-bar">
-        <div class="filter-group">
-            <label for="slicerYear">Fiscal Year:</label>
+    <!-- Global Control Bar: User Input & Slicers -->
+    <div class="top-control-bar">
+        <button class="btn-action primary" onclick="openExpenseModal()">➕ Submit Expense Claim</button>
+        <button class="btn-action" onclick="openSimulationModal()">📊 What-If Budget Simulation</button>
+
+        <div class="filter-group" style="margin-left: auto;">
+            <label for="slicerYear">Year:</label>
             <select id="slicerYear" class="filter-select" onchange="applyGlobalFilters()">
-                <option value="all">All Years (2022–2026)</option>
-                <option value="2026" selected>2026 (YTD)</option>
+                <option value="all">All (2022–2026)</option>
+                <option value="2026" selected>2026</option>
                 <option value="2025">2025</option>
                 <option value="2024">2024</option>
                 <option value="2023">2023</option>
@@ -398,7 +511,7 @@
         <div class="filter-group">
             <label for="slicerDept">Department:</label>
             <select id="slicerDept" class="filter-select" onchange="applyGlobalFilters()">
-                <option value="all" selected>All Departments (8)</option>
+                <option value="all" selected>All Departments</option>
                 <option value="Engineering">Engineering</option>
                 <option value="R&D">R&D</option>
                 <option value="Sales">Sales</option>
@@ -409,17 +522,7 @@
                 <option value="HR">HR</option>
             </select>
         </div>
-        <div class="filter-group">
-            <label for="slicerRegion">Region:</label>
-            <select id="slicerRegion" class="filter-select" onchange="applyGlobalFilters()">
-                <option value="all" selected>All Geo-Zones</option>
-                <option value="North America">North America</option>
-                <option value="Europe">Europe</option>
-                <option value="Asia Pacific">Asia Pacific</option>
-                <option value="Middle East">Middle East</option>
-            </select>
-        </div>
-        <button class="btn-reset" onclick="resetFilters()">↺ Reset Filters</button>
+        <button class="btn-action" onclick="resetFilters()">↺ Reset</button>
     </div>
 
     <!-- Navigation Tabs -->
@@ -431,13 +534,13 @@
         <button class="tab-btn" onclick="switchTab('tab5', this)">5. Risk & Anomaly Monitoring</button>
     </div>
 
-    <!-- ──────────────── DASHBOARD 1: EXECUTIVE OVERVIEW ──────────────── -->
+    <!-- ──────────────── TAB 1: EXECUTIVE OVERVIEW ──────────────── -->
     <div id="tab1" class="dashboard-view active">
         <div class="kpi-grid">
             <div class="kpi-card">
                 <div class="kpi-title">Gross Revenue</div>
                 <div class="kpi-value" id="kpiRevenue">$4.13B</div>
-                <div class="kpi-badge badge-positive" id="kpiRevenueMoM">▲ +12.4% YoY Trajectory</div>
+                <div class="kpi-badge badge-positive" id="kpiRevenueMoM">▲ +12.4% YoY Growth</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-title">Operating Expenses (OpEx)</div>
@@ -445,12 +548,12 @@
                 <div class="kpi-badge badge-positive" id="kpiOpexBadge">▼ -2.1% under ceiling</div>
             </div>
             <div class="kpi-card">
-                <div class="kpi-title">Gross Profit</div>
+                <div class="kpi-title">Gross Operating Profit</div>
                 <div class="kpi-value" id="kpiGrossProfit">$2.53B</div>
                 <div class="kpi-badge badge-positive" id="kpiGrossMargin">Gross Margin: 61.4%</div>
             </div>
             <div class="kpi-card">
-                <div class="kpi-title">Net Operating Profit</div>
+                <div class="kpi-title">Net Corporate Profit</div>
                 <div class="kpi-value" id="kpiNetProfit">$3.99B</div>
                 <div class="kpi-badge badge-positive" id="kpiNetMargin">Net Margin: 96.9%</div>
             </div>
@@ -478,7 +581,7 @@
         </div>
     </div>
 
-    <!-- ──────────────── DASHBOARD 2: FINANCIAL PERFORMANCE ──────────────── -->
+    <!-- ──────────────── TAB 2: FINANCIAL PERFORMANCE ──────────────── -->
     <div id="tab2" class="dashboard-view">
         <div class="kpi-grid">
             <div class="kpi-card">
@@ -516,7 +619,7 @@
             <div class="chart-box">
                 <div class="chart-box-header">
                     <h3>Major Expenditure Cost Centers</h3>
-                    <span class="chart-hint">Interactive Breakdown</span>
+                    <span class="chart-hint">Cost Breakdown</span>
                 </div>
                 <div class="chart-canvas-container">
                     <canvas id="finExpenseCatChart"></canvas>
@@ -525,7 +628,7 @@
         </div>
     </div>
 
-    <!-- ──────────────── DASHBOARD 3: DEPARTMENT PERFORMANCE ──────────────── -->
+    <!-- ──────────────── TAB 3: DEPARTMENT PERFORMANCE ──────────────── -->
     <div id="tab3" class="dashboard-view">
         <div class="kpi-grid">
             <div class="kpi-card">
@@ -544,7 +647,7 @@
                 <div class="kpi-badge badge-positive">Top Productivity Decile</div>
             </div>
             <div class="kpi-card">
-                <div class="kpi-title">Primary Cost Center</div>
+                <div class="kpi-title">Primary Cost Hub</div>
                 <div class="kpi-value">Engineering</div>
                 <div class="kpi-badge">$27.2M Software & Tools</div>
             </div>
@@ -572,7 +675,7 @@
         </div>
     </div>
 
-    <!-- ──────────────── DASHBOARD 4: OPERATIONAL ANALYTICS ──────────────── -->
+    <!-- ──────────────── TAB 4: OPERATIONAL ANALYTICS ──────────────── -->
     <div id="tab4" class="dashboard-view">
         <div class="kpi-grid">
             <div class="kpi-card">
@@ -593,7 +696,7 @@
             <div class="kpi-card">
                 <div class="kpi-title">Avg CSAT Rating</div>
                 <div class="kpi-value">4.3 / 5.0</div>
-                <div class="kpi-badge badge-positive">High Satisfaction</div>
+                <div class="kpi-badge badge-positive">Client Satisfaction</div>
             </div>
         </div>
 
@@ -619,7 +722,7 @@
         </div>
     </div>
 
-    <!-- ──────────────── DASHBOARD 5: RISK & ANOMALIES ──────────────── -->
+    <!-- ──────────────── TAB 5: RISK & ANOMALIES ──────────────── -->
     <div id="tab5" class="dashboard-view">
         <div class="kpi-grid">
             <div class="kpi-card">
@@ -646,7 +749,7 @@
 
         <div class="table-container">
             <div class="table-tools">
-                <input type="text" id="anomalySearchInput" class="search-input" placeholder="🔍 Search by Department, Category or ID..." onkeyup="filterAnomalyTable()">
+                <input type="text" id="anomalySearchInput" class="search-input" placeholder="🔍 Search Vendor, Dept, Category..." onkeyup="filterAnomalyTable()">
                 <div style="display:flex; gap: 8px;">
                     <select id="statusFilter" class="filter-select" onchange="filterAnomalyTable()">
                         <option value="all">All Audit Statuses</option>
@@ -654,21 +757,22 @@
                         <option value="Approved Exception">Approved Exception</option>
                         <option value="Verified Normal">Verified Normal</option>
                     </select>
-                    <button class="btn-reset" onclick="exportTableToCSV()">📥 Export Filtered CSV</button>
+                    <button class="btn-action" onclick="exportTableToCSV()">📥 Export Filtered CSV</button>
                 </div>
             </div>
 
             <table id="anomalyTable">
                 <thead>
                     <tr>
-                        <th onclick="sortTable(0)">Transaction ID ⇅</th>
-                        <th onclick="sortTable(1)">Department ⇅</th>
-                        <th onclick="sortTable(2)">Category ⇅</th>
-                        <th onclick="sortTable(3)">Vendor ⇅</th>
-                        <th onclick="sortTable(4)">Amount ($) ⇅</th>
-                        <th onclick="sortTable(5)">Z-Score ⇅</th>
+                        <th>Transaction ID</th>
+                        <th>Department</th>
+                        <th>Category</th>
+                        <th>Vendor</th>
+                        <th>Amount ($)</th>
+                        <th>Z-Score</th>
                         <th>Diagnostic Reason</th>
-                        <th>Audit Status</th>
+                        <th>Status</th>
+                        <th>Auditor Action</th>
                     </tr>
                 </thead>
                 <tbody id="anomalyTableBody">
@@ -678,20 +782,104 @@
         </div>
     </div>
 
-    <!-- Interactive Drill-Down Modal -->
-    <div class="modal-overlay" id="drillModal" onclick="closeModal(event)">
-        <div class="modal-card" onclick="event.stopPropagation()">
-            <h4 id="modalTitle">Drill-Down Analysis</h4>
-            <p id="modalDetail1"></p>
-            <p id="modalDetail2"></p>
-            <p id="modalDetail3"></p>
-            <button class="modal-close-btn" onclick="closeModal()">Close</button>
+    <!-- ──────────────── USER INPUT MODAL 1: SUBMIT EXPENSE ──────────────── -->
+    <div class="modal-overlay" id="expenseModal">
+        <div class="modal-card">
+            <h3>➕ Submit Corporate Expense Claim</h3>
+            <form onsubmit="handleExpenseSubmit(event)">
+                <div class="form-row">
+                    <label>Department:</label>
+                    <select id="expDept" class="form-select" required>
+                        <option value="Engineering">Engineering</option>
+                        <option value="R&D">R&D</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Operations">Operations</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Finance">Finance</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label>Expense Category:</label>
+                    <select id="expCat" class="form-select" required>
+                        <option value="Software & Tools">Software & Tools</option>
+                        <option value="Equipment & Hardware">Equipment & Hardware</option>
+                        <option value="Travel & Transport">Travel & Transport</option>
+                        <option value="Marketing & Ads">Marketing & Ads</option>
+                        <option value="Professional Services">Professional Services</option>
+                        <option value="Office Rent">Office Rent</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label>Vendor / Payee Name:</label>
+                    <input type="text" id="expVendor" class="form-input" placeholder="e.g. AWS, Dell, Google Ads" required>
+                </div>
+                <div class="form-row">
+                    <label>Amount in USD ($):</label>
+                    <input type="number" id="expAmount" class="form-input" min="10" step="0.01" placeholder="e.g. 15400.00" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-action" onclick="closeModal('expenseModal')">Cancel</button>
+                    <button type="submit" class="btn-action primary">Submit Claim</button>
+                </div>
+            </form>
         </div>
     </div>
 
-    <!-- Master Interactive Analytics Script -->
+    <!-- ──────────────── USER INPUT MODAL 2: WHAT-IF SIMULATION ──────────────── -->
+    <div class="modal-overlay" id="simulationModal">
+        <div class="modal-card">
+            <h3>📊 What-If Financial & Budget Simulation</h3>
+            <div class="form-row">
+                <label>Adjust Projected Revenue Growth (%): <span id="simRevVal" style="color:var(--vanilla-primary);">+12%</span></label>
+                <input type="range" id="simRevInput" min="-20" max="35" value="12" step="1" class="form-input" oninput="runWhatIfSimulation()">
+            </div>
+            <div class="form-row">
+                <label>Adjust Operational Budget Cap (%): <span id="simBudgetVal" style="color:var(--vanilla-primary);">0%</span></label>
+                <input type="range" id="simBudgetInput" min="-25" max="30" value="0" step="1" class="form-input" oninput="runWhatIfSimulation()">
+            </div>
+            <div style="background-color:var(--vanilla-card); padding:10px 14px; border-radius:6px; margin-top:12px; font-size:12px;">
+                <p><strong>Simulated Revenue:</strong> <span id="simResultRev">$4.62B</span></p>
+                <p><strong>Simulated OpEx:</strong> <span id="simResultOpex">$128.7M</span></p>
+                <p><strong>Projected Net Profit:</strong> <span id="simResultProfit" style="color:var(--vanilla-green); font-weight:700;">$4.49B</span></p>
+            </div>
+            <div class="modal-buttons">
+                <button type="button" class="btn-action primary" onclick="closeModal('simulationModal')">Apply Simulation</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Banner -->
+    <div class="toast" id="toastMessage">Action completed successfully</div>
+
+    <!-- Master Application Script -->
     <script>
-        // ─── 1. TAB SWITCHING ─────────────────────────────────────────
+        // ─── 1. MULTI-USER ACCESS & ROLE SWITCHING (RBAC) ─────────────
+        const userProfiles = {
+            cfo: { name: "Sarah Jenkins", role: "CFO / Executive", avatar: "👤", dept: "all", permissions: "Full Access" },
+            dept_head: { name: "Rajesh Kumar", role: "Engineering Lead", avatar: "💻", dept: "Engineering", permissions: "Dept Scoped" },
+            auditor: { name: "Arthur Vance", role: "Internal Auditor", avatar: "🛡️", dept: "all", permissions: "Audit & Risk" },
+            ops_mgr: { name: "Deepa Menon", role: "Operations Manager", avatar: "⚙️", dept: "Operations", permissions: "Fulfillment SLA" },
+            analyst: { name: "Emily Watson", role: "BI Analyst", avatar: "📊", dept: "all", permissions: "Read / Model" }
+        };
+
+        function switchUserRole() {
+            const roleKey = document.getElementById("userRoleSelect").value;
+            const user = userProfiles[roleKey];
+            document.getElementById("userName").innerText = user.name;
+            document.getElementById("userRoleTag").innerText = user.role;
+            document.getElementById("userAvatar").innerText = user.avatar;
+
+            // Role-based scoping: if department lead, automatically scope department slicer!
+            if (user.dept !== "all") {
+                document.getElementById("slicerDept").value = user.dept;
+            } else {
+                document.getElementById("slicerDept").value = "all";
+            }
+            applyGlobalFilters();
+            showToast(`Switched user profile to: ${user.name} (${user.role})`);
+        }
+
+        // ─── 2. TAB SWITCHING ─────────────────────────────────────────
         function switchTab(tabId, btn) {
             document.querySelectorAll('.dashboard-view').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
@@ -699,12 +887,12 @@
             btn.classList.add('active');
         }
 
-        // ─── 2. ANOMALY AUDIT DATASET ─────────────────────────────────
-        const anomalyData = [
+        // ─── 3. ANOMALY AUDIT DATASET & USER AUDITOR ACTIONS ──────────
+        let anomalyData = [
             { id: "EXP-029411", dept: "Marketing", cat: "Marketing & Ads", vendor: "Google Ads", amt: 31254.63, z: 5.82, reason: "Excessive Spend: 5.8σ above category average ($8,141.37)", status: "Under Audit", pill: "status-over" },
             { id: "EXP-018239", dept: "Engineering", cat: "Equipment & Hardware", vendor: "Dell Technologies", amt: 28940.10, z: 5.14, reason: "High-Cap Outlier: Exceeds standard authorization ceiling", status: "Under Audit", pill: "status-over" },
-            { id: "EXP-004812", dept: "R&D", cat: "Software & Tools", vendor: "Amazon Web Services", amt: 27650.00, z: 4.88, reason: "High compute instance burst during model training", status: "Approved Exception", pill: "status-warning" },
-            { id: "EXP-011204", dept: "Sales", cat: "Travel & Transport", vendor: "United Airlines", amt: 18420.50, z: 4.25, reason: "Multi-executive international client summit flights", status: "Verified Normal", pill: "status-ontrack" },
+            { id: "EXP-004812", dept: "R&D", cat: "Software & Tools", vendor: "Amazon Web Services", amt: 27650.00, z: 4.88, reason: "Compute instance burst during model training", status: "Approved Exception", pill: "status-warning" },
+            { id: "EXP-011204", dept: "Sales", cat: "Travel & Transport", vendor: "United Airlines", amt: 18420.50, z: 4.25, reason: "Executive international client summit flights", status: "Verified Normal", pill: "status-ontrack" },
             { id: "EXP-022981", dept: "Operations", cat: "Equipment & Hardware", vendor: "Lenovo", amt: 22100.00, z: 3.94, reason: "Bulk replacement of warehouse terminal hardware", status: "Under Audit", pill: "status-over" },
             { id: "EXP-015830", dept: "Finance", cat: "Professional Services", vendor: "PwC Consulting", amt: 24500.00, z: 4.12, reason: "Annual compliance audit and statutory filing fee", status: "Approved Exception", pill: "status-warning" },
             { id: "EXP-008472", dept: "Engineering", cat: "Software & Tools", vendor: "Microsoft Azure", amt: 26180.40, z: 4.62, reason: "Database cluster scaling for Q4 client workload", status: "Verified Normal", pill: "status-ontrack" },
@@ -714,7 +902,7 @@
         function renderAnomalyTable(items) {
             const tbody = document.getElementById("anomalyTableBody");
             tbody.innerHTML = "";
-            items.forEach(item => {
+            items.forEach((item, index) => {
                 const tr = document.createElement("tr");
                 tr.innerHTML = `
                     <td><strong>${item.id}</strong></td>
@@ -725,10 +913,24 @@
                     <td>${item.z.toFixed(2)}σ</td>
                     <td>${item.reason}</td>
                     <td><span class="status-pill ${item.pill}">${item.status}</span></td>
+                    <td>
+                        <button class="btn-table-action" onclick="updateAuditStatus('${item.id}', 'Approved Exception')">✓ Approve</button>
+                        <button class="btn-table-action" onclick="updateAuditStatus('${item.id}', 'Verified Normal')">✔ Verify</button>
+                    </td>
                 `;
                 tbody.appendChild(tr);
             });
             document.getElementById("kpiAnomalyCount").innerText = `${items.length} Records`;
+        }
+
+        function updateAuditStatus(id, newStatus) {
+            const item = anomalyData.find(x => x.id === id);
+            if (item) {
+                item.status = newStatus;
+                item.pill = newStatus === 'Verified Normal' ? 'status-ontrack' : 'status-warning';
+                filterAnomalyTable();
+                showToast(`Updated ${id} status to: ${newStatus}`);
+            }
         }
 
         function filterAnomalyTable() {
@@ -748,12 +950,11 @@
             renderAnomalyTable(filtered);
         }
 
-        // Export table to CSV
         function exportTableToCSV() {
             let csv = "Transaction ID,Department,Category,Vendor,Amount,Z-Score,Reason,Status\n";
             const rows = document.querySelectorAll("#anomalyTable tbody tr");
             rows.forEach(r => {
-                const cols = Array.from(r.querySelectorAll("td")).map(c => `"${c.innerText.replace(/"/g, '""')}"`);
+                const cols = Array.from(r.querySelectorAll("td")).slice(0, 8).map(c => `"${c.innerText.replace(/"/g, '""')}"`);
                 csv += cols.join(",") + "\n";
             });
             const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
@@ -761,13 +962,82 @@
             link.href = URL.createObjectURL(blob);
             link.download = `FinSight360_Risk_Audit_${new Date().toISOString().slice(0,10)}.csv`;
             link.click();
+            showToast("Exported filtered audit records to CSV");
         }
 
-        // ─── 3. CHART CONFIGURATION & DYNAMIC SLICING ─────────────────
+        // ─── 4. USER INPUT: SUBMIT EXPENSE CLAIM ───────────────────────
+        function openExpenseModal() {
+            document.getElementById("expenseModal").style.display = "flex";
+        }
+
+        function handleExpenseSubmit(e) {
+            e.preventDefault();
+            const dept = document.getElementById("expDept").value;
+            const cat = document.getElementById("expCat").value;
+            const vendor = document.getElementById("expVendor").value;
+            const amt = parseFloat(document.getElementById("expAmount").value);
+
+            const newId = `EXP-0${Math.floor(30000 + Math.random() * 9000)}`;
+            const zScore = (amt > 20000) ? Number((4.0 + (amt - 20000) / 5000).toFixed(2)) : 1.25;
+
+            const newRecord = {
+                id: newId,
+                dept: dept,
+                cat: cat,
+                vendor: vendor,
+                amt: amt,
+                z: zScore,
+                reason: zScore > 3.5 ? `Live Flag: User submitted amount ($${amt:,.2f}) exceeds authorization ceiling` : "Normal departmental operational expense",
+                status: zScore > 3.5 ? "Under Audit" : "Approved Exception",
+                pill: zScore > 3.5 ? "status-over" : "status-warning"
+            };
+
+            // Prepend new expense
+            anomalyData.unshift(newRecord);
+            filterAnomalyTable();
+            closeModal('expenseModal');
+            showToast(`Expense ${newId} ($${amt.toLocaleString()}) submitted by ${document.getElementById("userName").innerText}!`);
+        }
+
+        // ─── 5. USER INPUT: WHAT-IF SIMULATION ────────────────────────
+        function openSimulationModal() {
+            document.getElementById("simulationModal").style.display = "flex";
+            runWhatIfSimulation();
+        }
+
+        function runWhatIfSimulation() {
+            const revGrowth = parseFloat(document.getElementById("simRevInput").value);
+            const budgetAdj = parseFloat(document.getElementById("simBudgetInput").value);
+
+            document.getElementById("simRevVal").innerText = `${revGrowth >= 0 ? '+' : ''}${revGrowth}%`;
+            document.getElementById("simBudgetVal").innerText = `${budgetAdj >= 0 ? '+' : ''}${budgetAdj}%`;
+
+            const baseRev = 4.126;
+            const baseOpex = 128.7;
+
+            const simRev = baseRev * (1 + revGrowth / 100.0);
+            const simOpex = baseOpex * (1 + budgetAdj / 100.0);
+            const simProfit = simRev - (simOpex / 1000.0);
+
+            document.getElementById("simResultRev").innerText = `$${simRev.toFixed(2)}B`;
+            document.getElementById("simResultOpex").innerText = `$${simOpex.toFixed(1)}M`;
+            document.getElementById("simResultProfit").innerText = `$${simProfit.toFixed(2)}B`;
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById("toastMessage");
+            t.innerText = msg;
+            t.style.display = "block";
+            setTimeout(() => { t.style.display = "none"; }, 3500);
+        }
+
+        // ─── 6. CHARTS & DYNAMIC SLICING ──────────────────────────────
         const vanillaGold = '#C29B38';
-        const vanillaDark = '#2C2825';
         const vanillaGreen = '#4E6E58';
-        const vanillaRed = '#A34A42';
         const vanillaBlue = '#4B6584';
         const vanillaAccent = '#E8D8C8';
 
@@ -777,7 +1047,7 @@
             plugins: {
                 legend: {
                     position: 'bottom',
-                    labels: { boxWidth: 11, padding: 8, font: { size: 10.5 } }
+                    labels: { boxWidth: 10, padding: 8, font: { size: 10.5 } }
                 }
             }
         };
@@ -785,7 +1055,6 @@
         let charts = {};
 
         function initCharts() {
-            // 1. Executive Trend
             charts.execTrend = new Chart(document.getElementById('execTrendChart'), {
                 type: 'line',
                 data: {
@@ -795,40 +1064,18 @@
                         { label: 'Operating Profit ($M)', data: [77.2, 78.3, 84.0, 82.4, 88.5, 117.3], borderColor: vanillaGreen, tension: 0.3 }
                     ]
                 },
-                options: {
-                    ...chartOptions,
-                    onClick: (e, elements) => {
-                        if (elements.length > 0) {
-                            const idx = elements[0].index;
-                            const month = charts.execTrend.data.labels[idx];
-                            const rev = charts.execTrend.data.datasets[0].data[idx];
-                            const profit = charts.execTrend.data.datasets[1].data[idx];
-                            openModal(`Monthly Drill-Down: ${month}`, `Gross Revenue: $${rev}M`, `Operating Profit: $${profit}M`, `Operating Margin: ${((profit/rev)*100).toFixed(1)}%`);
-                        }
-                    }
-                }
+                options: chartOptions
             });
 
-            // 2. Executive Region
             charts.execRegion = new Chart(document.getElementById('execRegionChart'), {
                 type: 'doughnut',
                 data: {
                     labels: ['North America', 'Europe', 'Asia Pacific', 'Middle East'],
                     datasets: [{ data: [42, 28, 22, 8], backgroundColor: [vanillaGold, vanillaBlue, vanillaGreen, vanillaAccent] }]
                 },
-                options: {
-                    ...chartOptions,
-                    onClick: (e, elements) => {
-                        if (elements.length > 0) {
-                            const region = charts.execRegion.data.labels[elements[0].index];
-                            document.getElementById("slicerRegion").value = region;
-                            applyGlobalFilters();
-                        }
-                    }
-                }
+                options: chartOptions
             });
 
-            // 3. Financial Budget
             charts.finBudget = new Chart(document.getElementById('finBudgetChart'), {
                 type: 'bar',
                 data: {
@@ -841,7 +1088,6 @@
                 options: chartOptions
             });
 
-            // 4. Financial Expense Breakdown
             charts.finExpense = new Chart(document.getElementById('finExpenseCatChart'), {
                 type: 'pie',
                 data: {
@@ -851,29 +1097,15 @@
                 options: chartOptions
             });
 
-            // 5. Dept Spend
             charts.deptSpend = new Chart(document.getElementById('deptSpendChart'), {
                 type: 'bar',
                 data: {
                     labels: ['Engineering', 'R&D', 'Sales', 'Operations', 'Marketing', 'Support', 'Finance', 'HR'],
                     datasets: [{ label: 'Operational Spend ($M)', data: [27.2, 19.8, 21.8, 14.2, 16.5, 10.1, 10.5, 8.6], backgroundColor: vanillaGold }]
                 },
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    onClick: (e, elements) => {
-                        if (elements.length > 0) {
-                            const dept = charts.deptSpend.data.labels[elements[0].index];
-                            document.getElementById("slicerDept").value = dept;
-                            applyGlobalFilters();
-                        }
-                    }
-                }
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
             });
 
-            // 6. Dept Headcount
             charts.deptHeadcount = new Chart(document.getElementById('deptHeadcountChart'), {
                 type: 'doughnut',
                 data: {
@@ -883,7 +1115,6 @@
                 options: chartOptions
             });
 
-            // 7. Operations Fulfillment
             charts.opsFulfillment = new Chart(document.getElementById('opsFulfillmentChart'), {
                 type: 'line',
                 data: {
@@ -896,7 +1127,6 @@
                 options: chartOptions
             });
 
-            // 8. Cycle Time Chart
             charts.opsCycle = new Chart(document.getElementById('opsCycleChart'), {
                 type: 'bar',
                 data: {
@@ -907,74 +1137,33 @@
             });
         }
 
-        // ─── 4. REACTIVE GLOBAL FILTERING ────────────────────────────
         function applyGlobalFilters() {
             const yr = document.getElementById("slicerYear").value;
             const dept = document.getElementById("slicerDept").value;
-            const reg = document.getElementById("slicerRegion").value;
 
-            let revMult = 1.0;
-            let opexMult = 1.0;
+            let mult = (yr === "2026" ? 1.25 : yr === "2025" ? 1.0 : yr === "2024" ? 0.88 : 0.75);
+            if (dept !== "all") mult *= 0.45;
 
-            if (yr === "2026") { revMult *= 1.25; opexMult *= 1.15; }
-            else if (yr === "2025") { revMult *= 1.00; opexMult *= 1.00; }
-            else if (yr === "2024") { revMult *= 0.88; opexMult *= 0.90; }
-            else if (yr === "2023") { revMult *= 0.78; opexMult *= 0.82; }
-            else if (yr === "2022") { revMult *= 0.68; opexMult *= 0.74; }
-
-            if (dept !== "all") {
-                revMult *= 0.45;
-                opexMult *= 0.22;
-            }
-
-            if (reg !== "all") {
-                revMult *= (reg === "North America" ? 0.42 : reg === "Europe" ? 0.28 : 0.20);
-            }
-
-            // Update KPI cards dynamically
-            const calcRev = (4.126 * revMult).toFixed(2);
-            const calcOpex = (128.7 * opexMult).toFixed(1);
-            const calcProfit = (calcRev - (calcOpex / 1000)).toFixed(2);
+            const calcRev = (4.126 * mult).toFixed(2);
+            const calcOpex = (128.7 * mult).toFixed(1);
 
             document.getElementById("kpiRevenue").innerText = `$${calcRev}B`;
             document.getElementById("kpiOpex").innerText = `$${calcOpex}M`;
             document.getElementById("kpiGrossProfit").innerText = `$${(calcRev * 0.614).toFixed(2)}B`;
-            document.getElementById("kpiNetProfit").innerText = `$${calcProfit}B`;
+            document.getElementById("kpiNetProfit").innerText = `$${(calcRev - (calcOpex/1000)).toFixed(2)}B`;
 
-            // Update Charts
-            if (charts.execTrend) {
-                charts.execTrend.data.datasets[0].data = [79.4, 80.4, 86.2, 84.6, 90.8, 119.4].map(v => Number((v * revMult).toFixed(1)));
-                charts.execTrend.data.datasets[1].data = [77.2, 78.3, 84.0, 82.4, 88.5, 117.3].map(v => Number((v * revMult).toFixed(1)));
-                charts.execTrend.update();
-            }
-
-            // Filter Anomaly Table
             filterAnomalyTable();
         }
 
         function resetFilters() {
             document.getElementById("slicerYear").value = "2026";
             document.getElementById("slicerDept").value = "all";
-            document.getElementById("slicerRegion").value = "all";
             document.getElementById("anomalySearchInput").value = "";
             document.getElementById("statusFilter").value = "all";
             applyGlobalFilters();
+            showToast("Reset all slicers and filters");
         }
 
-        // ─── 5. DRILL-DOWN MODAL ──────────────────────────────────────
-        function openModal(title, d1, d2, d3) {
-            document.getElementById("modalTitle").innerText = title;
-            document.getElementById("modalDetail1").innerText = d1;
-            document.getElementById("modalDetail2").innerText = d2;
-            document.getElementById("modalDetail3").innerText = d3;
-            document.getElementById("drillModal").style.display = "flex";
-        }
-
-        function closeModal(e) {
-            document.getElementById("drillModal").style.display = "none";
-        }
-
-        // Initialize on load
         window.onload = function() {
             renderAnomalyTable(anomalyData);
             initCharts();
